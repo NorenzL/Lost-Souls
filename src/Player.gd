@@ -12,6 +12,7 @@ var pingNode: KinematicBody2D = null
 
 onready var sprite = $Sprite
 onready var timer = $Timer
+onready var cdTimer = $cdTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,15 +48,21 @@ func _physics_process(delta):
 
 func ping():
 	timer.start(3)
+	cdTimer.start(10)
 	pingNode = ping.instance()
 	
 	get_parent().add_child(pingNode)
 	
 	pingNode.position = $Position2D.global_position
 	timer.connect("timeout", self, "_on_Timer_timeout")
+	cdTimer.connect("timeout", self, "_on_cdTimer_timeout")
 	
 func _on_Timer_timeout():
-	isPinging = false
 	if pingNode != null:
 		pingNode.queue_free()
+		timer.stop()
+
+func _on_cdTimer_timeout():
+	isPinging = false
+	cdTimer.stop()
 

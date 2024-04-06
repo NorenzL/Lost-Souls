@@ -39,3 +39,4 @@ position = Vector2( 651, 396 )
 scale = Vector2( 5.844, 5.875 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 8 )
+action = "ping"

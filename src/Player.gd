@@ -13,6 +13,7 @@ var pingNode: KinematicBody2D = null
 onready var sprite = $Sprite
 onready var timer = $Timer
 onready var cdTimer = $cdTimer
+onready var flashlight = $flashlight
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,8 +36,14 @@ func _physics_process(delta):
 	
 	if velocity.x < 0:
 		sprite.flip_h = true
+		flashlight.position.x = -186
+		flashlight.rotation_degrees = -266.4
 	elif velocity.x > 0:
 		sprite.flip_h = false
+		flashlight.position.x = 186
+		flashlight.rotation_degrees = -94.7
+		
+		
 		
 	if Input.is_action_pressed("ping") and !isPinging:
 		isPinging = true

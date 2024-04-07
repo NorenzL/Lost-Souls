@@ -27,15 +27,9 @@ wait_time = 3.0
 [node name="cdTimer" type="Timer" parent="."]
 wait_time = 10.0
 
-[node name="Lightcone" type="Sprite" parent="."]
-visible = false
-position = Vector2( 398, -173 )
-rotation = 2.41554
-scale = Vector2( 0.90199, 0.839138 )
-texture = ExtResource( 3 )
-
 [node name="flashlight" type="Light2D" parent="."]
-position = Vector2( 186, -2 )
+position = Vector2( 197, 1 )
 rotation = -1.65283
-scale = Vector2( 0.165299, 0.400981 )
+scale = Vector2( 0.165, 0.401 )
 texture = ExtResource( 3 )
+shadow_enabled = true

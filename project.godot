@@ -14,6 +14,10 @@ config/name="Lost Souls"
 run/main_scene="res://src/MainScene.tscn"
 config/icon="res://icon.png"
 
+[global]
+
+Settings=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

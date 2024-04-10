@@ -12,7 +12,7 @@ var NUM_OBJECTS = Rng.number_of_players
 
 func spawn_objects():
 	#iterates based on the number of players
-	for i in range(NUM_OBJECTS):
+	for i in range(NUM_OBJECTS*2):
 		# Generate a random position within the spawn region
 		var spawn_position = Vector2(
 			Rng.generate_X_num(),
@@ -23,16 +23,16 @@ func spawn_objects():
 		#ORB INSTANTIATION
 		
 		#spawned object variable
-		var new_object = load("res://blue_orb.tscn").instance()
+		var new_object = load("res://src/blue_orb.tscn").instance()
 		
 		#orb colors instantiation
-		var blue_orb = load("res://blue_orb.tscn").instance()
-		var yellow_orb = load("res://yellow_orb.tscn").instance()
-		var red_orb = load("res://red_orb.tscn").instance()
-		var green_orb = load("res://green_orb.tscn").instance()
+		var blue_orb = load("res://src/blue_orb.tscn").instance()
+		var yellow_orb = load("res://src/yellow_orb.tscn").instance()
+		var red_orb = load("res://src/red_orb.tscn").instance()
+		var green_orb = load("res://src/green_orb.tscn").instance()
 		
 		
-		
+		#CHANGE ORB COLOR
 		#THINK OF A BETTER AND MORE FLEXIBLE ALGORITHM FOR THIS THAT ROLLS INFINITELY OR UNTIL GOAL IS FULFILLED
 		if i == 1 or i == 2:
 			new_object = blue_orb

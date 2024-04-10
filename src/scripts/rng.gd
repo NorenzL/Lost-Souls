@@ -10,8 +10,8 @@ var number_of_players = 4
 
 
 #DEPENDS ON THE SIZE OF THE MAP YUNG SIZE NG SPAWN AREA
-const SPAWN_REGION_MIN = Vector2(-300, -200)
-const SPAWN_REGION_MAX = Vector2(1300, 850)
+const SPAWN_REGION_MIN = Vector2(-328, -3968)
+const SPAWN_REGION_MAX = Vector2(4568, 1832)
 
 #SEPARATE RAMDOM NUMBER GENERATORS FOR X AND Y COORDINATES
 var X_coordinate_rng = RandomNumberGenerator.new()

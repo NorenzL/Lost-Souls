@@ -11,13 +11,8 @@ config_version=4
 [application]
 
 config/name="Lost Souls"
-run/main_scene="res://src/AncientPalace.tscn"
+run/main_scene="res://src/MainScene.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-Rng="*res://src/scripts/rng.gd"
-OrbSpawner="*res://src/scripts/orb_spawner.gd"
 
 [global]
 

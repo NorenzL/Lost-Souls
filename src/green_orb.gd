@@ -15,6 +15,4 @@ func _ready():
 func _process(delta):
 	var overlap = get_overlapping_areas()
 	for node in overlap:
-		print ("Green Collided!")
-		$Sprite.position.y -= 15
-		$Sprite.position.x += 15
+		pass

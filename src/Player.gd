@@ -36,11 +36,9 @@ func _physics_process(delta):
 	
 	if velocity.x < 0:
 		sprite.flip_h = true
-		flashlight.position.x = -30
 		flashlight.rotation_degrees = -266.4
 	elif velocity.x > 0:
 		sprite.flip_h = false
-		flashlight.position.x = 30
 		flashlight.rotation_degrees = -94.7
 		
 		

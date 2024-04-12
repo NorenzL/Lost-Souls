@@ -40,6 +40,8 @@ func orb_spawn(number_of_players : int ,color : String):
 		
 		#CHANGE ORB COLOR
 		#THINK OF A BETTER AND MORE FLEXIBLE ALGORITHM FOR THIS THAT ROLLS INFINITELY OR UNTIL GOAL IS FULFILLED
+		if i == 0 and not all_spawned:
+			continue
 		if i == 0 and all_spawned:
 			match color:
 				"blue_orb":
@@ -77,7 +79,7 @@ func orb_spawn(number_of_players : int ,color : String):
 		
 		add_child(new_object)
 	all_spawned = true
-	print ("All orbs spawned")
+	
 
 
 #Vector2(-310, -2737) ------ MIN SPAWN REGION

@@ -3,16 +3,15 @@ extends Node2D
 #HOW TO USE:
 	#Just call script in _ready() to Use once
 	#check script name in project/ project settings/ AutoLoad 
-	
 
-# Number of objects to spawn
-#var NUM_OBJECTS = Rng.number_of_players 
 
+#controller dictionary for orbs 
 var orbs = {"blue_orb" : 0,
 			"yellow_orb": 0,
 			"red_orb": 0,
 			"green_orb": 0}
 
+#checks if the initial spawns are done 
 var all_spawned = false
 
 func spawn_objects():
@@ -22,13 +21,15 @@ func spawn_objects():
 func orb_spawn(number_of_players : int ,color : String):
 	#iterates based on the number of players
 	for i in range(number_of_players + 1):
+		
 		# Generate a random position within the spawn region
 		var spawn_position = Vector2(
 			Rng.generate_X_num(),
 			Rng.generate_Y_num()
 		)
+		
 		#ORB INSTANTIATION
-		#spawned object variable
+		#spawned object variable (template is just blue orb so it won't cause errors)
 		var new_object = load("res://src/blue_orb.tscn").instance()
 		
 		#orb colors instantiation
@@ -84,38 +85,21 @@ func orb_spawn(number_of_players : int ,color : String):
 
 #Vector2(-310, -2737) ------ MIN SPAWN REGION
 #Vector2(4510, 1840) ------------ MAX SPAWN REGION
+
+#USED IF ORB SPAWNS OVERLAPPING A PLATFORM
 func relocate_orb(orb : String):
+	
+	#removes the '@', '0', and numbers in the orb name
+	# these occur when there are multiple orb spawns in the map
+	# the naming is like orb, orb1, orb2, orb3, ...
 	
 	var new_text = ""
 	for chars in orb:
 		if not int(chars)  and chars != "@" and chars != "0":
 			new_text += chars
-			
+	
+	#this makes sure that the orbs that will spawn for each color are only 2 
 	if orbs[new_text] <= 2 and orbs[new_text] > 0  :
 		orbs[new_text] -= 1
 		print ("rolling: ",new_text)
 		OrbSpawner.orb_spawn(0,str(new_text))
-	
-
-
-
-
-	
-
-  #
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

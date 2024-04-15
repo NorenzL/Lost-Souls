@@ -12,13 +12,6 @@ height = 12.0
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, 14.7 )
-shape = SubResource( 1 )
-
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0, -42 )
 
@@ -34,7 +27,8 @@ rotation = -1.65283
 scale = Vector2( 0.165, 0.401 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 390 )
-energy = 0.72
+energy = 0.8
+mode = 2
 shadow_enabled = true
 
 [node name="Light2D" type="Light2D" parent="."]
@@ -42,4 +36,12 @@ position = Vector2( 0, 13 )
 rotation = -1.65283
 scale = Vector2( 0.476947, 0.577693 )
 texture = ExtResource( 4 )
+mode = 2
 shadow_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, 14.7 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )

@@ -141,87 +141,56 @@ visible = false
 tile_set = SubResource( 5 )
 format = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 2104, -552 )
-current = true
-drag_margin_left = 0.0
-drag_margin_top = 0.0
-drag_margin_right = 0.0
-drag_margin_bottom = 0.0
-script = ExtResource( 3 )
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2080, -576 )
-
-[node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 6 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
-visible = false
 position = Vector2( 1, 0 )
 occluder = SubResource( 7 )
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 8 )
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 9 )
 
 [node name="LightOccluder2D5" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 10 )
 
 [node name="LightOccluder2D6" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 12 )
 
 [node name="LightOccluder2D7" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 16 )
 
 [node name="LightOccluder2D8" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 17 )
 
 [node name="LightOccluder2D9" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 18 )
 
 [node name="LightOccluder2D10" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 19 )
 
 [node name="LightOccluder2D11" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 20 )
 
 [node name="LightOccluder2D12" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 21 )
 
 [node name="LightOccluder2D13" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 22 )
 
 [node name="LightOccluder2D14" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 23 )
 
 [node name="LightOccluder2D15" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 24 )
 
 [node name="LightOccluder2D16" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 25 )
 
 [node name="LightOccluder2D17" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 26 )
 
 [node name="Platforms" type="TileMap" parent="."]
@@ -250,7 +219,6 @@ position = Vector2( 2104, -568 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 2104, -552 )
 current = true
-zoom = Vector2( 5, 5 )
 drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
@@ -258,9 +226,7 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
-visible = false

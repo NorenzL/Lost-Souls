@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/blue_orb.png" type="Texture" id=1]
+[ext_resource path="res://src/blue_orb.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 14.2127
+
+[node name="blue_orb" type="Area2D"]
+collision_layer = 14
+collision_mask = 14
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -1.90735e-06 )
+scale = Vector2( 0.0818182, 0.0869565 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="pickup" type="CollisionShape2D" parent="."]
+position = Vector2( 10.9865, 11.3838 )
+rotation = 0.785398
+shape = SubResource( 1 )

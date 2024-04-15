@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Home_Button.svg-ac610f81a7a4693ef79eb4a67c4620fb.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Switch Button Icons [Essential pack] 0.9/Switch Button Icons [Essential pack] 0.9/Solid Duo/Dark theme/Home_Button.svg"
+dest_files=[ "res://.import/Home_Button.svg-ac610f81a7a4693ef79eb4a67c4620fb.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

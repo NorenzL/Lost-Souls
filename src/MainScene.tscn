@@ -1,0 +1,206 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://hud/mobileControls.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Tile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/Tile.png" type="Texture" id=4]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 512, 216, 512, 304, 504, 304, 456, 280 )
+
+[node name="MainScene" type="Node2D"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="CanvasLayer" instance=ExtResource( 1 )]
+position = Vector2( 720, 264 )
+
+[node name="Tile44" type="Sprite" parent="."]
+position = Vector2( 736, 288 )
+texture = ExtResource( 4 )
+
+[node name="Tile45" type="Sprite" parent="."]
+position = Vector2( 680, 288 )
+texture = ExtResource( 4 )
+
+[node name="Tile46" type="Sprite" parent="."]
+position = Vector2( 616, 288 )
+texture = ExtResource( 4 )
+
+[node name="Tile47" type="Sprite" parent="."]
+position = Vector2( 736, 224 )
+texture = ExtResource( 4 )
+
+[node name="Tile48" type="Sprite" parent="."]
+position = Vector2( 680, 224 )
+texture = ExtResource( 4 )
+
+[node name="Tile49" type="Sprite" parent="."]
+position = Vector2( 616, 224 )
+texture = ExtResource( 4 )
+
+[node name="Tile50" type="Sprite" parent="."]
+position = Vector2( 552, 224 )
+texture = ExtResource( 4 )
+
+[node name="Tile51" type="Sprite" parent="."]
+position = Vector2( 496, 224 )
+texture = ExtResource( 4 )
+
+[node name="Tile52" type="Sprite" parent="."]
+position = Vector2( 432, 224 )
+texture = ExtResource( 4 )
+
+[node name="Tile53" type="Sprite" parent="."]
+position = Vector2( 552, 288 )
+texture = ExtResource( 4 )
+
+[node name="Tile54" type="Sprite" parent="."]
+position = Vector2( 496, 288 )
+texture = ExtResource( 4 )
+
+[node name="Tile55" type="Sprite" parent="."]
+position = Vector2( 432, 288 )
+texture = ExtResource( 4 )
+
+[node name="Tile" parent="." instance=ExtResource( 3 )]
+position = Vector2( 416, 352 )
+
+[node name="Tile2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 480, 352 )
+
+[node name="Tile3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 544, 352 )
+
+[node name="Tile4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 608, 352 )
+
+[node name="Tile5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 672, 352 )
+
+[node name="Tile6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 736, 352 )
+
+[node name="Tile7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, 352 )
+
+[node name="Tile8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 864, 352 )
+
+[node name="Tile9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 928, 352 )
+
+[node name="Tile10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 992, 352 )
+
+[node name="Tile16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 992, 288 )
+
+[node name="Tile17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 992, 224 )
+
+[node name="Tile18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 992, 160 )
+
+[node name="Tile23" parent="." instance=ExtResource( 3 )]
+position = Vector2( 928, 288 )
+
+[node name="Tile24" parent="." instance=ExtResource( 3 )]
+position = Vector2( 928, 224 )
+
+[node name="Tile25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 928, 160 )
+
+[node name="Tile26" parent="." instance=ExtResource( 3 )]
+position = Vector2( 864, 288 )
+
+[node name="Tile27" parent="." instance=ExtResource( 3 )]
+position = Vector2( 864, 224 )
+
+[node name="Tile29" parent="." instance=ExtResource( 3 )]
+position = Vector2( 864, 288 )
+
+[node name="Tile30" parent="." instance=ExtResource( 3 )]
+position = Vector2( 864, 224 )
+
+[node name="Tile56" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, 288 )
+
+[node name="Tile57" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, 224 )
+
+[node name="Tile28" parent="." instance=ExtResource( 3 )]
+position = Vector2( 864, 160 )
+
+[node name="Tile31" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, 160 )
+
+[node name="Tile32" parent="." instance=ExtResource( 3 )]
+position = Vector2( 352, 288 )
+
+[node name="Tile33" parent="." instance=ExtResource( 3 )]
+position = Vector2( 352, 224 )
+
+[node name="Tile34" parent="." instance=ExtResource( 3 )]
+position = Vector2( 352, 160 )
+
+[node name="Tile35" parent="." instance=ExtResource( 3 )]
+position = Vector2( 288, 288 )
+
+[node name="Tile36" parent="." instance=ExtResource( 3 )]
+position = Vector2( 288, 224 )
+
+[node name="Tile37" parent="." instance=ExtResource( 3 )]
+position = Vector2( 288, 160 )
+
+[node name="Tile38" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 288 )
+
+[node name="Tile39" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 224 )
+
+[node name="Tile40" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 160 )
+
+[node name="Tile41" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 288 )
+
+[node name="Tile42" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 224 )
+
+[node name="Tile43" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 160 )
+
+[node name="Tile19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 96, 288 )
+
+[node name="Tile20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 96, 224 )
+
+[node name="Tile21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 96, 160 )
+
+[node name="Tile22" parent="." instance=ExtResource( 3 )]
+position = Vector2( 96, 96 )
+
+[node name="Tile11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 96, 352 )
+
+[node name="Tile12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 352 )
+
+[node name="Tile13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 352 )
+
+[node name="Tile14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 288, 352 )
+
+[node name="Tile15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 352, 352 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2( 408, -64 )
+occluder = SubResource( 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.00392157, 0.00392157, 0.0352941, 1 )

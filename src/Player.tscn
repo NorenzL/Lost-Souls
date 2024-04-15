@@ -29,7 +29,7 @@ wait_time = 3.0
 wait_time = 10.0
 
 [node name="flashlight" type="Light2D" parent="."]
-position = Vector2( 30, 10 )
+position = Vector2( 0, 13 )
 rotation = -1.65283
 scale = Vector2( 0.165, 0.401 )
 texture = ExtResource( 3 )

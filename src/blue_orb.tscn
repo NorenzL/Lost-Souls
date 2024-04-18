@@ -7,8 +7,8 @@
 radius = 14.2127
 
 [node name="blue_orb" type="Area2D"]
-collision_layer = 14
-collision_mask = 14
+collision_layer = 15
+collision_mask = 15
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -21,3 +21,5 @@ centered = false
 position = Vector2( 10.9865, 11.3838 )
 rotation = 0.785398
 shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_blue_orb_body_entered"]

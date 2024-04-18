@@ -72,4 +72,5 @@ func _on_Timer_timeout():
 func _on_cdTimer_timeout():
 	isPinging = false
 	cdTimer.stop()
+	
 

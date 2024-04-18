@@ -13,6 +13,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var overlap = get_overlapping_areas()
-	for node in overlap:
-		pass
+	pass
+
+
+func _on_red_orb_body_entered(body):
+	if body.name == "Player":
+		OrbCounter.incrementRedOrbs()
+		self.queue_free()

@@ -21,7 +21,7 @@ func _ready():
 
 func _physics_process(delta):
 	velocity.x = 0
-	
+	# Left and right movement
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= speed
 	if Input.is_action_pressed("ui_right"):
@@ -30,28 +30,20 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 	velocity.y += gravity * delta
-	
+	# jump
 	if Input.is_action_pressed("ui_up") and is_on_floor():
 		velocity.y -= jumpForce
-	
+	# Flipping of player left and right
 	if velocity.x < 0:
 		sprite.flip_h = true
-		flashlight.position.x = -30
 		flashlight.rotation_degrees = -266.4
 	elif velocity.x > 0:
 		sprite.flip_h = false
-		flashlight.position.x = 30
 		flashlight.rotation_degrees = -94.7
-		
-		
 		
 	if Input.is_action_pressed("ping") and !isPinging:
 		isPinging = true
 		ping()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func ping():
 	timer.start(3)

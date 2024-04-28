@@ -1,6 +1,9 @@
 extends Area2D
 
+# Signal emitted when the orb is collected
 
+# Flag to track if the orb has been collected
+var collected = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -13,6 +16,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var overlap = get_overlapping_areas()
-	for node in overlap:
 		pass
+		
+
+func _on_green_orb_body_entered(body):
+	if body.name == "Player":
+		OrbCounter.incrementGreenOrbs()
+		self.queue_free()
+

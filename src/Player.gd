@@ -64,5 +64,13 @@ func _on_Timer_timeout():
 func _on_cdTimer_timeout():
 	isPinging = false
 	cdTimer.stop()
-	
 
+func _on_Power_timeout():
+	speed = 200
+	
+func collect_power(powerup):
+	if powerup == "speed":
+		timer.start(10)
+		speed = 500
+	
+	timer.connect("timeout", self, "_on_Power_timeout")

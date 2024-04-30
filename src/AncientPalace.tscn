@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Sprites/gray.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://src/AncientPalace.gd" type="Script" id=7]
 [ext_resource path="res://src/orb_collision.gd" type="Script" id=8]
+[ext_resource path="res://src/Speed-power.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=5]
 0/name = "icon.png 0"
@@ -226,7 +227,11 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
+
+[node name="Speed-power" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2320, -576 )

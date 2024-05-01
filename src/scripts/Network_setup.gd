@@ -1,7 +1,7 @@
 extends Control
 
 #vars used in ui nodes
-onready var multiplayer_config_ui = $multiplater_configure
+onready var multiplayer_config_ui = $multiplayer_configure
 onready var server_ip_address = $multiplayer_configure/Server_ip_address
 
 onready var device_ip_address = $CanvasLayer/Device_ip_address

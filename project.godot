@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 Rng="*res://src/scripts/rng.gd"
 OrbSpawner="*res://src/scripts/orb_spawner.gd"
 OrbCounter="*res://src/OrbCounter.gd"
+Network="*res://src/scripts/network.gd"
 
 [global]
 

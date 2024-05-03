@@ -50,3 +50,6 @@ anchor_bottom = 1.0
 margin_top = -88.0
 align = 1
 valign = 1
+
+[connection signal="pressed" from="multiplayer_configure/Create_Server" to="." method="_on_Create_Server_pressed"]
+[connection signal="pressed" from="multiplayer_configure/Join Server" to="." method="_on_Join_Server_pressed"]

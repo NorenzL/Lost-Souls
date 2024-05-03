@@ -29,3 +29,15 @@ func on_join_server_pressed():
 		multiplayer_config_ui.hide()
 		Network.ip_address = server_ip_address.text
 		Network.join_server()
+
+
+func _on_Create_Server_pressed():
+	multiplayer_config_ui.hide()
+	Network.create_server()
+
+
+func _on_Join_Server_pressed():
+	if server_ip_address.text != "":
+		multiplayer_config_ui.hide()
+		Network.ip_address = server_ip_address.text
+		Network.join_server()

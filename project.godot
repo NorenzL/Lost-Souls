@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Network="*res://src/scripts/network.gd"
+Global="*res://src/scripts/Global.gd"
 Rng="*res://src/scripts/rng.gd"
 OrbSpawner="*res://src/scripts/orb_spawner.gd"
 OrbCounter="*res://src/OrbCounter.gd"

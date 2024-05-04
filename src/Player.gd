@@ -5,45 +5,53 @@ export var speed: int = 200
 export var jumpForce: int = 600
 export var gravity: int = 800
 
-var velocity: Vector2 = Vector2()
+var velocity: Vector2 = Vector2(0,0)
 var grounded: bool = false
 var isPinging: bool = false
 var pingNode: KinematicBody2D = null
+
+puppet var puppet_position = Vector2() setget puppet_position_set
+puppet var puppet_velocity = Vector2()
 
 onready var sprite = $Sprite
 onready var timer = $Timer
 onready var cdTimer = $cdTimer
 onready var flashlight = $flashlight
+onready var tween = $Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func _physics_process(delta):
-	velocity.x = 0
-	# Left and right movement
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= speed
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += speed
+func process(delta: float) -> void:
+	if is_network_master():
+		velocity.x = 0
+		# Left and right movement
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= speed
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += speed
 		
-	velocity = move_and_slide(velocity, Vector2.UP)
-	
-	velocity.y += gravity * delta
-	# jump
-	if Input.is_action_pressed("ui_up") and is_on_floor():
-		velocity.y -= jumpForce
-	# Flipping of player left and right
-	if velocity.x < 0:
-		sprite.flip_h = true
-		flashlight.rotation_degrees = -266.4
-	elif velocity.x > 0:
-		sprite.flip_h = false
-		flashlight.rotation_degrees = -94.7
+		velocity = move_and_slide(velocity, Vector2.UP)
 		
-	if Input.is_action_pressed("ping") and !isPinging:
-		isPinging = true
-		ping()
+		velocity.y += gravity * delta
+		# jump
+		if Input.is_action_pressed("ui_up") and is_on_floor():
+			velocity.y -= jumpForce
+		# Flipping of player left and right
+		if velocity.x < 0:
+			sprite.flip_h = true
+			flashlight.rotation_degrees = -266.4
+		elif velocity.x > 0:
+			sprite.flip_h = false
+			flashlight.rotation_degrees = -94.7
+		
+		if Input.is_action_pressed("ping") and !isPinging:
+			isPinging = true
+			ping()
+	else:
+		if not tween.is_active():
+			move_and_slide(puppet_velocity * speed)
 
 func ping():
 	timer.start(3)
@@ -66,3 +74,14 @@ func _on_cdTimer_timeout():
 	cdTimer.stop()
 	
 
+func puppet_position_set(new_value) -> void:
+	puppet_position = new_value
+	
+	tween.interpolate_property(self, "global_position", global_position, puppet_position, 0.1)
+	tween.start()
+
+func _on_Network_tick_rate_timeout():
+	if is_network_master():
+		rset_unreliable("puppet_position", global_position)
+		rset_unreliable("puppet_velocity", velocity)
+		

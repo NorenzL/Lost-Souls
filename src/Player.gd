@@ -20,8 +20,6 @@ onready var flashlight = $flashlight
 onready var tween = $Tween
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func process(delta: float) -> void:
 	if is_network_master():

@@ -23,6 +23,9 @@ func _player_connected(id) -> void:
 
 func _player_disconnected(id) -> void:
 	print("player ", str(id), " has disconnected")
+	
+	if Players.has_node(str(id)):
+		Players.get_node(str(id)).queue_free()
 
 
 func _on_Create_Server_pressed():
@@ -42,6 +45,6 @@ func _connected_to_server():
 	instance_player(get_tree().get_network_unique_id())
 
 func instance_player (id) -> void:
-	var player_instance = Global.instance_node_at_location(player, Players, Vector2(Rng.generate_X_num(),Rng.generate_Y_num()))
+	var player_instance = Global.instance_node_at_location(player, Players, Vector2(0,0))
 	player_instance.name = str(id)
 	player_instance.set_network_master(id)

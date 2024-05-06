@@ -15,7 +15,7 @@ var orbs = {"blue_orb" : 0,
 var all_spawned = false
 
 func spawn_objects():
-	orb_spawn(Rng.number_of_players,"blank_orb")
+	orb_spawn(Rng.number_of_players,"blue_orb")
 
 
 func orb_spawn(number_of_players : int ,color : String):

@@ -15,6 +15,10 @@ onready var timer = $Timer
 onready var cdTimer = $cdTimer
 onready var flashlight = $flashlight
 
+var isDead: bool = false
+var isImmune: bool = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -44,6 +48,26 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ping") and !isPinging:
 		isPinging = true
 		ping()
+		
+	# Test feature for death / temporary touch
+	
+	
+	
+	if Input.is_key_pressed(KEY_L) and isDead:
+		print("I am ALIVE!!")
+		isDead = false
+		sprite.modulate = Color("#ffffff")
+		
+
+func die():
+	if isImmune:
+		isImmune = false
+		sprite.modulate = Color("#ffffff")
+		print("Immunity gone!")
+	else:
+		sprite.modulate = Color("#ff1409")
+		print("I am DEAD!!")
+		isDead = true
 
 func ping():
 	timer.start(3)
@@ -72,5 +96,9 @@ func collect_power(powerup):
 	if powerup == "speed":
 		timer.start(10)
 		speed = 500
+	if powerup == "life":
+		isImmune = true
+		sprite.modulate = Color("#2146ee")
+		
 	
 	timer.connect("timeout", self, "_on_Power_timeout")

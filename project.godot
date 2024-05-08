@@ -18,7 +18,7 @@ config/icon="res://icon.png"
 
 Network="*res://src/scripts/network.gd"
 Global="*res://src/scripts/Global.gd"
-Players="*res://src/scripts/Players.tscn"
+Players="res://src/scripts/Players.tscn"
 Rng="*res://src/scripts/rng.gd"
 OrbSpawner="*res://src/scripts/orb_spawner.gd"
 OrbCounter="*res://src/OrbCounter.gd"

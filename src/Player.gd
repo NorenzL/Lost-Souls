@@ -13,6 +13,7 @@ var pingNode: KinematicBody2D = null
 puppet var puppet_position = Vector2() setget puppet_position_set
 puppet var puppet_velocity = Vector2()
 
+
 onready var sprite = $Sprite
 onready var timer = $Timer
 onready var cdTimer = $cdTimer
@@ -21,7 +22,7 @@ onready var tween = $Tween
 
 # Called when the node enters the scene tree for the first time.
 
-func process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if is_network_master():
 		velocity.x = 0
 		# Left and right movement
@@ -82,4 +83,6 @@ func _on_Network_tick_rate_timeout():
 	if is_network_master():
 		rset_unreliable("puppet_position", global_position)
 		rset_unreliable("puppet_velocity", velocity)
+		
+		
 		

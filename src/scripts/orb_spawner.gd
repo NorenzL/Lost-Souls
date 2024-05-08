@@ -30,13 +30,13 @@ func orb_spawn(number_of_players : int ,color : String):
 		
 		#ORB INSTANTIATION
 		#spawned object variable (template is just blue orb so it won't cause errors)
-		var new_object = load("res://src/blue_orb.tscn").instance()
+		var new_object = load("res://src/Orbs_Folder/blue_orb.tscn").instance()
 		
 		#orb colors instantiation
-		var blue_orb = load("res://src/blue_orb.tscn").instance()
-		var yellow_orb = load("res://src/yellow_orb.tscn").instance()
-		var red_orb = load("res://src/red_orb.tscn").instance()
-		var green_orb = load("res://src/green_orb.tscn").instance()
+		var blue_orb = load("res://src/Orbs_Folder/blue_orb.tscn").instance()
+		var yellow_orb = load("res://src/Orbs_Folder/yellow_orb.tscn").instance()
+		var red_orb = load("res://src/Orbs_Folder/red_orb.tscn").instance()
+		var green_orb = load("res://src/Orbs_Folder/green_orb.tscn").instance()
 		
 		
 		#CHANGE ORB COLOR

@@ -7,6 +7,7 @@ var server = null
 var client = null
 
 var ip_address = ""
+var current_player_username = ""
 
 func _ready() -> void:
 	if OS.get_name() == "Windows":
@@ -27,6 +28,7 @@ func create_server() -> void:
 	server = NetworkedMultiplayerENet.new()
 	server.create_server(DEFAULT_PORT,MAX_CLIENTS)
 	get_tree().set_network_peer(server)
+	Global.instance_node(load("res://src/scripts/Server_advertiser.tscn"), get_tree().current_scene)
 
 func join_server() -> void:
 	client = NetworkedMultiplayerENet.new()

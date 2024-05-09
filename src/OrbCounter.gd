@@ -23,3 +23,6 @@ func incrementRedOrbs():
 func incrementYellowOrbs():
 	yellowOrbsCollected += 1
 	print("Yellow orbs collected: ", yellowOrbsCollected)
+
+func totalOrbsCollected() -> int:
+	return blueOrbsCollected + greenOrbsCollected + redOrbsCollected + yellowOrbsCollected

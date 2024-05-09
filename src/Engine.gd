@@ -9,15 +9,8 @@ func _on_Engine_body_entered(body):
 	if body.name == "Player":
 		# Get the OrbCounter node
 		var orb_counter = get_node("/root/OrbCounter")
-		
-		# Get the number of orbs collected by the player
-		var total_orbs_collected = orb_counter.blueOrbsCollected + orb_counter.greenOrbsCollected + orb_counter.redOrbsCollected + orb_counter.yellowOrbsCollected
-		
-		# Reset the number of collected orbs
-		orb_counter.blueOrbsCollected = 0
-		orb_counter.greenOrbsCollected = 0
-		orb_counter.redOrbsCollected = 0
-		orb_counter.yellowOrbsCollected = 0
-		
-		# Print the total number of orbs collected by the player
-		print("Total orbs collected by player:", total_orbs_collected)
+
+		# Check if the player has collected 2 orbs
+		if orb_counter.totalOrbsCollected() >= 2:
+			# Print the total number of orbs collected by the player
+			print("Total orbs collected by player:", orb_counter.totalOrbsCollected())

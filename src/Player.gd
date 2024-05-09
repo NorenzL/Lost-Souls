@@ -27,8 +27,13 @@ func _physics_process(delta: float) -> void:
 		# Left and right movement
 		if Input.is_action_pressed("ui_left"):
 			velocity.x -= speed
+			sprite.flip_h = true
+			flashlight.rotation_degrees = -266.4
+			
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += speed
+			sprite.flip_h = false
+			flashlight.rotation_degrees = -94.7
 		
 		velocity = move_and_slide(velocity, Vector2.UP)
 		
@@ -38,11 +43,13 @@ func _physics_process(delta: float) -> void:
 			velocity.y -= jumpForce
 		# Flipping of player left and right
 		if velocity.x < 0:
-			sprite.flip_h = true
-			flashlight.rotation_degrees = -266.4
+			#sprite.flip_h = true
+			#flashlight.rotation_degrees = -266.4
+			pass
 		elif velocity.x > 0:
-			sprite.flip_h = false
-			flashlight.rotation_degrees = -94.7
+			#sprite.flip_h = false
+			#flashlight.rotation_degrees = -94.7
+			pass
 		
 		if Input.is_action_pressed("ping") and !isPinging:
 			isPinging = true

@@ -125,7 +125,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 position = Vector2( -1608, 912 )
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 529.0 ],
+"_edit_horizontal_guides_": [ 529.0, 637.0 ],
 "_edit_vertical_guides_": [ 59.0 ]
 }
 

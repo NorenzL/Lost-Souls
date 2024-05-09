@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sprites/Tile.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/gray.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 710.75, 12.5 )
 
 [node name="Players" type="Node"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2( 512, -912 )
+color = Color( 0.4, 0.345098, 0.345098, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2296, -328 )
+scale = Vector2( 1.45859, 2.77639 )
+z_index = -1
+texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 15

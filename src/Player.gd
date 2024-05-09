@@ -13,7 +13,6 @@ var pingNode: KinematicBody2D = null
 puppet var puppet_position = Vector2() setget puppet_position_set
 puppet var puppet_velocity = Vector2()
 
-
 onready var sprite = $Sprite
 onready var timer = $Timer
 onready var cdTimer = $cdTimer
@@ -51,6 +50,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		if not tween.is_active():
 			move_and_slide(puppet_velocity * speed)
+		if puppet_velocity.x < 0:
+			sprite.flip_h = true
+			flashlight.rotation_degrees = -266.4
+		elif puppet_velocity.x > 0:
+			sprite.flip_h = false
+			flashlight.rotation_degrees = -94.7
 
 func ping():
 	timer.start(3)
@@ -83,6 +88,5 @@ func _on_Network_tick_rate_timeout():
 	if is_network_master():
 		rset_unreliable("puppet_position", global_position)
 		rset_unreliable("puppet_velocity", velocity)
-		
 		
 		

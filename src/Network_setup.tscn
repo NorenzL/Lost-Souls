@@ -55,5 +55,11 @@ margin_top = -88.0
 align = 1
 valign = 1
 
+[node name="Start_game" type="Button" parent="CanvasLayer"]
+margin_right = 155.0
+margin_bottom = 46.0
+text = "START GAME"
+
 [connection signal="pressed" from="multiplayer_configure/Create_Server" to="." method="_on_Create_Server_pressed"]
 [connection signal="pressed" from="multiplayer_configure/Join Server" to="." method="_on_Join_Server_pressed"]
+[connection signal="pressed" from="CanvasLayer/Start_game" to="." method="_on_Start_game_pressed"]

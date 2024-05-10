@@ -22,7 +22,7 @@ Rng="*res://src/scripts/rng.gd"
 OrbSpawner="*res://src/scripts/orb_spawner.gd"
 OrbCounter="*res://src/OrbCounter.gd"
 AncientPalace="*res://src/AncientPalace.gd"
-Players="res://src/scripts/Players.tscn"
+Persistent_nodes="*res://src/scripts/Persistent_nodes.tscn"
 
 [global]
 

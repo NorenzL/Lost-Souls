@@ -7,6 +7,7 @@ onready var multiplayer_config_ui = $multiplayer_configure
 onready var username_text_edit = $multiplayer_configure/Username_text_edit
 
 onready var device_ip_address = $CanvasLayer/Device_ip_address
+onready var start_game = $CanvasLayer/Start_game
 
 func _ready():
 	get_tree().connect("network_peer_connected",self,"_player_connected")
@@ -16,6 +17,17 @@ func _ready():
 	#just UI set label text
 	device_ip_address.text = Network.ip_address
 
+	if get_tree().network_peer != null:
+		pass
+	else:
+		start_game.hide()
+		 
+func _process(delta):
+	if get_tree().get_network_connected_peers().size() >= 1 and get_tree().is_network_server():
+		start_game.show()
+	else:
+		start_game.hide()
+		
 func _player_connected(id) -> void:
 	print("player ", str(id), " has connected")
 
@@ -24,8 +36,8 @@ func _player_connected(id) -> void:
 func _player_disconnected(id) -> void:
 	print("player ", str(id), " has disconnected")
 	
-	if AncientPalace.has_node(str(id)):
-		AncientPalace.get_node(str(id)).queue_free()
+	if Persistent_nodes.has_node(str(id)):
+		Persistent_nodes.get_node(str(id)).queue_free()
 
 
 func _on_Create_Server_pressed():
@@ -48,7 +60,14 @@ func _connected_to_server():
 	instance_player(get_tree().get_network_unique_id())
 
 func instance_player (id) -> void:
-	var player_instance = Global.instance_node_at_location(player, AncientPalace, Vector2(0,0))
+	var player_instance = Global.instance_node_at_location(player, Persistent_nodes, Vector2(0,0))
 	player_instance.name = str(id)
 	player_instance.set_network_master(id)
 	
+
+
+func _on_Start_game_pressed():
+	rpc("switch_to_game")
+
+sync func switch_to_game():
+	get_tree().change_scene("res://src/AncientPalace.tscn")

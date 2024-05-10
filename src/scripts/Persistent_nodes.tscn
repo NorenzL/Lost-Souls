@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/gray.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 710.75, 12.5 )
+extents = Vector2( 518.875, 12.5 )
 
 [node name="Players" type="Node"]
 
@@ -23,7 +23,7 @@ collision_layer = 15
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 326, 578 )
+position = Vector2( 517.875, 428 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]

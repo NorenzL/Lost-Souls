@@ -24,6 +24,7 @@ func _ready():
 		 
 func _process(delta):
 	if get_tree().get_network_connected_peers().size() >= 1 and get_tree().is_network_server():
+		print(get_tree().get_network_connected_peers().size())
 		start_game.show()
 	else:
 		start_game.hide()
@@ -60,14 +61,18 @@ func _connected_to_server():
 	instance_player(get_tree().get_network_unique_id())
 
 func instance_player (id) -> void:
-	var player_instance = Global.instance_node_at_location(player, Persistent_nodes, Vector2(0,0))
+	var player_instance = Global.instance_node_at_location(player, Persistent_nodes, Vector2(rand_range(100,700),0))
 	player_instance.name = str(id)
 	player_instance.set_network_master(id)
 	
 
 
 func _on_Start_game_pressed():
+	rpc("spawn_orbs")
 	rpc("switch_to_game")
 
 sync func switch_to_game():
 	get_tree().change_scene("res://src/AncientPalace.tscn")
+
+sync func spawn_orbs():
+	OrbSpawner.spawn_objects()

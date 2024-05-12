@@ -17,6 +17,6 @@ func _process(delta):
 
 
 func _on_yellow_orb_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" or body.name == "1"or body.name == "2"or body.name == "4"or body.name == "4":
 		OrbCounter.incrementYellowOrbs()
 		self.queue_free()

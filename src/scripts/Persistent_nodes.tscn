@@ -9,10 +9,12 @@ extents = Vector2( 518.875, 12.5 )
 [node name="Players" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2( 512, -912 )
 color = Color( 0.4, 0.345098, 0.345098, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 2296, -328 )
 scale = Vector2( 1.45859, 2.77639 )
 z_index = -1

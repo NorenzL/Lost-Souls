@@ -130,7 +130,6 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 position = Vector2( 2296, -328 )
 scale = Vector2( 1.45859, 2.77639 )
 z_index = -1
@@ -216,6 +215,7 @@ tile_data = PoolIntArray( -2424870, 0, 0, -2424869, 0, 0, -2424868, 0, 0, -24248
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 2104, -552 )
 current = true
+zoom = Vector2( 5, 5 )
 drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0

@@ -54,27 +54,28 @@ func orb_spawn(number_of_players : int ,color : String):
 				"green_orb":
 					new_object = green_orb
 			orbs[color] += 1
-			new_object.position = spawn_position
+			new_object.global_position = spawn_position
 		
 		if i == 1 or i == 2:
 			new_object = blue_orb
 			orbs.blue_orb += 1
-			new_object.position = spawn_position
+			new_object.global_position = spawn_position
 			
 		if i == 3 or i == 4:
 			new_object = yellow_orb
 			orbs.yellow_orb += 1
-			new_object.position = spawn_position
+			
+			new_object.global_position = spawn_position
 			
 		if i == 5 or i == 6:
 			new_object = red_orb
 			orbs.red_orb += 1
-			new_object.position = spawn_position
+			new_object.global_position = spawn_position
 			
 		if i == 7 or i == 8:
 			new_object = green_orb
 			orbs.green_orb += 1
-		new_object.position = spawn_position
+			new_object.global_position = spawn_position
 			
 		print ("Orb ",i," spawned: ", new_object.name, " in ", new_object.position)
 		

@@ -9,6 +9,5 @@ func instance_node_at_location(node: Object, parent: Object, location: Vector2) 
 
 func instance_node(node: Object, parent: Object) -> Object:
 	var node_instance = node.instance()
-	print (node_instance.name)
 	parent.add_child(node_instance)
 	return node_instance

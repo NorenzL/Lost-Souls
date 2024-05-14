@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const ping = preload('res://src/ping.tscn')
+const username_text = preload('res://src/username_text.tscn')
 export var speed: int = 200
 export var jumpForce: int = 600
 export var gravity: int = 800
@@ -10,8 +11,13 @@ var grounded: bool = false
 var isPinging: bool = false
 var pingNode: KinematicBody2D = null
 
+var username setget username_set
+var username_text_instance = null
+
+
 puppet var puppet_position = Vector2() setget puppet_position_set
 puppet var puppet_velocity = Vector2()
+puppet var puppet_username = "" setget puppet_username_set
 
 onready var sprite = $Sprite
 onready var timer = $Timer
@@ -23,8 +29,8 @@ onready var tween = $Tween
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_network_peer_connected")
 	
-	#username_text_instance = Global.instance_node_at_location(username_text,Persistent_nodes,Vector2(2,2))
-	#username_text_instance.player_following = self
+	username_text_instance = Global.instance_node_at_location(username_text,Persistent_nodes,global_position)
+	username_text_instance.player_following = self
 	
 	yield(get_tree(),"idle_frame")
 	if is_network_master():
@@ -32,6 +38,10 @@ func _ready():
 	
 	
 func _physics_process(delta: float) -> void:
+	if username_text_instance != null:
+		username_text_instance.name = "username"+name
+	
+	
 	if is_network_master():
 		velocity.x = 0
 		# Left and right movement
@@ -109,9 +119,27 @@ func _on_Network_tick_rate_timeout():
 	if is_network_master():
 		rset_unreliable("puppet_position", global_position)
 		rset_unreliable("puppet_velocity", velocity)
+
+func username_set(new_value):
+	username = new_value
+	
+	if is_network_master() and username_text_instance != null:
+		username_text_instance.text = username
 		
+		rset("puppet_username", username)
+
+func puppet_username_set(new_value):
+	puppet_username = new_value
+	
+	if not is_network_master() and username_text_instance != null:
+		
+		username_text_instance.text = puppet_username
+
+func _network_peer_connected(id):
+	rset_id(id,"username", username)
+	
 sync func destroy():
-	#username_text_instance.visible = false
+	username_text_instance.visible = false
 	#visible = false
 	#$CollisionShape2D.disabled = true
 	#$Hitbox.CollisionShape2D.disabled = true		

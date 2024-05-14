@@ -230,7 +230,6 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 
@@ -241,6 +240,9 @@ position = Vector2( 2320, -576 )
 
 [node name="Light-power" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2472, -568 )
+
+[node name="Light-power2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2192, -560 )
 
 [node name="Life-power" parent="." instance=ExtResource( 11 )]
 position = Vector2( 2256, -608 )

@@ -13,7 +13,11 @@ var pingNode: KinematicBody2D = null
 onready var sprite = $Sprite
 onready var timer = $Timer
 onready var cdTimer = $cdTimer
+onready var lightTimer = $lightTImer
+
+
 onready var flashlight = $flashlight
+onready var canvasModulate = get_node("/root/AncientPalace/CanvasModulate")
 
 var isDead: bool = false
 var isImmune: bool = false
@@ -90,7 +94,13 @@ func _on_cdTimer_timeout():
 	cdTimer.stop()
 
 func _on_Power_timeout():
-	speed = 200
+
+	speed = 200  
+
+
+func _on_Light_timeout():
+	canvasModulate.color = Color(0, 0, 0, 1)
+	flashlight.visible = true
 	
 func collect_power(powerup):
 	if powerup == "speed":
@@ -100,5 +110,12 @@ func collect_power(powerup):
 		isImmune = true
 		sprite.modulate = Color("#2146ee")
 		
+	if powerup == "light":
+		print("Let there be light")		
+		canvasModulate.color = Color(1,1,1,1)
+		flashlight.visible = false
+		lightTimer.start(3)
+		
 	
 	timer.connect("timeout", self, "_on_Power_timeout")
+	lightTimer.connect("timeout", self, "_on_Light_timeout")

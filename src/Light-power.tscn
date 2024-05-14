@@ -7,10 +7,10 @@
 radius = 16.0
 
 [node name="Light-power" type="Area2D"]
+modulate = Color( 0.925781, 0.663823, 0.043396, 1 )
 script = ExtResource( 2 )
 
 [node name="Coin" type="Sprite" parent="."]
-modulate = Color( 0.929412, 0.87451, 0.0666667, 1 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

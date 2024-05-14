@@ -18,6 +18,9 @@ position = Vector2( 0, -42 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="lightTImer" type="Timer" parent="."]
+wait_time = 3.0
+
 [node name="cdTimer" type="Timer" parent="."]
 wait_time = 10.0
 

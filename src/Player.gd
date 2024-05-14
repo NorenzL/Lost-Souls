@@ -24,6 +24,7 @@ onready var timer = $Timer
 onready var cdTimer = $cdTimer
 onready var flashlight = $flashlight
 onready var tween = $Tween
+onready var anim = $PlayerAnimate
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,13 +48,17 @@ func _physics_process(delta: float) -> void:
 		# Left and right movement
 		if Input.is_action_pressed("ui_left"):
 			velocity.x -= speed
-			sprite.flip_h = true
+			anim.flip_h = true
 			flashlight.rotation_degrees = -266.4
 			
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += speed
-			sprite.flip_h = false
+			anim.flip_h = false
 			flashlight.rotation_degrees = -94.7
+		if (velocity.x !=0):
+			anim.play("Walk")
+		else:
+			anim.play("Idle")
 		
 		velocity = move_and_slide(velocity, Vector2.UP)
 		
@@ -78,11 +83,15 @@ func _physics_process(delta: float) -> void:
 		if not tween.is_active():
 			move_and_slide(puppet_velocity * speed)
 		if puppet_velocity.x < 0:
-			sprite.flip_h = true
+			anim.flip_h = true
+			anim.play("Walk")
 			flashlight.rotation_degrees = -266.4
 		elif puppet_velocity.x > 0:
-			sprite.flip_h = false
+			anim.flip_h = false
+			anim.play("Walk")
 			flashlight.rotation_degrees = -94.7
+		else:
+			anim.play("Idle")
 
 func ping():
 	timer.start(3)

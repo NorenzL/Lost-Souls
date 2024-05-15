@@ -15,5 +15,9 @@ func _process(delta):
 		print ("Delete orb in:         ",node.position, "    name:     ",node.name)
 		node.queue_free()
 		
-		OrbSpawner.relocate_orb(node.name)
+		if "power" in node.name:
+			
+			OrbSpawner.relocate_power(node.name)
+		elif "orb" in node.name:
+			OrbSpawner.relocate_orb(node.name)
 		

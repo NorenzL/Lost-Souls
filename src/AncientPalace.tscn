@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Sprites/gray.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=2]
@@ -8,9 +8,6 @@
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://src/AncientPalace.gd" type="Script" id=7]
 [ext_resource path="res://src/orb_collision.gd" type="Script" id=8]
-[ext_resource path="res://src/Speed-power.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/Light-power.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/Life-power.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=5]
@@ -234,18 +231,6 @@ position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
-
-[node name="Speed-power" parent="." instance=ExtResource( 9 )]
-position = Vector2( 2320, -576 )
-
-[node name="Light-power" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2472, -568 )
-
-[node name="Light-power2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2192, -560 )
-
-[node name="Life-power" parent="." instance=ExtResource( 11 )]
-position = Vector2( 2256, -608 )
 
 [node name="Area2D" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1936, -544 )

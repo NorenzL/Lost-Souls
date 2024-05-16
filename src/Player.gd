@@ -28,7 +28,6 @@ onready var anim = $PlayerAnimate
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().connect("network_peer_connected", self, "_network_peer_connected")
 	
 	username_text_instance = Global.instance_node_at_location(username_text,Persistent_nodes,global_position)
 	username_text_instance.player_following = self
@@ -38,10 +37,9 @@ func _ready():
 		Global.player_master = self
 	
 	
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if username_text_instance != null:
-		username_text_instance.name = "username"+name
-	
+		username_text_instance.name = "username "+name	
 	
 	if is_network_master():
 		velocity.x = 0
@@ -66,15 +64,6 @@ func _physics_process(delta: float) -> void:
 		# jump
 		if Input.is_action_pressed("ui_up") and is_on_floor():
 			velocity.y -= jumpForce
-		# Flipping of player left and right
-		if velocity.x < 0:
-			#sprite.flip_h = true
-			#flashlight.rotation_degrees = -266.4
-			pass
-		elif velocity.x > 0:
-			#sprite.flip_h = false
-			#flashlight.rotation_degrees = -94.7
-			pass
 		
 		if Input.is_action_pressed("ping") and !isPinging:
 			isPinging = true
@@ -113,7 +102,6 @@ func _on_cdTimer_timeout():
 	isPinging = false
 	cdTimer.stop()
 	
-
 func puppet_position_set(new_value) -> void:
 	puppet_position = new_value
 	
@@ -144,9 +132,6 @@ func puppet_username_set(new_value):
 		
 		username_text_instance.text = puppet_username
 
-func _network_peer_connected(id):
-	rset_id(id,"username", username)
-	
 sync func destroy():
 	username_text_instance.visible = false
 	#visible = false

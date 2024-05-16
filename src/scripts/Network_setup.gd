@@ -44,7 +44,7 @@ func _player_disconnected(id) -> void:
 
 func _on_Create_Server_pressed():
 	if username_text_edit.text != "":
-		Network.current_player_username = username_text_edit.text
+		#Network.current_player_username = username_text_edit.text
 		multiplayer_config_ui.hide()
 		Network.create_server()
 		instance_player(get_tree().get_network_unique_id())
@@ -64,6 +64,7 @@ func _connected_to_server():
 func instance_player (id) -> void:
 	var player_instance = Global.instance_node_at_location(player, Persistent_nodes, Vector2(rand_range(100,700),0))
 	player_instance.name = str(id)
+	Global.player_id.append(player_instance.name)
 	player_instance.set_network_master(id)
 	player_instance.username = username_text_edit.text
 

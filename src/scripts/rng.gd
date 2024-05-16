@@ -4,9 +4,6 @@ extends Node
 	#Just call script in _ready() to Use once
 	#check script name in project/ project settings/ AutoLoad 
 
-#NUMBER OF PLAYERS -- TO BE FIXED KAPAG NASA SPRINT NA YUNG LOBBY FUNCTION PARA	MADETERMINE ILAN YUNG LALARO
-#MAX 4 PLAYERS I THINK
-var number_of_players = 8
 
 
 #DEPENDS ON THE SIZE OF THE MAP YUNG SIZE NG SPAWN AREA

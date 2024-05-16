@@ -131,7 +131,7 @@ func username_set(new_value):
 	
 	if is_network_master() and username_text_instance != null:
 		username_text_instance.text = username
-		
+
 		rset("puppet_username", username)
 
 func puppet_username_set(new_value):

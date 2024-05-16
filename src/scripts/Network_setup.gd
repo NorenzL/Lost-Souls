@@ -65,6 +65,7 @@ func instance_player (id) -> void:
 	var player_instance = Global.instance_node_at_location(player, Persistent_nodes, Vector2(rand_range(100,700),0))
 	player_instance.name = str(id)
 	Global.player_id.append(player_instance.name)
+	Global.number_of_players += 2
 	player_instance.set_network_master(id)
 	player_instance.username = username_text_edit.text
 

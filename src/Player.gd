@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 	elif str(get_network_master()) == Global.player_id[2]:
 		 anim.modulate = Color(1,0,0)
 	elif str(get_network_master()) == Global.player_id[3]:
-		 anim.modulate = Color(1,0,0)
+		 anim.modulate = Color(0,1,0)
 	
 	if is_network_master():
 		velocity.x = 0

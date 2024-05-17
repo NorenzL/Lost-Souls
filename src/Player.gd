@@ -22,9 +22,17 @@ puppet var puppet_username = "" setget puppet_username_set
 onready var sprite = $Sprite
 onready var timer = $Timer
 onready var cdTimer = $cdTimer
+onready var lightTimer = $lightTImer
+
+
 onready var flashlight = $flashlight
 onready var tween = $Tween
 onready var anim = $PlayerAnimate
+onready var canvasModulate = get_node("/root/AncientPalace/CanvasModulate")
+
+var isDead: bool = false
+var isImmune: bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -90,6 +98,29 @@ func _process(delta: float) -> void:
 			flashlight.rotation_degrees = -94.7
 		else:
 			anim.play("Idle")
+	if Input.is_action_pressed("ping") and !isPinging:
+		isPinging = true
+		ping()
+		
+	# Test feature for death / temporary touch
+	
+	
+	
+	if Input.is_key_pressed(KEY_L) and isDead:
+		print("I am ALIVE!!")
+		isDead = false
+		sprite.modulate = Color("#ffffff")
+		
+
+func die():
+	if isImmune:
+		isImmune = false
+		sprite.modulate = Color("#ffffff")
+		print("Immunity gone!")
+	else:
+		sprite.modulate = Color("#ff1409")
+		print("I am DEAD!!")
+		isDead = true
 
 func ping():
 	timer.start(3)
@@ -152,3 +183,30 @@ sync func destroy():
 func _exit_tree():
 	if is_network_master():
 		Global.player_master = null
+
+func _on_Power_timeout():
+
+	speed = 200  
+
+
+func _on_Light_timeout():
+	canvasModulate.color = Color(0, 0, 0, 1)
+	flashlight.visible = true
+	
+func collect_power(powerup):
+	if powerup == "speed":
+		timer.start(10)
+		speed = 500
+	if powerup == "life":
+		isImmune = true
+		sprite.modulate = Color("#2146ee")
+		
+	if powerup == "light":
+		print("Let there be light")		
+		canvasModulate.color = Color(1,1,1,1)
+		flashlight.visible = false
+		lightTimer.start(3)
+		
+	
+	timer.connect("timeout", self, "_on_Power_timeout")
+	lightTimer.connect("timeout", self, "_on_Light_timeout")

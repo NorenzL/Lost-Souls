@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Sprites/gray.png" type="Texture" id=1]
 [ext_resource path="res://src/Camera.gd" type="Script" id=3]
@@ -7,6 +7,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://src/AncientPalace.gd" type="Script" id=7]
 [ext_resource path="res://src/orb_collision.gd" type="Script" id=8]
+[ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=5]
 0/name = "icon.png 0"
@@ -228,3 +229,6 @@ position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
+
+[node name="Area2D" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1936, -544 )

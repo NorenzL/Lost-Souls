@@ -11,9 +11,7 @@ func _ready():
 	pass # Replace with function body.
 
 
-
-
 func _on_Lifepower_body_entered(body):
-	if body.name == "Player":
+	if body.name in Global.player_id:
 		body.collect_power("life")
 		queue_free() 

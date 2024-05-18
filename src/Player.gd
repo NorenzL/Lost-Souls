@@ -28,7 +28,9 @@ onready var lightTimer = $lightTImer
 onready var flashlight = $flashlight
 onready var tween = $Tween
 onready var anim = $PlayerAnimate
-onready var canvasModulate = get_node("/root/AncientPalace/CanvasModulate")
+
+
+onready var canvasModulate = null
 
 var isDead: bool = false
 var isImmune: bool = false
@@ -43,8 +45,9 @@ func _ready():
 	yield(get_tree(),"idle_frame")
 	if is_network_master():
 		Global.player_master = self
+		
 	
-	
+		
 func _process(delta: float) -> void:
 	if username_text_instance != null:
 		username_text_instance.name = "username "+name	
@@ -191,7 +194,7 @@ func _on_Power_timeout():
 
 func _on_Light_timeout():
 	canvasModulate.color = Color(0, 0, 0, 1)
-	flashlight.visible = true
+
 	
 func collect_power(powerup):
 	if powerup == "speed":
@@ -203,8 +206,17 @@ func collect_power(powerup):
 		
 	if powerup == "light":
 		print("Let there be light")		
-		canvasModulate.color = Color(1,1,1,1)
-		flashlight.visible = false
+
+		var main_scene = get_tree().current_scene
+		if main_scene:
+			canvasModulate = main_scene.find_node("CanvasModulate", true, false)
+			if canvasModulate:
+				canvasModulate.color = Color(1, 1, 1, 1)
+			else:
+				print("CanvasModulate not found.")
+		else:
+			print("No main scene found.")
+
 		lightTimer.start(3)
 		
 	

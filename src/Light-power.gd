@@ -14,6 +14,6 @@ func _ready():
 
 
 func _on_Lightpower_body_entered(body):
-	if body.name == "Player":
+	if body.name in Global.player_id:
 		body.collect_power("light")
 		queue_free() 

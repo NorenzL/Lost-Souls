@@ -1,11 +1,11 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Sprites/gray.png" type="Texture" id=1]
+[ext_resource path="res://src/AncientPalace.gd" type="Script" id=2]
 [ext_resource path="res://src/Camera.gd" type="Script" id=3]
 [ext_resource path="res://hud/mobileControls.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/Tile.png" type="Texture" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://src/AncientPalace.gd" type="Script" id=7]
 [ext_resource path="res://src/orb_collision.gd" type="Script" id=8]
 [ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=12]
 
@@ -124,7 +124,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="AncientPalace" type="Node2D"]
 position = Vector2( -1608, 912 )
-script = ExtResource( 7 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 529.0, 637.0 ],
 "_edit_vertical_guides_": [ 59.0 ]
@@ -224,9 +224,8 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2( 512, -912 )
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.333333, 0.305882, 0.305882, 1 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
 

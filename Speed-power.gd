@@ -11,6 +11,6 @@ func _ready():
 
 
 func _on_Speedpower_body_entered(body):
-	if body.name == "Player":
+	if body.name in Global.player_id:
 		body.collect_power("speed")
 		queue_free()

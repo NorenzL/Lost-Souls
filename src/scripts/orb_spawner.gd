@@ -21,8 +21,7 @@ var all_powers_spawned = false
 
 func spawn_objects():
 	orb_spawn(Global.number_of_players,"blue_orb")
-	orb_spawn(Rng.number_of_players,"blank_orb")
-	power_spawn("blank_power")
+	power_spawn("Light-power")
 
 func power_spawn(power : String):
 	for i in range(7):

@@ -61,6 +61,11 @@ func _process(delta: float) -> void:
 	elif str(get_network_master()) == Global.player_id[3]:
 		 anim.modulate = Color(0,1,0)
 	
+	if Global.flashlight == false:
+		flashlight.visible = false
+	else:
+		flashlight.visible = true
+	
 	if is_network_master():
 		velocity.x = 0
 		# Left and right movement
@@ -194,6 +199,7 @@ func _on_Power_timeout():
 
 func _on_Light_timeout():
 	canvasModulate.color = Color(0, 0, 0, 1)
+	Global.flashlight = true
 
 	
 func collect_power(powerup):
@@ -212,6 +218,7 @@ func collect_power(powerup):
 			canvasModulate = main_scene.find_node("CanvasModulate", true, false)
 			if canvasModulate:
 				canvasModulate.color = Color(1, 1, 1, 1)
+				Global.flashlight = false
 			else:
 				print("CanvasModulate not found.")
 		else:

@@ -39,4 +39,5 @@ func _on_join_server_pressed():
 	Network.join_server()
 
 func _on_Go_back_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://src/Network_setup.tscn")
+	# Global.instance_node(load("res://src/Network_setup.tscn"), self)

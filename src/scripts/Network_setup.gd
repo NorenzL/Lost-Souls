@@ -6,9 +6,9 @@ var player = preload("res://src/Player.tscn")
 onready var multiplayer_config_ui = $multiplayer_configure
 onready var username_text_edit = $multiplayer_configure/Username_text_edit
 
-onready var device_ip_address = $CanvasLayer/Device_ip_address
-onready var disc = $CanvasLayer/Disconnect_Server
-onready var start_game = $CanvasLayer/Start_game
+onready var device_ip_address = $UI/Device_ip_address
+onready var disc = $UI/Disconnect_Server
+onready var start_game = $UI/Start_game
 
 func _ready():
 	get_tree().connect("network_peer_connected",self,"_player_connected")
@@ -74,10 +74,6 @@ func _connected_to_server():
 	disc.show()
 	instance_player(get_tree().get_network_unique_id())
 
-func reset_network_connection() -> void:
-	if get_tree().has_network_peer():
-		get_tree().network_peer = null
-
 func instance_player (id) -> void:
 	var player_instance = Global.instance_node_at_location(player, Persistent_nodes, Vector2(rand_range(100,700),0))
 	player_instance.name = str(id)
@@ -94,7 +90,7 @@ func _on_Disconnect_Server_pressed():
 	for child in Persistent_nodes.get_children():
 		if child.is_in_group("Net"):
 			child.queue_free()
-	reset_network_connection()
+	Network.reset_network_connection()
 	disc.hide()
 	Global.player_id.resize(0)
 	get_tree().change_scene("res://src/Network_setup.tscn")

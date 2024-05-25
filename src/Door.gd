@@ -32,7 +32,7 @@ func _on_Door_body_entered(body):
 
 # Function to match player_id index to orb color
 func match_player_id_to_orb_color(player_index):
-	var orb_colors = ["blue", "green", "red", "yellow"]
+	var orb_colors = ["blue", "yellow", "red", "green"]
 	if player_index < len(orb_colors):
 		return orb_colors[player_index]
 	else:

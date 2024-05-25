@@ -3,10 +3,10 @@ extends Node2D
 #HOW TO USE:
 	#Just call script in _ready() to Use once
 	#check script name in project/ project settings/ AutoLoad 
-
+var relocated_orbs = []
 
 #controller dictionary for orbs 
-var orbs = {"blue_orb" : 0,
+export var orbs = {"blue_orb" : 0,
 			"yellow_orb": 0,
 			"red_orb": 0,
 			"green_orb": 0}
@@ -21,7 +21,7 @@ var all_powers_spawned = false
 
 func spawn_objects():
 	orb_spawn(Global.number_of_players,"blue_orb")
-	power_spawn("Light-power")
+	#power_spawn("Light-power")
 
 func power_spawn(power : String):
 	for i in range(7):
@@ -71,7 +71,7 @@ func power_spawn(power : String):
 		add_child(new_object)
 	all_powers_spawned = true
 
-func orb_spawn(number_of_players : int ,color : String):
+sync func orb_spawn(number_of_players : int ,color : String):
 	#iterates based on the number of players
 	for i in range(number_of_players + 1):
 		
@@ -94,9 +94,9 @@ func orb_spawn(number_of_players : int ,color : String):
 		
 		#CHANGE ORB COLOR
 		#THINK OF A BETTER AND MORE FLEXIBLE ALGORITHM FOR THIS THAT ROLLS INFINITELY OR UNTIL GOAL IS FULFILLED
-		if i == 0 and not all_spawned:
-			continue
-		if i == 0 and all_spawned:
+		
+			
+		if i == 0 and all_spawned :
 			match color:
 				"blue_orb":
 					new_object = blue_orb
@@ -131,7 +131,7 @@ func orb_spawn(number_of_players : int ,color : String):
 			new_object.global_position = spawn_position
 			
 		print ("Orb ",i," spawned: ", new_object.name, " in ", new_object.position)
-		
+		yield(get_tree().create_timer(2), "timeout") 
 		add_child(new_object)
 	all_spawned = true
 	
@@ -156,9 +156,10 @@ func relocate_orb(orb : String):
 	if orbs[new_text] <= 2 and orbs[new_text] > 0  :
 		orbs[new_text] -= 1
 		print ("rolling: ",new_text)
+		yield(get_tree().create_timer(1), "timeout") 
 		OrbSpawner.orb_spawn(0,str(new_text))
 
-func relocate_power(power : String):
+sync func relocate_power(power : String):
 	
 	#removes the '@', '0', and numbers in the orb name
 	# these occur when there are multiple orb spawns in the map
@@ -173,4 +174,5 @@ func relocate_power(power : String):
 	if powers[new_text] <= 2 and powers[new_text] > 0  :
 		powers[new_text] -= 1
 		print ("rolling: ",new_text)
+		yield(get_tree().create_timer(1), "timeout") 
 		OrbSpawner.power_spawn(str(new_text))

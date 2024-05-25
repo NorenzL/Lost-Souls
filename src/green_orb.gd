@@ -20,7 +20,15 @@ func _process(delta):
 		
 
 func _on_green_orb_body_entered(body):
-	if Global.number_of_players == 4 and body.name == Global.player_id[3]:
+	if body.name == Global.player_id[3]:
 		OrbCounter.incrementGreenOrbs()
 		self.queue_free()
+
+
+
+func _on_green_orb_area_entered(area):
+	if "_orb" in area.name:
+		area.queue_free()
+		#yield(get_tree().create_timer(1), "timeout")
+		OrbSpawner.relocate_orb(area.name)
 

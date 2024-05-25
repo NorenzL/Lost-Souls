@@ -16,3 +16,10 @@ func _on_blue_orb_body_entered(body):
 	if body.name == Global.player_id[0]:
 		OrbCounter.incrementBlueOrbs()
 		self.queue_free()
+
+
+func _on_blue_orb_area_entered(area):
+	if "_orb" in area.name:
+		area.queue_free()
+		#yield(get_tree().create_timer(1), "timeout")
+		OrbSpawner.relocate_orb(area.name)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Start (Moving) (64x64).png-7a22949b6839cf248b5931fb5e7b0676.stex"
+path="res://.import/Door_Black.png-bfa056da9f687994f71e8425b8ffa026.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Assets_Material/Exit/Start (Moving) (64x64).png"
-dest_files=[ "res://.import/Start (Moving) (64x64).png-7a22949b6839cf248b5931fb5e7b0676.stex" ]
+source_file="res://Assets/Door/Door_Black.png"
+dest_files=[ "res://.import/Door_Black.png-bfa056da9f687994f71e8425b8ffa026.stex" ]
 
 [params]
 

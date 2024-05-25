@@ -24,5 +24,16 @@ func incrementYellowOrbs():
 	yellowOrbsCollected += 1
 	print("Yellow orbs collected: ", yellowOrbsCollected)
 
-func totalOrbsCollected() -> int:
-	return blueOrbsCollected + greenOrbsCollected + redOrbsCollected + yellowOrbsCollected
+# Function to check if the player has collected the required number of orbs of a specific color
+func checkRequiredOrbs(color: String, requiredCount: int) -> bool:
+	match color:
+		"blue":
+			return blueOrbsCollected >= requiredCount
+		"green":
+			return greenOrbsCollected >= requiredCount
+		"red":
+			return redOrbsCollected >= requiredCount
+		"yellow":
+			return yellowOrbsCollected >= requiredCount
+		_:
+			return false

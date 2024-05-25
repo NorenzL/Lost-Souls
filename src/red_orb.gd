@@ -1,6 +1,11 @@
 extends Area2D
 
 
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -11,7 +16,7 @@ func _process(delta):
 	pass
 
 
-func _on_blue_orb_body_entered(body):
-	if body.name == "Player":
-		OrbCounter.incrementBlueOrbs()
+func _on_red_orb_body_entered(body):
+	if Global.number_of_players >= 6 and body.name == Global.player_id[2]:
+		OrbCounter.incrementRedOrbs()
 		self.queue_free()

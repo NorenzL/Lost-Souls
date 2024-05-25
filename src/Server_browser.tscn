@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Server_browser.gd" type="Script" id=1]
+[ext_resource path="res://src/scripts/Server_listener.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Searching_for_servers:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "searching for servers" ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "searching"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Searching_for_servers:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "searching for servers", "searching for servers.", "searching for servers..", "searching for servers..." ]
+}
+
+[node name="Server_browser" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 110.0
+margin_top = 60.0
+margin_right = -114.0
+margin_bottom = -40.0
+script = ExtResource( 1 )
+
+[node name="Background_panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Manual_setup" type="Button" parent="Background_panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -193.0
+margin_top = -67.0
+text = "MANUAL SETUP"
+clip_text = true
+
+[node name="Go_back" type="Button" parent="Background_panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -64.0
+margin_right = 190.0
+text = "GO BACK"
+
+[node name="Server_ip_text_edit" type="LineEdit" parent="Background_panel"]
+margin_left = 225.0
+margin_top = 73.0
+margin_right = 587.0
+margin_bottom = 127.0
+
+[node name="Type_in_server_ip" type="Label" parent="Background_panel/Server_ip_text_edit"]
+anchor_right = 1.0
+margin_left = 1.0
+margin_top = -32.0
+margin_right = 1.0
+margin_bottom = 5.0
+text = "type in server IP"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="join_server" type="Button" parent="Background_panel/Server_ip_text_edit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -93.0
+margin_top = 67.5
+margin_right = 93.0
+margin_bottom = 128.5
+text = "JOIN SERVER"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background_panel"]
+anchor_right = 1.0
+margin_bottom = 14.0
+
+[node name="Searching_for_servers" type="Label" parent="Background_panel/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 14.0
+text = "searching for servers"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background_panel/VBoxContainer"]
+autoplay = "searching"
+anims/RESET = SubResource( 1 )
+anims/searching = SubResource( 2 )
+
+[node name="Server_browser_label" type="Label" parent="Background_panel"]
+margin_left = 6.0
+margin_top = -48.0
+margin_right = 806.0
+margin_bottom = -34.0
+rect_scale = Vector2( 0.983469, 2.75467 )
+text = "S E R V E R  B R O W S E R"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Server_listener" parent="." instance=ExtResource( 2 )]
+
+[connection signal="pressed" from="Background_panel/Manual_setup" to="." method="_on_Manual_setup_pressed"]
+[connection signal="pressed" from="Background_panel/Go_back" to="." method="_on_Go_back_pressed"]
+[connection signal="pressed" from="Background_panel/Server_ip_text_edit/join_server" to="." method="_on_join_server_pressed"]
+[connection signal="new_server" from="Server_listener" to="." method="_on_Server_listener_new_server"]
+[connection signal="remove_server" from="Server_listener" to="." method="_on_Server_listener_remove_server"]

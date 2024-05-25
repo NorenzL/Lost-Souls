@@ -11,15 +11,18 @@ config_version=4
 [application]
 
 config/name="Lost Souls"
-run/main_scene="res://src/MainScene.tscn"
+run/main_scene="res://src/Network_setup.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
+Network="*res://src/scripts/network.gd"
+Global="*res://src/scripts/Global.gd"
 Rng="*res://src/scripts/rng.gd"
 OrbSpawner="*res://src/scripts/orb_spawner.gd"
 OrbCounter="*res://src/OrbCounter.gd"
-GameState="*res://src/GameState.gd"
+AncientPalace="*res://src/AncientPalace.gd"
+Persistent_nodes="*res://src/scripts/Persistent_nodes.tscn"
 
 [global]
 

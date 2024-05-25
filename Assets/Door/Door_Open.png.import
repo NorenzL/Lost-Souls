@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/End (Pressed) (64x64).png-1196dfdeddef94c710895b01b717894c.stex"
+path="res://.import/Door_Open.png-8d23d1c37705dbc0c51e10bcc7aec1fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Assets_Material/Engine/End (Pressed) (64x64).png"
-dest_files=[ "res://.import/End (Pressed) (64x64).png-1196dfdeddef94c710895b01b717894c.stex" ]
+source_file="res://Assets/Door/Door_Open.png"
+dest_files=[ "res://.import/Door_Open.png-8d23d1c37705dbc0c51e10bcc7aec1fa.stex" ]
 
 [params]
 

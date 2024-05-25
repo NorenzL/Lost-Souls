@@ -10,13 +10,66 @@ var orbs = {"blue_orb" : 0,
 			"yellow_orb": 0,
 			"red_orb": 0,
 			"green_orb": 0}
+			
+var powers = {"Light-power" : 0,
+			"Speed-power": 0,
+			"Life-power": 0}
 
 #checks if the initial spawns are done 
 var all_spawned = false
+var all_powers_spawned = false
 
 func spawn_objects():
-	orb_spawn(Rng.number_of_players,"blank_orb")
+	orb_spawn(Global.number_of_players,"blue_orb")
+	power_spawn("Light-power")
 
+func power_spawn(power : String):
+	for i in range(7):
+		
+		var spawn_position = Vector2(
+			Rng.generate_X_num(),
+			Rng.generate_Y_num()
+		)
+		
+		#power instantiation
+		var new_object = load("res://src/Light-power.tscn").instance()		
+		
+		var light_power = load("res://src/Light-power.tscn").instance()
+		var speed_power = load("res://src/Speed-power.tscn").instance()
+		var life_power = load("res://src/Life-power.tscn").instance()
+		
+		if i == 0 and not all_powers_spawned:
+			continue
+		if i == 0 and all_powers_spawned:
+			match power:
+				"light_power":
+					new_object = light_power
+				"speed_power":
+					new_object = speed_power
+				"life_power":
+					new_object = life_power
+			powers[power] += 1
+			new_object.position = spawn_position
+		
+		if i == 1 or i == 2:
+			new_object = light_power
+			powers["Light-power"] += 1
+			new_object.position = spawn_position
+			
+		if i == 3 or i == 4:
+			new_object = speed_power
+			powers["Speed-power"] += 1
+			new_object.position = spawn_position
+			
+		if i == 5 or i == 6:
+			new_object = life_power
+			powers["Life-power"]  += 1
+		new_object.position = spawn_position
+			
+		print ("Power ",i," spawned: ", new_object.name, " in ", new_object.position)
+		
+		add_child(new_object)
+	all_powers_spawned = true
 
 func orb_spawn(number_of_players : int ,color : String):
 	#iterates based on the number of players
@@ -30,13 +83,13 @@ func orb_spawn(number_of_players : int ,color : String):
 		
 		#ORB INSTANTIATION
 		#spawned object variable (template is just blue orb so it won't cause errors)
-		var new_object = load("res://src/Orbs_Folder/blue_orb.tscn").instance()
+		var new_object = load("res://src/blue_orb.tscn").instance()
 		
 		#orb colors instantiation
-		var blue_orb = load("res://src/Orbs_Folder/blue_orb.tscn").instance()
-		var yellow_orb = load("res://src/Orbs_Folder/yellow_orb.tscn").instance()
-		var red_orb = load("res://src/Orbs_Folder/red_orb.tscn").instance()
-		var green_orb = load("res://src/Orbs_Folder/green_orb.tscn").instance()
+		var blue_orb = load("res://src/blue_orb.tscn").instance()
+		var yellow_orb = load("res://src/yellow_orb.tscn").instance()
+		var red_orb = load("res://src/red_orb.tscn").instance()
+		var green_orb = load("res://src/green_orb.tscn").instance()
 		
 		
 		#CHANGE ORB COLOR
@@ -54,27 +107,28 @@ func orb_spawn(number_of_players : int ,color : String):
 				"green_orb":
 					new_object = green_orb
 			orbs[color] += 1
-			new_object.position = spawn_position
+			new_object.global_position = spawn_position
 		
 		if i == 1 or i == 2:
 			new_object = blue_orb
 			orbs.blue_orb += 1
-			new_object.position = spawn_position
+			new_object.global_position = spawn_position
 			
 		if i == 3 or i == 4:
 			new_object = yellow_orb
 			orbs.yellow_orb += 1
-			new_object.position = spawn_position
+			
+			new_object.global_position = spawn_position
 			
 		if i == 5 or i == 6:
 			new_object = red_orb
 			orbs.red_orb += 1
-			new_object.position = spawn_position
+			new_object.global_position = spawn_position
 			
 		if i == 7 or i == 8:
 			new_object = green_orb
 			orbs.green_orb += 1
-		new_object.position = spawn_position
+			new_object.global_position = spawn_position
 			
 		print ("Orb ",i," spawned: ", new_object.name, " in ", new_object.position)
 		
@@ -103,3 +157,20 @@ func relocate_orb(orb : String):
 		orbs[new_text] -= 1
 		print ("rolling: ",new_text)
 		OrbSpawner.orb_spawn(0,str(new_text))
+
+func relocate_power(power : String):
+	
+	#removes the '@', '0', and numbers in the orb name
+	# these occur when there are multiple orb spawns in the map
+	# the naming is like orb, orb1, orb2, orb3, ...
+	
+	var new_text = ""
+	for chars in power:
+		if not int(chars)  and chars != "@" and chars != "0":
+			new_text += chars
+	
+	#this makes sure that the orbs that will spawn for each color are only 2 
+	if powers[new_text] <= 2 and powers[new_text] > 0  :
+		powers[new_text] -= 1
+		print ("rolling: ",new_text)
+		OrbSpawner.power_spawn(str(new_text))

@@ -52,14 +52,16 @@ func _process(delta: float) -> void:
 	if username_text_instance != null:
 		username_text_instance.name = "username "+name	
 	
-	if str(get_network_master()) == Global.player_id[0]:
+	if Global.number_of_players >= 2 and str(get_network_master()) == Global.player_id[0]:
 		 anim.modulate = Color(0,0,1)
-	elif str(get_network_master()) == Global.player_id[1]:
+	elif Global.number_of_players >= 4 and str(get_network_master()) == Global.player_id[1]:
 		 anim.modulate = Color(1,1,0)
-	elif str(get_network_master()) == Global.player_id[2]:
+	elif Global.number_of_players >= 6 and str(get_network_master()) == Global.player_id[2]:
 		 anim.modulate = Color(1,0,0)
-	elif str(get_network_master()) == Global.player_id[3]:
+	elif Global.number_of_players == 8 and str(get_network_master()) == Global.player_id[3]:
 		 anim.modulate = Color(0,1,0)
+	#else:
+		
 	
 	if Global.flashlight == false:
 		flashlight.visible = false

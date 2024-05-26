@@ -79,6 +79,7 @@ func instance_player (id) -> void:
 	player_instance.name = str(id)
 	Global.player_id.append(player_instance.name)
 	Global.number_of_players += 2
+	print (Global.number_of_players)
 	player_instance.set_network_master(id)
 	player_instance.username = username_text_edit.text
 
@@ -99,5 +100,10 @@ sync func switch_to_game():
 	get_tree().change_scene("res://src/AncientPalace.tscn")
 
 sync func spawn_orbs():
-	OrbSpawner.spawn_objects()
+		OrbSpawner.spawn_objects()
+	
+	
+
+sync func check_orbs():
+	print(OrbSpawner.orbs.values())
 

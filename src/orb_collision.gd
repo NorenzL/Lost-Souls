@@ -13,7 +13,8 @@ func _process(delta):
 	var overlap = get_overlapping_areas()
 	for node in overlap:
 		
-		if "power" in node.name:
+		if "-power" in node.name:
+			node.queue_free()
 			OrbSpawner.relocate_power(node.name)
 		elif "_orb" in node.name:
 			print ("Delete orb in: ",node.position, "  name: ",node.name)

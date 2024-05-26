@@ -25,6 +25,11 @@ func _on_yellow_orb_body_entered(body):
 func _on_yellow_orb_area_entered(area):
 	if "_orb" in area.name:
 		area.queue_free()
-		#yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(4), "timeout")
 		OrbSpawner.relocate_orb(area.name)
 
+	if "-power" in area.name:
+		area.queue_free()
+		yield(get_tree().create_timer(4), "timeout")
+		print (area.name)
+		OrbSpawner.relocate_power(area.name)

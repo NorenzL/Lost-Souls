@@ -20,3 +20,16 @@ func _on_yellow_orb_body_entered(body):
 	if Global.number_of_players >= 4 and body.name == Global.player_id[1]:
 		OrbCounter.incrementYellowOrbs()
 		self.queue_free()
+
+
+func _on_yellow_orb_area_entered(area):
+	if "_orb" in area.name:
+		area.queue_free()
+		yield(get_tree().create_timer(4), "timeout")
+		OrbSpawner.relocate_orb(area.name)
+
+	if "-power" in area.name:
+		area.queue_free()
+		yield(get_tree().create_timer(4), "timeout")
+		print (area.name)
+		OrbSpawner.relocate_power(area.name)

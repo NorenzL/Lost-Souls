@@ -5,6 +5,7 @@ var player_master = null
 var player_id = []
 var number_of_players = 0
 
+var ui = null
 var flashlight: bool = true  
 
 func instance_node_at_location(node: Object, parent: Object, location: Vector2) -> Object:

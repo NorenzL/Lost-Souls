@@ -127,8 +127,8 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 position = Vector2( -1608, 912 )
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 529.0, 637.0 ],
-"_edit_vertical_guides_": [ 59.0 ]
+"_edit_horizontal_guides_": [ 171.0, 2545.0 ],
+"_edit_vertical_guides_": [ -1069.0 ]
 }
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
@@ -136,6 +136,7 @@ position = Vector2( 4212, -556 )
 scale = Vector2( 3.96023, 2.95613 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 2296, -328 )
 scale = Vector2( 1.45859, 2.77639 )
 z_index = -1

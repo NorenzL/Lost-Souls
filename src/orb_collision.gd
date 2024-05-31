@@ -12,12 +12,12 @@ func _ready():
 func _process(delta):
 	var overlap = get_overlapping_areas()
 	for node in overlap:
-		print ("Delete orb in:         ",node.position, "    name:     ",node.name)
-		node.queue_free()
 		
-		if "power" in node.name:
-			
+		if "-power" in node.name:
+			node.queue_free()
 			OrbSpawner.relocate_power(node.name)
-		elif "orb" in node.name:
+		elif "_orb" in node.name:
+			print ("Delete orb in: ",node.position, "  name: ",node.name)
+			node.queue_free()
 			OrbSpawner.relocate_orb(node.name)
 		

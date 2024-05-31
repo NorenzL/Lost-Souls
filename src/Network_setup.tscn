@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/scripts/Network_setup.gd" type="Script" id=1]
+[ext_resource path="res://src/UI.gd" type="Script" id=2]
 
 [node name="Network_setup" type="Control"]
 anchor_right = 1.0
@@ -45,9 +46,10 @@ align = 1
 placeholder_text = "Enter Username"
 placeholder_alpha = 0.76
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
 
-[node name="Device_ip_address" type="Label" parent="CanvasLayer"]
+[node name="Device_ip_address" type="Label" parent="UI"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,11 +57,19 @@ margin_top = -88.0
 align = 1
 valign = 1
 
-[node name="Start_game" type="Button" parent="CanvasLayer"]
+[node name="Disconnect_Server" type="Button" parent="UI"]
+margin_left = 864.0
+margin_top = 8.0
+margin_right = 1019.0
+margin_bottom = 54.0
+text = "DISCONNECT"
+
+[node name="Start_game" type="Button" parent="UI"]
 margin_right = 155.0
 margin_bottom = 46.0
 text = "START GAME"
 
 [connection signal="pressed" from="multiplayer_configure/Create_Server" to="." method="_on_Create_Server_pressed"]
 [connection signal="pressed" from="multiplayer_configure/Join Server" to="." method="_on_Join_Server_pressed"]
-[connection signal="pressed" from="CanvasLayer/Start_game" to="." method="_on_Start_game_pressed"]
+[connection signal="pressed" from="UI/Disconnect_Server" to="." method="_on_Disconnect_Server_pressed"]
+[connection signal="pressed" from="UI/Start_game" to="." method="_on_Start_game_pressed"]

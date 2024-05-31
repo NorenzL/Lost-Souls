@@ -17,7 +17,7 @@ func _process(delta):
 
 
 func _on_red_orb_body_entered(body):
-	if Global.number_of_players >= 6 and body.name == Global.player_id[2]:
+	if body.name == Global.player_id[2] and OrbCounter.inventory[2]==0:
 		OrbCounter.incrementRedOrbs()
 		self.queue_free()
 

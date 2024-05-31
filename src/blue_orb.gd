@@ -13,7 +13,7 @@ func _process(delta):
 
 func _on_blue_orb_body_entered(body):
 	# Check if the orb has not been collected yet
-	if body.name == Global.player_id[0]:
+	if body.name == Global.player_id[0] && OrbCounter.inventory[0]==0:
 		OrbCounter.incrementBlueOrbs()
 		self.queue_free()
 

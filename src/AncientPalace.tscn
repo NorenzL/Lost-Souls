@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Sprites/gray.png" type="Texture" id=1]
 [ext_resource path="res://src/AncientPalace.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://src/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/orb_collision.gd" type="Script" id=8]
+[ext_resource path="res://src/Altar.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=5]
@@ -258,3 +259,6 @@ color = Color( 0.333333, 0.305882, 0.305882, 1 )
 [node name="Area2D" parent="." instance=ExtResource( 12 )]
 visible = false
 position = Vector2( 1936, -544 )
+
+[node name="Altar" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1552, -728 )

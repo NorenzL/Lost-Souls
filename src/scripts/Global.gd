@@ -4,6 +4,7 @@ var player_master = null
 
 var player_id = []
 var number_of_players = 0
+var winner = []
 
 var ui = null
 var flashlight: bool = true  

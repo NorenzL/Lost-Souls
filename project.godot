@@ -23,6 +23,7 @@ OrbSpawner="*res://src/scripts/orb_spawner.gd"
 OrbCounter="*res://src/OrbCounter.gd"
 AncientPalace="*res://src/AncientPalace.gd"
 Persistent_nodes="*res://src/scripts/Persistent_nodes.tscn"
+Altar="*res://src/Altar.gd"
 
 [global]
 

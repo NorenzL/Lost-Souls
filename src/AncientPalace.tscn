@@ -132,10 +132,6 @@ __meta__ = {
 "_edit_vertical_guides_": [ -1069.0 ]
 }
 
-[node name="Door" parent="." instance=ExtResource( 7 )]
-position = Vector2( 4212, -556 )
-scale = Vector2( 3.96023, 2.95613 )
-
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
 position = Vector2( 2296, -328 )
@@ -262,3 +258,7 @@ position = Vector2( 1936, -544 )
 
 [node name="Altar" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1552, -728 )
+
+[node name="Door" parent="Altar" instance=ExtResource( 7 )]
+position = Vector2( 2660, 172 )
+scale = Vector2( 3.96023, 2.95613 )

@@ -1,23 +1,24 @@
 extends Area2D
 
-var exit : bool = false
-# Called when the node enters the scene tree for the first time.
-func _process(delta):
-	if Altar.orbPlaced == Global.number_of_players:
-		$AnimationPlayer.play("Door_Open")
-		exit = true
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
-
-# Called when a body enters the door area.
 func _on_Door_body_entered(body):
-	# Check if the entering body is a player
-	if Global.player_id.has(body.name) && exit == true:
-		Global.player_id.append(body.name)
-		body.queue_free()
-		print(body.name,"Won the Game")
-		# Get the index of the player
-	else:
-		print("A non-player body entered the door area.")
+	if Global.player_id.has(body.name):
+		var totalOrbsInAltar = OrbCounter.inventory[0] + OrbCounter.inventory[1] + OrbCounter.inventory[2] + OrbCounter.inventory[3]
+		var requiredOrbs = 0
+		match Global.number_of_players:
+			4:
+				requiredOrbs = 4
+			6:
+				requiredOrbs = 6
+			8:
+				requiredOrbs = 8
+			_:
+				pass
+		
+		print("Total orbs in altar:", totalOrbsInAltar)
+		print("Required orbs:", requiredOrbs)
+
+		if totalOrbsInAltar >= requiredOrbs:
+			print("Players can exit")
+			$AnimationPlayer.play("Door_Open")
+		else:
+			print("Players cannot exit, not enough orbs in the altar")

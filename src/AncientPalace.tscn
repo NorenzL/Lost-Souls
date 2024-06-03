@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Sprites/gray.png" type="Texture" id=1]
 [ext_resource path="res://src/AncientPalace.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/orb_collision.gd" type="Script" id=8]
 [ext_resource path="res://src/Altar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Spectre.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=5]
@@ -133,6 +134,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 2296, -328 )
 scale = Vector2( 1.45859, 2.77639 )
 z_index = -1
@@ -237,6 +239,7 @@ tile_data = PoolIntArray( -2424870, 0, 0, -2424869, 0, 0, -2424868, 0, 0, -24248
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 2104, -552 )
 current = true
+zoom = Vector2( 5, 5 )
 drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
@@ -244,6 +247,7 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 
@@ -259,3 +263,6 @@ position = Vector2( 1552, -728 )
 [node name="Door" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4212, -556 )
 scale = Vector2( 3.96023, 2.95613 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2072, -992 )

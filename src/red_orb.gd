@@ -21,7 +21,6 @@ func _on_red_orb_body_entered(body):
 		OrbCounter.incrementRedOrbs()
 		self.queue_free()
 
-
 func _on_red_orb_area_entered(area):
 	if "_orb" in area.name:
 		area.queue_free()

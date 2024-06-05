@@ -29,6 +29,7 @@ onready var flashlight = $flashlight
 onready var tween = $Tween
 onready var anim = $PlayerAnimate
 
+onready var entitytouch = $entitytouch
 
 onready var canvasModulate = null
 
@@ -38,7 +39,7 @@ var isImmune: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	entitytouch.connect("body_entered", self, "_on_spectretouch_body_entered")
 	username_text_instance = Global.instance_node_at_location(username_text,Persistent_nodes,global_position)
 	username_text_instance.player_following = self
 	
@@ -70,31 +71,36 @@ func _process(delta: float) -> void:
 	
 	if is_network_master():
 		velocity.x = 0
+		if !isDead:
 		# Left and right movement
-		if Input.is_action_pressed("ui_left"):
-			velocity.x -= speed
-			anim.flip_h = true
-			flashlight.rotation_degrees = -266.4
+			if Input.is_action_pressed("ui_left"):
+				velocity.x -= speed
+				anim.flip_h = true
+				flashlight.rotation_degrees = -266.4
+				
+			if Input.is_action_pressed("ui_right"):
+				velocity.x += speed
+				anim.flip_h = false
+				flashlight.rotation_degrees = -94.7
+			if (velocity.x !=0):
+				anim.play("Walk")
+			else:
+				anim.play("Idle")
 			
-		if Input.is_action_pressed("ui_right"):
-			velocity.x += speed
-			anim.flip_h = false
-			flashlight.rotation_degrees = -94.7
-		if (velocity.x !=0):
-			anim.play("Walk")
+			velocity = move_and_slide(velocity, Vector2.UP)
+			
+			velocity.y += gravity * delta
+			# jump
+			if Input.is_action_pressed("ui_up") and is_on_floor():
+				velocity.y -= jumpForce
+			
+			if Input.is_action_pressed("ping") and !isPinging:
+				isPinging = true
+				ping()
 		else:
+			velocity.x = 0
+			velocity.y = 0
 			anim.play("Idle")
-		
-		velocity = move_and_slide(velocity, Vector2.UP)
-		
-		velocity.y += gravity * delta
-		# jump
-		if Input.is_action_pressed("ui_up") and is_on_floor():
-			velocity.y -= jumpForce
-		
-		if Input.is_action_pressed("ping") and !isPinging:
-			isPinging = true
-			ping()
 	else:
 		if not tween.is_active():
 			move_and_slide(puppet_velocity * speed)
@@ -231,3 +237,4 @@ func collect_power(powerup):
 	
 	timer.connect("timeout", self, "_on_Power_timeout")
 	lightTimer.connect("timeout", self, "_on_Light_timeout")
+

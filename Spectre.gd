@@ -14,7 +14,7 @@ func _ready():
 	
 	#_timer.connect("timeout", self, "_on_playedetection_body_entered")
 	playerdetection.connect("body_entered", self, "_on_playerdetection_body_entered")
-	playerdetection.connect("body_exited", self, "_on_playerdetection_body_exited")
+
 	
 func _physics_process(delta: float) -> void:
 	
@@ -39,22 +39,22 @@ func _update_pathfinding() -> void:
 
 func _on_playerdetection_body_entered(body):
 	if body is KinematicBody2D && !(body in target_queue) && !(body.isDead):
-		print(body.isDead)
+		
 		print(body.name, " is detected")
 		print("location is: ", body.global_position)
 		target_queue.append(body)
-		if target_queue.size() == 1:
+		print("the targets are: ", target_queue)
+		if target_queue.size() > 0:
 			_update_pathfinding()
 
 
 func _on_playerTouch_body_entered(body):
 	if body is KinematicBody2D:
 		body.die()
-		target_queue.erase(body)
+		if body in target_queue:
+			target_queue.erase(body)
+			target_queue.append(body)  # Move to the end of the queue
+			if target_queue.size() > 0:
+				_update_pathfinding()
 
-func _on_playerdetection_body_exited(body):
-	if body in target_queue:
-		target_queue.erase(body)
-		print(body.name, " exited detection area")
-		if target_queue.size() > 0:
-			_update_pathfinding()
+

@@ -29,7 +29,7 @@ onready var flashlight = $flashlight
 onready var tween = $Tween
 onready var anim = $PlayerAnimate
 
-onready var entitytouch = $entitytouch
+onready var player_touch = $playerTouch
 
 onready var canvasModulate = null
 
@@ -39,7 +39,7 @@ var isImmune: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	entitytouch.connect("body_entered", self, "_on_spectretouch_body_entered")
+	player_touch.connect("body_entered", self, "_on_playerTouch_body_entered")
 	username_text_instance = Global.instance_node_at_location(username_text,Persistent_nodes,global_position)
 	username_text_instance.player_following = self
 	
@@ -119,13 +119,6 @@ func _process(delta: float) -> void:
 		ping()
 		
 	# Test feature for death / temporary touch
-	
-	
-	
-	if Input.is_key_pressed(KEY_L) and isDead:
-		print("I am ALIVE!!")
-		isDead = false
-		sprite.modulate = Color("#ffffff")
 		
 
 func die():
@@ -238,3 +231,9 @@ func collect_power(powerup):
 	timer.connect("timeout", self, "_on_Power_timeout")
 	lightTimer.connect("timeout", self, "_on_Light_timeout")
 
+
+
+func _on_playerTouch_body_entered(body):
+	if Global.player_id.has(body.name):
+		isDead = false
+	

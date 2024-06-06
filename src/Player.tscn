@@ -72,9 +72,9 @@ shadow_enabled = true
 position = Vector2( -0.5, 14.7 )
 shape = SubResource( 1 )
 
-[node name="entitytouch" type="Area2D" parent="."]
+[node name="playerTouch" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="entitytouch"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerTouch"]
 position = Vector2( -0.5, 14.7 )
 shape = SubResource( 3 )
 
@@ -93,5 +93,5 @@ texture = ExtResource( 1 )
 wait_time = 0.05
 autostart = true
 
-[connection signal="body_entered" from="entitytouch" to="." method="_on_spectretouch_body_entered"]
+[connection signal="body_entered" from="playerTouch" to="." method="_on_playerTouch_body_entered"]
 [connection signal="timeout" from="Network_tick_rate" to="." method="_on_Network_tick_rate_timeout"]

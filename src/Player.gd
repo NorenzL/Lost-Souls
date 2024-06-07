@@ -32,6 +32,7 @@ onready var anim = $PlayerAnimate
 onready var player_touch = $playerTouch
 
 onready var canvasModulate = null
+onready var stunner = $stunner
 
 var isDead: bool = false
 var isImmune: bool = false
@@ -77,11 +78,13 @@ func _process(delta: float) -> void:
 				velocity.x -= speed
 				anim.flip_h = true
 				flashlight.rotation_degrees = -266.4
+				stunner.position.x = -150
 				
 			if Input.is_action_pressed("ui_right"):
 				velocity.x += speed
 				anim.flip_h = false
 				flashlight.rotation_degrees = -94.7
+				stunner.position.x = 200
 			if (velocity.x !=0):
 				anim.play("Walk")
 			else:

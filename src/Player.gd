@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var ping = load('res://src/ping.tscn')
 const username_text = preload('res://src/username_text.tscn')
-export var speed: int = 200
+export var speed: int = 1000
 export var jumpForce: int = 600
 export var gravity: int = 800
 

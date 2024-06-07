@@ -11,6 +11,15 @@ onready var stun_timer = $stunTimer
 var _velocity := Vector2.ZERO
 var target_queue := []
 var isStunned: bool = false setget set_stun
+var isRaging: bool = false
+onready var door_reference = get_node("../../Door")
+
+var preset_locations = [
+	Vector2(-1792, -864),
+	Vector2(1872, -640),
+	Vector2(-1488, 1872),
+	Vector2(-560, 2416)
+]
 
 puppet var puppet_isStunned: bool = false setget puppet_set_stun
 
@@ -23,9 +32,10 @@ func _ready():
 	player_touch.connect("area_exited", self, "_on_playerTouch_area_exited")
 	stun_timer.connect("timeout", self, "_on_stunTimer_timeout")
 
-	
+	door_reference.connect("door_state_changed", self, "_on_door_state_changed")
 func _physics_process(delta: float) -> void:
-	if isStunned:
+	
+	if isStunned and !(isRaging):
 		return
 		
 	if _agent.is_navigation_finished():
@@ -41,7 +51,13 @@ func _physics_process(delta: float) -> void:
 			_velocity = move_and_slide(_velocity)
 		else:
 			target_queue.pop_front() # Remove the target if it is no longer valid
-
+			
+		
+func _on_door_state_changed(is_open: bool) -> void:
+	if is_open:
+		isRaging = true
+		print("Door is open, enemy is now raging.")
+		
 func _update_pathfinding() -> void:
 	if target_queue.size() > 0:
 		var current_target = target_queue[0]
@@ -96,7 +112,7 @@ func _on_playerTouch_area_exited(area):
 
 
 func _on_stunTimer_timeout():
-	var new_position = Vector2(128, -256)  
+	var new_position = preset_locations[randi() % preset_locations.size()]
 	global_position = new_position	
 	
 	

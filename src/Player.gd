@@ -36,7 +36,7 @@ onready var player_touch = $playerTouch
 
 onready var canvasModulate = null
 onready var stunner = $stunner
-
+onready var stunner_area = $stunner/CollisionShape2D
 
 var isDead: bool = false
 var isImmune: bool = false
@@ -141,11 +141,8 @@ func die():
 		isDead = true
 		
 		stunner.visible = false
-		var collision_shape = stunner.get_node("CollisionShape2D")
-		if collision_shape:
+		stunner_area.disabled = true
 			
-			collision_shape.disabled = true
-			print(collision_shape)
 
 
 	
@@ -244,10 +241,7 @@ func _on_playerTouch_body_entered(body):
 	if Global.player_id.has(body.name):
 		isDead = false
 		stunner.visible = true
-		var collision_shape = stunner.get_node("CollisionShape2D")
-		if collision_shape:
-				
-			collision_shape.disabled = false
+		stunner_area.disabled = false
 		
 	
 	

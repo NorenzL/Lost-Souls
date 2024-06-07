@@ -81,9 +81,9 @@ func _on_playerTouch_body_entered(body):
 				_update_pathfinding()
 
 func _on_playerTouch_area_entered(area):
+	var player = area.get_parent() as KinematicBody2D
 	
-		
-	if area.name == "stunner":
+	if area.name == "stunner" and !(player.isDead):
 		isStunned = true 
 		stun_timer.start(5)
 		

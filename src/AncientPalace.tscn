@@ -397,7 +397,6 @@ position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [node name="Altar" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2840, -744 )

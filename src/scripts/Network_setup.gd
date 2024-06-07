@@ -103,8 +103,6 @@ sync func switch_to_game():
 sync func spawn_orbs():
 		OrbSpawner.spawn_objects()
 	
-	
-
 sync func check_orbs():
 	print(OrbSpawner.orbs.values())
 

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const ping = preload('res://src/ping.tscn')
+var ping = load('res://src/ping.tscn')
 const username_text = preload('res://src/username_text.tscn')
 export var speed: int = 200
 export var jumpForce: int = 600
@@ -10,6 +10,7 @@ var velocity: Vector2 = Vector2(0,0)
 var grounded: bool = false
 var isPinging: bool = false
 var pingNode: KinematicBody2D = null
+
 
 var username setget username_set
 var username_text_instance = null
@@ -23,6 +24,8 @@ onready var sprite = $Sprite
 onready var timer = $Timer
 onready var cdTimer = $cdTimer
 onready var lightTimer = $lightTImer
+
+onready var ping_point = $ping_point
 
 
 onready var flashlight = $flashlight
@@ -99,7 +102,13 @@ func _process(delta: float) -> void:
 			
 			if Input.is_action_pressed("ping") and !isPinging:
 				isPinging = true
-				ping()
+				rpc("instance_ping", get_tree().get_network_unique_id())
+				timer.start(3)
+				cdTimer.start(10)
+				
+				timer.connect("timeout", self, "_on_Timer_timeout")
+				cdTimer.connect("timeout", self, "_on_cdTimer_timeout")
+	
 		else:
 			velocity.x = 0
 			velocity.y = 0
@@ -117,12 +126,6 @@ func _process(delta: float) -> void:
 			flashlight.rotation_degrees = -94.7
 		else:
 			anim.play("Idle")
-	if Input.is_action_pressed("ping") and !isPinging:
-		isPinging = true
-		ping()
-		
-	# Test feature for death / temporary touch
-		
 
 func die():
 	if isImmune:
@@ -134,16 +137,7 @@ func die():
 		print("I am DEAD!!")
 		isDead = true
 
-func ping():
-	timer.start(3)
-	cdTimer.start(10)
-	pingNode = ping.instance()
-	
-	get_parent().add_child(pingNode)
-	
-	pingNode.position = $Position2D.global_position
-	timer.connect("timeout", self, "_on_Timer_timeout")
-	cdTimer.connect("timeout", self, "_on_cdTimer_timeout")
+
 	
 func _on_Timer_timeout():
 	if pingNode != null:
@@ -240,3 +234,10 @@ func _on_playerTouch_body_entered(body):
 	if Global.player_id.has(body.name):
 		isDead = false
 	
+	
+sync func instance_ping(id):
+	var player_ping_instance = Global.instance_node_at_location(ping, Persistent_nodes, ping_point.global_position)
+	player_ping_instance.name = "Ping" + name
+	player_ping_instance.set_network_master(id)
+	player_ping_instance.player_owner = id
+	Network.networked_object_name_index += 1

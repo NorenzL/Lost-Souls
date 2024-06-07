@@ -37,9 +37,12 @@ wait_time = 0.1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="playerTouch"]
 shape = SubResource( 3 )
 
+[node name="stunTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="playerdetection" to="." method="_on_playerdetection_body_entered"]
 [connection signal="body_entered" from="playerdetection" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="playerdetection" to="." method="_on_playerdetection_body_exited"]
 [connection signal="area_entered" from="playerTouch" to="." method="_on_playerTouch_area_entered"]
 [connection signal="area_exited" from="playerTouch" to="." method="_on_playerTouch_area_exited"]
 [connection signal="body_entered" from="playerTouch" to="." method="_on_playerTouch_body_entered"]
+[connection signal="timeout" from="stunTimer" to="." method="_on_stunTimer_timeout"]

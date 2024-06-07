@@ -37,6 +37,7 @@ onready var player_touch = $playerTouch
 onready var canvasModulate = null
 onready var stunner = $stunner
 
+
 var isDead: bool = false
 var isImmune: bool = false
 
@@ -120,10 +121,12 @@ func _process(delta: float) -> void:
 			anim.flip_h = true
 			anim.play("Walk")
 			flashlight.rotation_degrees = -266.4
+			stunner.position.x = -150
 		elif puppet_velocity.x > 0:
 			anim.flip_h = false
 			anim.play("Walk")
 			flashlight.rotation_degrees = -94.7
+			stunner.position.x = 200
 		else:
 			anim.play("Idle")
 
@@ -136,6 +139,13 @@ func die():
 		sprite.modulate = Color("#ff1409")
 		print("I am DEAD!!")
 		isDead = true
+		
+		stunner.visible = false
+		var collision_shape = stunner.get_node("CollisionShape2D")
+		if collision_shape:
+			
+			collision_shape.disabled = true
+			print(collision_shape)
 
 
 	
@@ -233,6 +243,12 @@ func collect_power(powerup):
 func _on_playerTouch_body_entered(body):
 	if Global.player_id.has(body.name):
 		isDead = false
+		stunner.visible = true
+		var collision_shape = stunner.get_node("CollisionShape2D")
+		if collision_shape:
+				
+			collision_shape.disabled = false
+		
 	
 	
 sync func instance_ping(id):

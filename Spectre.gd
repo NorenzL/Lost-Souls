@@ -6,10 +6,13 @@ onready var _timer: Timer = $Timer
 onready var playerdetection = $playerdetection
 
 onready var player_touch = $playerTouch
+onready var stun_timer = $stunTimer
 
 var _velocity := Vector2.ZERO
 var target_queue := []
-var isStunned: bool = false
+var isStunned: bool = false setget set_stun
+
+puppet var puppet_isStunned: bool = false setget puppet_set_stun
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +21,7 @@ func _ready():
 	playerdetection.connect("body_entered", self, "_on_playerdetection_body_entered")
 	player_touch.connect("area_entered", self, "_on_playerTouch_area_entered")
 	player_touch.connect("area_exited", self, "_on_playerTouch_area_exited")
+	stun_timer.connect("timeout", self, "_on_stunTimer_timeout")
 
 	
 func _physics_process(delta: float) -> void:
@@ -43,6 +47,18 @@ func _update_pathfinding() -> void:
 		var current_target = target_queue[0]
 		_agent.set_target_location(current_target.global_position)
 
+func set_stun(new_value):
+	isStunned = new_value
+	
+	if is_network_master():
+		rset("puppet_isStunned", isStunned)
+		
+func puppet_set_stun(new_value):
+	puppet_isStunned = new_value
+	
+	if not is_network_master():
+		isStunned = puppet_isStunned
+	
 func _on_playerdetection_body_entered(body):
 	if body is KinematicBody2D && !(body in target_queue) && !(body.isDead):
 		
@@ -57,6 +73,7 @@ func _on_playerdetection_body_entered(body):
 func _on_playerTouch_body_entered(body):
 	if body is KinematicBody2D:
 		body.die()
+		
 		if body in target_queue:
 			target_queue.erase(body)
 			target_queue.append(body)  # Move to the end of the queue
@@ -64,12 +81,22 @@ func _on_playerTouch_body_entered(body):
 				_update_pathfinding()
 
 func _on_playerTouch_area_entered(area):
+	
+		
 	if area.name == "stunner":
 		isStunned = true 
+		stun_timer.start(5)
 		
-
 
 func _on_playerTouch_area_exited(area):
 	if area.name == "stunner":
 		isStunned = false
+		stun_timer.stop()
 		
+
+
+func _on_stunTimer_timeout():
+	var new_position = Vector2(128, -256)  
+	global_position = new_position
+	isStunned = false
+	stun_timer.stop()

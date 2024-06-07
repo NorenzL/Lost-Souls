@@ -97,6 +97,14 @@ func _on_playerTouch_area_exited(area):
 
 func _on_stunTimer_timeout():
 	var new_position = Vector2(128, -256)  
-	global_position = new_position
+	global_position = new_position	
+	
+	
+	if target_queue.size() > 0:
+		var first_target = target_queue.pop_front()
+		target_queue.append(first_target)
+		
+		
 	isStunned = false
 	stun_timer.stop()
+	_update_pathfinding()

@@ -105,7 +105,7 @@ func _process(delta: float) -> void:
 				isPinging = true
 				rpc("instance_ping", get_tree().get_network_unique_id())
 				timer.start(3)
-				cdTimer.start(10)
+				cdTimer.start(1)
 				
 				timer.connect("timeout", self, "_on_Timer_timeout")
 				cdTimer.connect("timeout", self, "_on_cdTimer_timeout")

@@ -16,8 +16,6 @@ func _ready() -> void:
 	
 	visible = true
 
-
-
 func puppet_position_set(new_value) -> void:
 	puppet_position = new_value
 	

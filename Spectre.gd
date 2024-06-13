@@ -15,10 +15,21 @@ var isRaging: bool = false
 onready var door_reference = get_node("../../Door")
 
 var preset_locations = [
-	Vector2(-1792, -864),
-	Vector2(1872, -640),
-	Vector2(-1488, 1872),
-	Vector2(-560, 2416)
+	Vector2(1216, -1952),
+	Vector2(1536, -1960),
+	Vector2(1536, -1760),
+	Vector2(1536, -1584),
+	Vector2(1536, -1384),
+	Vector2(1536, -1208),
+	Vector2(-376, -1592),
+	Vector2(1888, -616),
+	Vector2(536, -128),
+	Vector2(-1480, -744),
+	Vector2(-1760, 2632),
+	Vector2(-500, 1848),
+	Vector2(0, -2416),
+	Vector2(1344, 2432),
+	Vector2(2640, 1176)
 ]
 
 puppet var puppet_isStunned: bool = false setget puppet_set_stun

@@ -9,10 +9,13 @@ var client = null
 var ip_address = ""
 var current_player_username = ""
 
+var networked_object_name_index = 0 setget networked_object_name_index_set
+puppet var puppet_networked_object_name_index = 0 setget puppet_networked_object_name_index_set
+
 func _ready() -> void:
 	if OS.get_name() == "Windows":
 		ip_address = IP.get_local_addresses()[3]
-	elif OS.get_name() == "Windows":
+	elif OS.get_name() == "Android":
 		ip_address = IP.get_local_addresses()[0]
 	else:
 		ip_address = IP.get_local_addresses()[3]
@@ -54,3 +57,12 @@ func _server_disconnected() -> void :
 	if Global.ui != null:
 		var prompt = Global.instance_node(load("res://Simple_Prompt.tscn"), Global.ui)
 		prompt.set_text("Disconnected From Server")
+
+func puppet_networked_object_name_index_set(new_value):
+	networked_object_name_index = new_value
+	
+func networked_object_name_index_set(new_value):
+	networked_object_name_index = new_value
+	
+	if get_tree().is_network_server():
+		rset("puppet_networked_object_name_index_set", networked_object_name_index)

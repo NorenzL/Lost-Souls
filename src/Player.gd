@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const ping = preload('res://src/ping.tscn')
+var ping = load('res://src/ping.tscn')
 const username_text = preload('res://src/username_text.tscn')
-export var speed: int = 200
+export var speed: int = 1000
 export var jumpForce: int = 600
 export var gravity: int = 800
 
@@ -10,6 +10,7 @@ var velocity: Vector2 = Vector2(0,0)
 var grounded: bool = false
 var isPinging: bool = false
 var pingNode: KinematicBody2D = null
+
 
 var username setget username_set
 var username_text_instance = null
@@ -24,13 +25,18 @@ onready var timer = $Timer
 onready var cdTimer = $cdTimer
 onready var lightTimer = $lightTImer
 
+onready var ping_point = $ping_point
+
 
 onready var flashlight = $flashlight
 onready var tween = $Tween
 onready var anim = $PlayerAnimate
 
+onready var player_touch = $playerTouch
 
 onready var canvasModulate = null
+onready var stunner = $stunner
+onready var stunner_area = $stunner/CollisionShape2D
 
 var isDead: bool = false
 var isImmune: bool = false
@@ -38,7 +44,7 @@ var isImmune: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	player_touch.connect("body_entered", self, "_on_playerTouch_body_entered")
 	username_text_instance = Global.instance_node_at_location(username_text,Persistent_nodes,global_position)
 	username_text_instance.player_following = self
 	
@@ -70,31 +76,44 @@ func _process(delta: float) -> void:
 	
 	if is_network_master():
 		velocity.x = 0
+		if !isDead:
 		# Left and right movement
-		if Input.is_action_pressed("ui_left"):
-			velocity.x -= speed
-			anim.flip_h = true
-			flashlight.rotation_degrees = -266.4
+			if Input.is_action_pressed("ui_left"):
+				velocity.x -= speed
+				anim.flip_h = true
+				flashlight.rotation_degrees = -266.4
+				stunner.position.x = -150
+				
+			if Input.is_action_pressed("ui_right"):
+				velocity.x += speed
+				anim.flip_h = false
+				flashlight.rotation_degrees = -94.7
+				stunner.position.x = 200
+			if (velocity.x !=0):
+				anim.play("Walk")
+			else:
+				anim.play("Idle")
 			
-		if Input.is_action_pressed("ui_right"):
-			velocity.x += speed
-			anim.flip_h = false
-			flashlight.rotation_degrees = -94.7
-		if (velocity.x !=0):
-			anim.play("Walk")
+			velocity = move_and_slide(velocity, Vector2.UP)
+			
+			velocity.y += gravity * delta
+			# jump
+			if Input.is_action_pressed("ui_up") and is_on_floor():
+				velocity.y -= jumpForce
+			
+			if Input.is_action_pressed("ping") and !isPinging:
+				isPinging = true
+				rpc("instance_ping", get_tree().get_network_unique_id())
+				timer.start(3)
+				cdTimer.start(1)
+				
+				timer.connect("timeout", self, "_on_Timer_timeout")
+				cdTimer.connect("timeout", self, "_on_cdTimer_timeout")
+	
 		else:
+			velocity.x = 0
+			velocity.y = 0
 			anim.play("Idle")
-		
-		velocity = move_and_slide(velocity, Vector2.UP)
-		
-		velocity.y += gravity * delta
-		# jump
-		if Input.is_action_pressed("ui_up") and is_on_floor():
-			velocity.y -= jumpForce
-		
-		if Input.is_action_pressed("ping") and !isPinging:
-			isPinging = true
-			ping()
 	else:
 		if not tween.is_active():
 			move_and_slide(puppet_velocity * speed)
@@ -102,25 +121,14 @@ func _process(delta: float) -> void:
 			anim.flip_h = true
 			anim.play("Walk")
 			flashlight.rotation_degrees = -266.4
+			stunner.position.x = -150
 		elif puppet_velocity.x > 0:
 			anim.flip_h = false
 			anim.play("Walk")
 			flashlight.rotation_degrees = -94.7
+			stunner.position.x = 200
 		else:
 			anim.play("Idle")
-	if Input.is_action_pressed("ping") and !isPinging:
-		isPinging = true
-		ping()
-		
-	# Test feature for death / temporary touch
-	
-	
-	
-	if Input.is_key_pressed(KEY_L) and isDead:
-		print("I am ALIVE!!")
-		isDead = false
-		sprite.modulate = Color("#ffffff")
-		
 
 func die():
 	if isImmune:
@@ -131,17 +139,12 @@ func die():
 		sprite.modulate = Color("#ff1409")
 		print("I am DEAD!!")
 		isDead = true
+		
+		stunner.visible = false
+		stunner_area.disabled = true
+			
 
-func ping():
-	timer.start(3)
-	cdTimer.start(10)
-	pingNode = ping.instance()
-	
-	get_parent().add_child(pingNode)
-	
-	pingNode.position = $Position2D.global_position
-	timer.connect("timeout", self, "_on_Timer_timeout")
-	cdTimer.connect("timeout", self, "_on_cdTimer_timeout")
+
 	
 func _on_Timer_timeout():
 	if pingNode != null:
@@ -231,3 +234,20 @@ func collect_power(powerup):
 	
 	timer.connect("timeout", self, "_on_Power_timeout")
 	lightTimer.connect("timeout", self, "_on_Light_timeout")
+
+
+
+func _on_playerTouch_body_entered(body):
+	if Global.player_id.has(body.name):
+		isDead = false
+		stunner.visible = true
+		stunner_area.disabled = false
+		
+	
+	
+sync func instance_ping(id):
+	var player_ping_instance = Global.instance_node_at_location(ping, Persistent_nodes, ping_point.global_position)
+	player_ping_instance.name = "Ping" + name
+	player_ping_instance.set_network_master(id)
+	player_ping_instance.player_owner = id
+	Network.networked_object_name_index += 1

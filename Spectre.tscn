@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/Enemy.png" type="Texture" id=1]
 [ext_resource path="res://Spectre.gd" type="Script" id=2]
@@ -11,6 +11,9 @@ radius = 3584.22
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 32.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 637.078
 
 [node name="Spectre" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -39,10 +42,17 @@ shape = SubResource( 3 )
 
 [node name="stunTimer" type="Timer" parent="."]
 
-[connection signal="body_entered" from="playerdetection" to="." method="_on_playerdetection_body_entered"]
+[node name="ParanoiaAOE" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParanoiaAOE"]
+shape = SubResource( 4 )
+
 [connection signal="body_entered" from="playerdetection" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="playerdetection" to="." method="_on_playerdetection_body_entered"]
 [connection signal="body_exited" from="playerdetection" to="." method="_on_playerdetection_body_exited"]
 [connection signal="area_entered" from="playerTouch" to="." method="_on_playerTouch_area_entered"]
 [connection signal="area_exited" from="playerTouch" to="." method="_on_playerTouch_area_exited"]
 [connection signal="body_entered" from="playerTouch" to="." method="_on_playerTouch_body_entered"]
 [connection signal="timeout" from="stunTimer" to="." method="_on_stunTimer_timeout"]
+[connection signal="body_entered" from="ParanoiaAOE" to="." method="_on_ParanoiaAOE_body_entered"]
+[connection signal="body_exited" from="ParanoiaAOE" to="." method="_on_ParanoiaAOE_body_exited"]

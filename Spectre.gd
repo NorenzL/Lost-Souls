@@ -135,3 +135,13 @@ func _on_stunTimer_timeout():
 	isStunned = false
 	stun_timer.stop()
 	_update_pathfinding()
+
+
+func _on_ParanoiaAOE_body_entered(body):
+	if Global.player_id.has(body.name):
+		body.isParanoid = true
+
+
+func _on_ParanoiaAOE_body_exited(body):
+	if Global.player_id.has(body.name):
+		body.isParanoid = false

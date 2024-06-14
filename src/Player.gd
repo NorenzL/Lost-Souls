@@ -34,12 +34,14 @@ onready var anim = $PlayerAnimate
 
 onready var player_touch = $playerTouch
 
+onready var cue = find_node("DangerCue")
 onready var canvasModulate = null
 onready var stunner = $stunner
 onready var stunner_area = $stunner/CollisionShape2D
 
 var isDead: bool = false
 var isImmune: bool = false
+var isParanoid: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -68,6 +70,10 @@ func _process(delta: float) -> void:
 		 anim.modulate = Color(0,1,0)
 	#else:
 		
+	if isParanoid:
+		cue.visible = true
+	else:
+		cue.visible = false
 	
 	if Global.flashlight == false:
 		flashlight.visible = false
@@ -251,3 +257,4 @@ sync func instance_ping(id):
 	player_ping_instance.set_network_master(id)
 	player_ping_instance.player_owner = id
 	Network.networked_object_name_index += 1
+

@@ -14,6 +14,7 @@
 [node name="Left" type="TouchScreenButton" parent="."]
 position = Vector2( -4, 396 )
 scale = Vector2( 5.84375, 5.875 )
+z_index = 1
 normal = ExtResource( 2 )
 pressed = ExtResource( 4 )
 passby_press = true
@@ -22,6 +23,7 @@ action = "ui_left"
 [node name="Right" type="TouchScreenButton" parent="."]
 position = Vector2( 191, 396 )
 scale = Vector2( 5.844, 5.875 )
+z_index = 1
 normal = ExtResource( 3 )
 pressed = ExtResource( 5 )
 passby_press = true
@@ -30,6 +32,7 @@ action = "ui_right"
 [node name="Jump" type="TouchScreenButton" parent="."]
 position = Vector2( 826, 396 )
 scale = Vector2( 5.844, 5.875 )
+z_index = 1
 normal = ExtResource( 1 )
 pressed = ExtResource( 6 )
 action = "ui_up"
@@ -37,6 +40,7 @@ action = "ui_up"
 [node name="Ping" type="TouchScreenButton" parent="."]
 position = Vector2( 651, 396 )
 scale = Vector2( 5.844, 5.875 )
+z_index = 1
 normal = ExtResource( 7 )
 pressed = ExtResource( 8 )
 action = "ping"

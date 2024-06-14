@@ -180,6 +180,7 @@ tracks/4/keys = {
 script = ExtResource( 2 )
 
 [node name="OffScreenMarker" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

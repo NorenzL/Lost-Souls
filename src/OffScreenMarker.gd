@@ -9,7 +9,7 @@ func _process(delta):
 	var size = get_viewport_rect().size / canvas.get_scale()
 
 	set_marker_position(Rect2(top_left, size))
-	set_marker_rotation()	
+	set_marker_rotation()
 
 func set_marker_position(bounds: Rect2):
 	sprite.global_position.x = clamp(global_position.x, bounds.position.x, bounds.end.x)

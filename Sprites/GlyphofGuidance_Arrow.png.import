@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ping_Idle_01.png-2924a10b9900f0a5bc46abc5e1eddb62.stex"
+path="res://.import/GlyphofGuidance_Arrow.png-5df8fa617deee8cfa9d7184fbc85d1ce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ping_Idle_01.png"
-dest_files=[ "res://.import/Ping_Idle_01.png-2924a10b9900f0a5bc46abc5e1eddb62.stex" ]
+source_file="res://Sprites/GlyphofGuidance_Arrow.png"
+dest_files=[ "res://.import/GlyphofGuidance_Arrow.png-5df8fa617deee8cfa9d7184fbc85d1ce.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Sprites/Ping_Idle_01.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/GlyphofGuidance_Arrow.png" type="Texture" id=1]
 [ext_resource path="res://src/OffScreenMarker.gd" type="Script" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
 
 [node name="OffScreenMarker" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( -4.65661e-09, -16 )
+rotation = 1.56731
 scale = Vector2( 1, 0.9375 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, 25.6 )

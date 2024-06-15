@@ -933,7 +933,6 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 

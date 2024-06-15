@@ -69,11 +69,6 @@ func _process(delta: float) -> void:
 	elif Global.number_of_players == 8 and str(get_network_master()) == Global.player_id[3]:
 		 anim.modulate = Color(0,1,0)
 	#else:
-		
-	if isParanoid:
-		cue.visible = true
-	else:
-		cue.visible = false
 	
 	if Global.flashlight == false:
 		flashlight.visible = false
@@ -83,6 +78,11 @@ func _process(delta: float) -> void:
 	if is_network_master():
 		velocity.x = 0
 		if !isDead:
+			if isParanoid:
+				cue.visible = true
+			else:
+				cue.visible = false
+			
 		# Left and right movement
 			if Input.is_action_pressed("ui_left"):
 				velocity.x -= speed
@@ -258,12 +258,12 @@ sync func instance_ping(id):
 	player_ping_instance.set_network_master(id)
 	player_ping_instance.player_owner = id
 	if Global.number_of_players >= 2 and str(get_network_master()) == Global.player_id[0]:
-		player_ping_instance.modulate = Color(0,0,1)
+		player_ping_instance.modulate = Color("164fff")
 	elif Global.number_of_players >= 4 and str(get_network_master()) == Global.player_id[1]:
-		 player_ping_instance.modulate  = Color(1,1,0)
+		 player_ping_instance.modulate  = Color("c58d28")
 	elif Global.number_of_players >= 6 and str(get_network_master()) == Global.player_id[2]:
-		 player_ping_instance.modulate  = Color(1,0,0)
+		 player_ping_instance.modulate  = Color("ff3c3c")
 	elif Global.number_of_players == 8 and str(get_network_master()) == Global.player_id[3]:
-		 player_ping_instance.modulate  = Color(0,1,0)
+		 player_ping_instance.modulate  = Color("848209")
 	Network.networked_object_name_index += 1
 

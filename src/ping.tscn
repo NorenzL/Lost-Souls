@@ -5,10 +5,11 @@
 [ext_resource path="res://src/OffScreenMarker.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Environment" id=13]
+background_mode = 4
+background_energy = 3.0
 glow_enabled = true
 glow_bloom = 0.5
 glow_hdr_threshold = 1.5
-glow_high_quality = true
 
 [sub_resource type="CanvasItemMaterial" id=12]
 blend_mode = 1
@@ -100,10 +101,6 @@ script = ExtResource( 2 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 13 )
 
-[node name="OffScreenMarker2" parent="." instance=ExtResource( 3 )]
-modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( 1, 40 )
-
 [node name="Destroy_timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
@@ -129,5 +126,9 @@ tree_root = SubResource( 7 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 8 )
+
+[node name="OffScreenMarker" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( 1, 32 )
 
 [connection signal="timeout" from="Destroy_timer" to="." method="_on_Destroy_timer_timeout"]

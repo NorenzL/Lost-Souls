@@ -246,8 +246,17 @@ func _on_playerTouch_body_entered(body):
 	
 	
 sync func instance_ping(id):
+	
 	var player_ping_instance = Global.instance_node_at_location(ping, Persistent_nodes, ping_point.global_position)
 	player_ping_instance.name = "Ping" + name
 	player_ping_instance.set_network_master(id)
 	player_ping_instance.player_owner = id
+	if Global.number_of_players >= 2 and str(get_network_master()) == Global.player_id[0]:
+		player_ping_instance.modulate = Color(0,0,1)
+	elif Global.number_of_players >= 4 and str(get_network_master()) == Global.player_id[1]:
+		 player_ping_instance.modulate  = Color(1,1,0)
+	elif Global.number_of_players >= 6 and str(get_network_master()) == Global.player_id[2]:
+		 player_ping_instance.modulate  = Color(1,0,0)
+	elif Global.number_of_players == 8 and str(get_network_master()) == Global.player_id[3]:
+		 player_ping_instance.modulate  = Color(0,1,0)
 	Network.networked_object_name_index += 1

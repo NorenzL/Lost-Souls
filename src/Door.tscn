@@ -1,8 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Door/Door_Open.png" type="Texture" id=1]
 [ext_resource path="res://src/Door.gd" type="Script" id=2]
 [ext_resource path="res://src/OffScreenMarker.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Environment" id=5]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 1.37
+glow_strength = 1.03
+glow_hdr_threshold = 1.15
+glow_high_quality = true
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
@@ -179,7 +187,8 @@ tracks/4/keys = {
 [node name="Door" type="Area2D"]
 script = ExtResource( 2 )
 
-[node name="OffScreenMarker" parent="." instance=ExtResource( 3 )]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -194,5 +203,10 @@ autoplay = "Idle"
 anims/Door_Open = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 4 )
+
+[node name="OffScreenMarker" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( 0, 32 )
+scale = Vector2( 0.5, 0.5 )
 
 [connection signal="body_entered" from="." to="." method="_on_Door_body_entered"]

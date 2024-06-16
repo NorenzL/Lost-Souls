@@ -4,6 +4,8 @@ extends Area2D
 var playerHolder: int
 var orbPlaced: int = 0
 
+var requiredOrbs = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Register this instance of the altar in the Global script for easy access
@@ -15,7 +17,17 @@ func _on_Altar_body_entered(body):
 	if Global.player_id.has(body.name):
 		# Find the player's position in the player_id list
 		playerHolder = Global.player_id.bsearch(body.name)
-
+		
+		match Global.number_of_players:
+			4:
+				requiredOrbs = 4
+			6:
+				requiredOrbs = 6
+			8:
+				requiredOrbs = 8
+			_:
+				pass  # For any number of players not explicitly handled, no orbs are required
+				
 		# Match the player's position to manage the corresponding orb inventory
 		match playerHolder:
 			0:
@@ -41,3 +53,6 @@ func _on_Altar_body_entered(body):
 					print(orbPlaced)
 			_:
 				pass  # In case the playerHolder value doesn't match any of the expected positions
+			
+		if orbPlaced == requiredOrbs:
+			$AnimationPlayer.play("Activating")

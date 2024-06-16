@@ -62,7 +62,6 @@ rotation = -1.65283
 scale = Vector2( 0.165, 0.401 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 390 )
-energy = 0.8
 mode = 2
 shadow_enabled = true
 
@@ -79,6 +78,7 @@ modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 200, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stunner"]
+visible = false
 position = Vector2( -24, -8 )
 rotation = -1.5708
 shape = SubResource( 4 )

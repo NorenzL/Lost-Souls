@@ -46,6 +46,5 @@ func _on_Door_body_entered(body):
 			
 		
 			print("Players can exit")
-			$AnimationPlayer.play("Door_Open")
 		else:
 			print("Players cannot exit, not enough orbs in the altar")

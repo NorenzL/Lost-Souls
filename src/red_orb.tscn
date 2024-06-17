@@ -1,9 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/red_orb.png" type="Texture" id=1]
 [ext_resource path="res://src/red_orb.gd" type="Script" id=2]
+[ext_resource path="res://Assets/OrbParticle.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
+glow_strength = 1.37
+glow_hdr_threshold = 1.5
+glow_high_quality = true
 
 [node name="red_orb" type="Area2D"]
 collision_layer = 15
@@ -13,9 +21,16 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="OrbParticle" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1.5, 0.5, 0.5, 1 )
+position = Vector2( 1, 1 )
+
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 6.55651e-07, 6.85453e-07 )
-scale = Vector2( 0.0729927, 0.0660066 )
+modulate = Color( 1.2, 0.3, 0.3, 1 )
+scale = Vector2( 0.0656934, 0.0656934 )
 texture = ExtResource( 1 )
 
 [connection signal="area_entered" from="." to="." method="_on_red_orb_area_entered"]

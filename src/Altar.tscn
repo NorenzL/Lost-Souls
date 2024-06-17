@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Altar.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Particles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/FireflyParticle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/AltarAnimate.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -99,10 +99,10 @@ anims/Opened = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 anims/Unopened = SubResource( 5 )
 
-[node name="Particles" parent="." instance=ExtResource( 2 )]
-modulate = Color( 0.8, 1.3, 1.5, 1 )
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 13 )
+
+[node name="FireflyParticle" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1.5, 1.5, 0.5, 1 )
 
 [connection signal="body_entered" from="." to="." method="_on_Altar_body_entered"]

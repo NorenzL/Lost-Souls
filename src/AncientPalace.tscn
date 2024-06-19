@@ -800,9 +800,10 @@ outlines = [ PoolVector2Array( 3080, -1320, 3080, -1960, 3752, -1960, 3752, -160
 [sub_resource type="Environment" id=60]
 background_mode = 4
 glow_enabled = true
-glow_intensity = 1.72
-glow_strength = 1.26
-glow_hdr_threshold = 0.0
+glow_intensity = 1.03
+glow_strength = 1.54
+glow_hdr_threshold = 1.5
+glow_high_quality = true
 
 [node name="AncientPalace" type="Node2D"]
 position = Vector2( -1608, 912 )
@@ -945,15 +946,17 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Altar" parent="." instance=ExtResource( 9 )]
+modulate = Color( 1.15, 1.2, 1.05, 1 )
 position = Vector2( 2856, -744 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="Door" parent="." instance=ExtResource( 4 )]
-modulate = Color( 1.5, 1.5, 1.5, 1 )
+modulate = Color( 1, 1.2, 1.35, 1 )
 position = Vector2( 3928, -552 )
 scale = Vector2( 1.5, 1.5 )
 

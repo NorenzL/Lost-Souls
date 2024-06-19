@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
 		username_text_instance.name = "username "+name	
 	
 	if Global.number_of_players >= 2 and str(get_network_master()) == Global.player_id[0]:
-		 anim.modulate = Color("164fff")
+		 anim.modulate = Color("80ffff")
 	elif Global.number_of_players >= 4 and str(get_network_master()) == Global.player_id[1]:
 		 anim.modulate = Color("f7ff00")
 	elif Global.number_of_players >= 6 and str(get_network_master()) == Global.player_id[2]:

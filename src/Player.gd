@@ -35,6 +35,7 @@ onready var anim = $PlayerAnimate
 onready var player_touch = $playerTouch
 
 onready var cue = find_node("DangerCue")
+onready var BoB = $BrandOfBanishment
 onready var canvasModulate = null
 onready var stunner = $stunner
 onready var stunner_area = $stunner/CollisionShape2D
@@ -145,6 +146,7 @@ func die():
 		sprite.modulate = Color("#ff1409")
 		print("I am DEAD!!")
 		isDead = true
+		BoB.visible = true
 		
 		stunner.visible = false
 		stunner_area.disabled = true
@@ -248,6 +250,7 @@ func _on_playerTouch_body_entered(body):
 		isDead = false
 		stunner.visible = true
 		stunner_area.disabled = false
+		BoB.visible = false
 		
 	
 	

@@ -63,14 +63,14 @@ start_node = "move"
 [node name="Spectre" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="FireflyParticle" parent="." instance=ExtResource( 1 )]
-modulate = Color( 2, 0.32, 0.15, 1 )
-position = Vector2( -5, -6 )
-scale = Vector2( 0.384, 1 )
-
 [node name="Enemy" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 hframes = 2
+
+[node name="FireflyParticle" parent="." instance=ExtResource( 1 )]
+modulate = Color( 2, 0.32, 0.15, 1 )
+position = Vector2( -5, -6 )
+scale = Vector2( 0.5, 1 )
 
 [node name="spectrebody" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )

@@ -1,46 +1,139 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Switch Button Icons [Essential pack] 0.9/Switch Button Icons [Essential pack] 0.9/[WIP] Mix Mono/Dark theme/Directional_Button_Up.png" type="Texture" id=1]
-[ext_resource path="res://Switch Button Icons [Essential pack] 0.9/Switch Button Icons [Essential pack] 0.9/[WIP] Mix Mono/Dark theme/Directional_Button_Left.png" type="Texture" id=2]
-[ext_resource path="res://Switch Button Icons [Essential pack] 0.9/Switch Button Icons [Essential pack] 0.9/[WIP] Mix Mono/Dark theme/Directional_Button_Right.png" type="Texture" id=3]
-[ext_resource path="res://Switch Button Icons [Essential pack] 0.9/Switch Button Icons [Essential pack] 0.9/Solid Mono/Dark theme/Directional_Button_Left.png" type="Texture" id=4]
-[ext_resource path="res://Switch Button Icons [Essential pack] 0.9/Switch Button Icons [Essential pack] 0.9/Solid Mono/Dark theme/Directional_Button_Right.png" type="Texture" id=5]
-[ext_resource path="res://Switch Button Icons [Essential pack] 0.9/Switch Button Icons [Essential pack] 0.9/Solid Mono/Dark theme/Directional_Button_Up.png" type="Texture" id=6]
-[ext_resource path="res://Switch Button Icons [Essential pack] 0.9/Switch Button Icons [Essential pack] 0.9/Solid Duo/Dark theme/A_Button.png" type="Texture" id=7]
-[ext_resource path="res://Switch Button Icons [Essential pack] 0.9/Switch Button Icons [Essential pack] 0.9/Solid Duo/Light theme/A_Button.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Controls/PingButton.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Controls/PingButtonPressed.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Controls/Arrow_Right.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Orb.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Controls/ArrowPressed.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/AltarAnimate.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 70 )
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 37.68
+height = 89.19
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 20.0
+height = 89.2
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 106.86
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
-[node name="Left" type="TouchScreenButton" parent="."]
-position = Vector2( -4, 396 )
-scale = Vector2( 5.84375, 5.875 )
-z_index = 1
-normal = ExtResource( 2 )
-pressed = ExtResource( 4 )
-passby_press = true
-action = "ui_left"
+[node name="UIControl" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -162.0
+margin_right = 512.0
+size_flags_stretch_ratio = 20.0
 
-[node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2( 191, 396 )
-scale = Vector2( 5.844, 5.875 )
+[node name="LeftandRight" type="HBoxContainer" parent="UIControl"]
+margin_bottom = 162.0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+
+[node name="Left" type="TouchScreenButton" parent="UIControl/LeftandRight"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 224.001, 208 )
+rotation = 3.14159
 z_index = 1
 normal = ExtResource( 3 )
 pressed = ExtResource( 5 )
+shape = SubResource( 1 )
+passby_press = true
+action = "ui_left"
+
+[node name="Right" type="TouchScreenButton" parent="UIControl/LeftandRight"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 256.001, -48 )
+z_index = 1
+normal = ExtResource( 3 )
+pressed = ExtResource( 5 )
+shape = SubResource( 2 )
 passby_press = true
 action = "ui_right"
 
-[node name="Jump" type="TouchScreenButton" parent="."]
-position = Vector2( 826, 396 )
-scale = Vector2( 5.844, 5.875 )
+[node name="PingandJump" type="HBoxContainer" parent="UIControl"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 162.0
+alignment = 2
+
+[node name="Jump" type="TouchScreenButton" parent="UIControl/PingandJump"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 796, 192 )
+rotation = -1.5708
 z_index = 1
-normal = ExtResource( 1 )
-pressed = ExtResource( 6 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 5 )
+shape = SubResource( 3 )
 action = "ui_up"
 
-[node name="Ping" type="TouchScreenButton" parent="."]
-position = Vector2( 651, 396 )
-scale = Vector2( 5.844, 5.875 )
+[node name="Ping" type="TouchScreenButton" parent="UIControl/PingandJump"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 660, 1.99998 )
+scale = Vector2( 0.5625, 0.5625 )
 z_index = 1
-normal = ExtResource( 7 )
-pressed = ExtResource( 8 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+shape = SubResource( 4 )
 action = "ping"
+
+[node name="Progress" type="VBoxContainer" parent="."]
+anchor_left = 0.027
+anchor_right = 0.041
+margin_left = -27.648
+margin_right = 210.016
+margin_bottom = 124.0
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Progress"]
+margin_right = 252.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 252, 124 )
+color = Color( 0, 0, 0, 0.184314 )
+
+[node name="AltarProgress" type="HBoxContainer" parent="Progress/ColorRect"]
+anchor_top = 0.155
+anchor_bottom = 0.155
+margin_left = 30.0
+margin_right = 252.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+alignment = 1
+
+[node name="Sprite" type="Sprite" parent="Progress/ColorRect/AltarProgress"]
+texture = ExtResource( 6 )
+hframes = 7
+
+[node name="ProgressBar" type="ProgressBar" parent="Progress/ColorRect/AltarProgress"]
+margin_left = 36.0
+margin_right = 186.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 150, 20 )
+max_value = 8.0
+
+[node name="Inventory" type="HBoxContainer" parent="Progress/ColorRect"]
+anchor_top = 0.689
+anchor_right = 1.0
+anchor_bottom = 0.851
+margin_left = 30.0
+alignment = 1
+
+[node name="Sprite" type="Sprite" parent="Progress/ColorRect/Inventory"]
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Progress/ColorRect/Inventory"]
+margin_left = 107.0
+margin_right = 115.0
+margin_bottom = 31.0
+text = "0
+"
+align = 1
+valign = 1

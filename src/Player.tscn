@@ -135,6 +135,7 @@ scale = Vector2( 0.205859, 0.215625 )
 texture = ExtResource( 8 )
 
 [node name="BrandOfBanishment" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.631373 )
 position = Vector2( 0, 24 )
 scale = Vector2( 0.75, 0.75 )

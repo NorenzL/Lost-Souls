@@ -34,7 +34,7 @@ onready var anim = $PlayerAnimate
 
 onready var player_touch = $playerTouch
 
-onready var cue = find_node("DangerCue")
+onready var cue =  $CanvasLayer/DangerCue
 onready var BoB = $BrandOfBanishment
 onready var canvasModulate = null
 onready var stunner = $stunner

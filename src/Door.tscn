@@ -84,6 +84,6 @@ parameters/playback = SubResource( 8 )
 
 [node name="OffScreenMarker" parent="." instance=ExtResource( 3 )]
 modulate = Color( 0.7, 0.7, 0.7, 1 )
-position = Vector2( -144, -8 )
+position = Vector2( -56, 0 )
 
 [connection signal="body_entered" from="." to="." method="_on_Door_body_entered"]

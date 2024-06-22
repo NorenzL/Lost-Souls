@@ -132,6 +132,6 @@ parameters/playback = SubResource( 8 )
 
 [node name="OffScreenMarker" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( -47, 48 )
+position = Vector2( 25, 0 )
 
 [connection signal="timeout" from="Destroy_timer" to="." method="_on_Destroy_timer_timeout"]

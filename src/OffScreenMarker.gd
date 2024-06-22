@@ -1,9 +1,9 @@
 extends Node2D
 
-onready var sprite = $sprite
+onready var sprite = $CanvasModulate/sprite
+
 
 func _process(delta):
-	
 	var canvas = get_canvas_transform()
 	var top_left = -canvas.origin / canvas.get_scale()
 	var size = get_viewport_rect().size / canvas.get_scale()

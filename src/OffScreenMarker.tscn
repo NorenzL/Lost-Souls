@@ -6,6 +6,8 @@
 [node name="OffScreenMarker" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="sprite" type="Sprite" parent="CanvasModulate"]
 texture = ExtResource( 1 )
-offset = Vector2( 24, 0 )
+offset = Vector2( -20, 0 )

@@ -7,7 +7,7 @@ onready var playerdetection = $playerdetection
 
 onready var player_touch = $playerTouch
 onready var stun_timer = $stunTimer
-
+onready var sprite = $Enemy
 var _velocity := Vector2.ZERO
 var target_queue := []
 var isStunned: bool = false setget set_stun
@@ -60,6 +60,9 @@ func _physics_process(delta: float) -> void:
 			var steering := (desired_velocity - _velocity) * delta * 4.0
 			_velocity += steering
 			_velocity = move_and_slide(_velocity)
+			
+			if direction.x != 0:
+				sprite.flip_h = direction.x < 0 
 		else:
 			target_queue.pop_front() # Remove the target if it is no longer valid
 			

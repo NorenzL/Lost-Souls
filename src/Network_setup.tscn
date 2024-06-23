@@ -36,23 +36,22 @@ __meta__ = {
 "_edit_vertical_guides_": [ 1027.0 ]
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="multiplayer_configure" type="Control" parent="."]
+anchor_top = 0.587
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_top = -76.0
+margin_bottom = -76.0
+
+[node name="Panel" type="Panel" parent="multiplayer_configure"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -343.04
-margin_top = -218.7
+margin_top = 11.0
 margin_right = 343.04
-margin_bottom = 218.7
+margin_bottom = 176.0
 custom_styles/panel = ExtResource( 8 )
-
-[node name="multiplayer_configure" type="Control" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -76.0
-margin_bottom = -76.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="multiplayer_configure"]
 anchor_left = 0.5

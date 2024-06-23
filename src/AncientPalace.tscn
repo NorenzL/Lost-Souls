@@ -868,7 +868,6 @@ color = Color( 0, 0, 0, 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 2104, -552 )
 current = true
-zoom = Vector2( 5, 5 )
 drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
@@ -876,95 +875,123 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
-visible = false
 edge_connection_margin = 10.0
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 position = Vector2( 1, 0 )
 navpoly = SubResource( 27 )
 
 [node name="NavigationPolygonInstance3" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 29 )
 
 [node name="NavigationPolygonInstance4" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 30 )
 
 [node name="NavigationPolygonInstance5" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 31 )
 
 [node name="NavigationPolygonInstance6" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 32 )
 
 [node name="NavigationPolygonInstance7" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 67 )
 
 [node name="NavigationPolygonInstance8" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 66 )
 
 [node name="NavigationPolygonInstance9" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 65 )
 
 [node name="NavigationPolygonInstance10" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 64 )
 
 [node name="NavigationPolygonInstance11" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 37 )
 
 [node name="NavigationPolygonInstance12" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 63 )
 
 [node name="NavigationPolygonInstance13" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 62 )
 
 [node name="NavigationPolygonInstance14" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 40 )
 
 [node name="NavigationPolygonInstance15" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 41 )
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 42 )
 
 [node name="NavigationPolygonInstance16" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 43 )
 
 [node name="NavigationPolygonInstance17" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 44 )
 
 [node name="NavigationPolygonInstance18" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 45 )
 
 [node name="NavigationPolygonInstance19" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 46 )
 
 [node name="NavigationPolygonInstance20" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 47 )
 
 [node name="NavigationPolygonInstance21" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 48 )
 
 [node name="NavigationPolygonInstance22" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 49 )
 
 [node name="NavigationPolygonInstance23" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 50 )
 
 [node name="NavigationPolygonInstance24" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 51 )
 
 [node name="NavigationPolygonInstance25" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 52 )
 
 [node name="NavigationPolygonInstance26" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 53 )
 
 [node name="NavigationPolygonInstance27" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 54 )
 
 [node name="NavigationPolygonInstance28" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 55 )
 
 [node name="NavigationPolygonInstance29" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 56 )
 
 [node name="Spectre" parent="Navigation2D" instance=ExtResource( 10 )]

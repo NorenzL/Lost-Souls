@@ -11,7 +11,7 @@
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 64.0
-height = 160.0
+height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 27.0
@@ -129,11 +129,11 @@ shadow_enabled = true
 
 [node name="stunner" type="Area2D" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
-position = Vector2( 200, 0 )
+position = Vector2( 128, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stunner"]
 visible = false
-position = Vector2( -24, -8 )
+position = Vector2( -48, -8 )
 rotation = -1.5708
 shape = SubResource( 4 )
 

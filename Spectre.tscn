@@ -116,8 +116,8 @@ volume_db = 2.0
 autoplay = true
 attenuation = 3.4822
 
-[connection signal="body_entered" from="playerdetection" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="playerdetection" to="." method="_on_playerdetection_body_entered"]
+[connection signal="body_entered" from="playerdetection" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="playerdetection" to="." method="_on_playerdetection_body_exited"]
 [connection signal="area_entered" from="playerTouch" to="." method="_on_playerTouch_area_entered"]
 [connection signal="area_exited" from="playerTouch" to="." method="_on_playerTouch_area_exited"]

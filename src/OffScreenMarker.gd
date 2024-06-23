@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var sprite = $CanvasModulate/sprite
+onready var sprite = $sprite
 
 
 func _process(delta):

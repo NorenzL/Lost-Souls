@@ -152,6 +152,7 @@ shape = SubResource( 3 )
 position = Vector2( 0, 8 )
 frames = SubResource( 9 )
 animation = "Idle"
+frame = 1
 playing = true
 
 [node name="FireflyParticle" parent="PlayerAnimate" instance=ExtResource( 5 )]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Sprites/BG_Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://src/AncientPalace.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/Tile.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/FloorTileMap.png" type="Texture" id=6]
+[ext_resource path="res://hud/mobileControls.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/orb_collision.gd" type="Script" id=8]
 [ext_resource path="res://src/Altar.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Spectre.tscn" type="PackedScene" id=10]
@@ -1004,3 +1005,5 @@ wait_time = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 60 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 7 )]

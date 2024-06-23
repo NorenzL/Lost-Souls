@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/scripts/Network_setup.gd" type="Script" id=1]
 [ext_resource path="res://src/UI.gd" type="Script" id=2]
@@ -8,6 +8,13 @@
 [ext_resource path="res://ButtonTexture/NormalButton.tres" type="StyleBox" id=6]
 [ext_resource path="res://Sprites/Icons/logout_20dp_FILL0_wght400_GRAD0_opsz20.png" type="Texture" id=7]
 [ext_resource path="res://ButtonTexture/Panel.tres" type="StyleBox" id=8]
+[ext_resource path="res://Sprites/Orb.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="DynamicFont" id=9]
+size = 75
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 50
@@ -42,6 +49,40 @@ anchor_right = 1.0
 anchor_bottom = 0.8
 margin_top = -76.0
 margin_bottom = -76.0
+
+[node name="Logo" type="Panel" parent="multiplayer_configure"]
+margin_left = 178.0
+margin_top = -232.2
+margin_right = 708.0
+margin_bottom = -232.2
+custom_styles/panel = SubResource( 8 )
+
+[node name="Label2" type="Label" parent="multiplayer_configure/Logo"]
+margin_left = 285.856
+margin_top = 34.8
+margin_right = 479.856
+margin_bottom = 124.8
+rect_pivot_offset = Vector2( -506.144, -157.2 )
+custom_fonts/font = SubResource( 9 )
+text = "S   uls"
+
+[node name="Label" type="Label" parent="multiplayer_configure/Logo"]
+margin_left = 125.856
+margin_top = -13.2
+margin_right = 308.856
+margin_bottom = 76.8
+rect_pivot_offset = Vector2( -506.144, -157.2 )
+custom_fonts/font = SubResource( 9 )
+text = "Lost"
+
+[node name="TextureRect" type="TextureRect" parent="multiplayer_configure/Logo"]
+anchor_bottom = 0.135
+margin_left = 305.856
+margin_top = 14.8
+margin_right = 369.856
+margin_bottom = 62.195
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 9 )
 
 [node name="Panel" type="Panel" parent="multiplayer_configure"]
 anchor_left = 0.5
@@ -166,6 +207,43 @@ custom_styles/normal = ExtResource( 6 )
 icon = ExtResource( 7 )
 icon_align = 1
 expand_icon = true
+
+[node name="Logo" type="Panel" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -334.0
+margin_top = 45.0
+margin_right = 333.712
+margin_bottom = 168.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="Label2" type="Label" parent="UI/Logo"]
+margin_left = 285.856
+margin_top = 34.8
+margin_right = 479.856
+margin_bottom = 124.8
+rect_pivot_offset = Vector2( -506.144, -157.2 )
+custom_fonts/font = SubResource( 9 )
+text = "S   uls"
+
+[node name="Label" type="Label" parent="UI/Logo"]
+margin_left = 125.856
+margin_top = -13.2
+margin_right = 308.856
+margin_bottom = 76.8
+rect_pivot_offset = Vector2( -506.144, -157.2 )
+custom_fonts/font = SubResource( 9 )
+text = "Lost"
+
+[node name="TextureRect" type="TextureRect" parent="UI/Logo"]
+anchor_bottom = 0.135
+margin_left = 305.856
+margin_top = 14.8
+margin_right = 369.856
+margin_bottom = 62.195
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 9 )
 
 [connection signal="pressed" from="multiplayer_configure/VBoxContainer/HBoxContainer/Create_Server" to="." method="_on_Create_Server_pressed"]
 [connection signal="pressed" from="multiplayer_configure/VBoxContainer/HBoxContainer/Join Server" to="." method="_on_Join_Server_pressed"]

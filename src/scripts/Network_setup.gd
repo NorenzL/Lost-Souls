@@ -6,6 +6,7 @@ var player = preload("res://src/Player.tscn")
 onready var multiplayer_config_ui = $multiplayer_configure
 onready var username_text_edit = $multiplayer_configure/VBoxContainer/Username_text_edit
 
+onready var logo = $UI/Logo
 onready var device_ip_address = $UI/Device_ip_address
 onready var disc = $UI/HBoxContainer/Disconnect_Server
 onready var start_game = $UI/HBoxContainer/Start_game
@@ -58,6 +59,7 @@ func _on_Create_Server_pressed():
 		#Network.current_player_username = username_text_edit.text
 		multiplayer_config_ui.hide()
 		disc.show()
+		logo.show()
 		Network.create_server()
 		instance_player(get_tree().get_network_unique_id())
 	
@@ -72,6 +74,7 @@ func _on_Join_Server_pressed():
 func _connected_to_server():
 	yield(get_tree().create_timer(0.1),"timeout")
 	disc.show()
+	logo.show()
 	instance_player(get_tree().get_network_unique_id())
 
 func instance_player (id) -> void:
@@ -93,6 +96,7 @@ func _on_Disconnect_Server_pressed():
 			child.queue_free()
 	Network.reset_network_connection()
 	disc.hide()
+	logo.hide()
 	Global.player_id.resize(0)
 	Global.number_of_players = 0
 	get_tree().change_scene("res://src/Network_setup.tscn")

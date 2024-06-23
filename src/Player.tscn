@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Sprites/Player_Idle.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Assets/FireflyParticle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/Player Animation.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Brand of Banishment.png" type="Texture" id=7]
-[ext_resource path="res://hud/mobileControls.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sprites/Controls/Paranoia.png" type="Texture" id=10]
 
 [sub_resource type="CapsuleShape2D" id=4]
@@ -152,6 +151,7 @@ shape = SubResource( 3 )
 position = Vector2( 0, 8 )
 frames = SubResource( 9 )
 animation = "Idle"
+frame = 1
 playing = true
 
 [node name="FireflyParticle" parent="PlayerAnimate" instance=ExtResource( 5 )]
@@ -166,7 +166,14 @@ texture = ExtResource( 1 )
 wait_time = 0.05
 autostart = true
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 9 )]
+[node name="BrandOfBanishment" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.631373 )
+position = Vector2( 0, 24 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DangerCue" type="TextureRect" parent="CanvasLayer"]
 visible = false
@@ -175,10 +182,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -1240.0
-margin_top = -877.0
-margin_right = 1240.0
-margin_bottom = 877.0
+margin_left = -1232.0
+margin_top = -844.0
+margin_right = 1248.0
+margin_bottom = 910.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 0.41, 0.36 )
@@ -198,13 +205,6 @@ tree_root = SubResource( 13 )
 anim_player = NodePath("../DangerAnim")
 active = true
 parameters/playback = SubResource( 14 )
-
-[node name="BrandOfBanishment" type="Sprite" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.631373 )
-position = Vector2( 0, 24 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 7 )
 
 [connection signal="body_entered" from="playerTouch" to="." method="_on_playerTouch_body_entered"]
 [connection signal="timeout" from="Network_tick_rate" to="." method="_on_Network_tick_rate_timeout"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/FireflyParticle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Spectre.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/SpectreAnimation.png" type="Texture" id=3]
 [ext_resource path="res://Audio/SpecterCue3.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Audio/BoB.wav" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 20.0
@@ -95,7 +96,6 @@ shape = SubResource( 3 )
 [node name="stunTimer" type="Timer" parent="."]
 
 [node name="ParanoiaAOE" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParanoiaAOE"]
 shape = SubResource( 4 )
@@ -114,7 +114,13 @@ parameters/playback = SubResource( 10 )
 stream = ExtResource( 4 )
 volume_db = 2.0
 autoplay = true
+max_distance = 1500.0
 attenuation = 3.4822
+
+[node name="Curse" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+max_distance = 1500.0
 
 [connection signal="body_entered" from="playerdetection" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="playerdetection" to="." method="_on_playerdetection_body_entered"]

@@ -13,11 +13,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	$OrbSound.play()
 
 
 func _on_yellow_orb_body_entered(body):
 	if body.name == Global.player_id[1] and OrbCounter.inventory[1]==0:
+		body.collect.play()
 		OrbCounter.incrementYellowOrbs()
 		self.queue_free()
 

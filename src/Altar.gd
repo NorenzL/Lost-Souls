@@ -42,26 +42,31 @@ func _on_Altar_body_entered(body):
 					# Decrement the player's orb inventory and increment the altar's orb count
 					OrbCounter.inventory[0] -= 1
 					orbPlaced += 1
+					$Submission.play()
 					print(orbPlaced)
 			1:
 				if OrbCounter.inventory[1] > 0:
 					OrbCounter.inventory[1] -= 1
 					orbPlaced += 1
+					$Submission.play()
 					print(orbPlaced)
 			2:
 				if OrbCounter.inventory[2] > 0:
 					OrbCounter.inventory[2] -= 1
 					orbPlaced += 1
+					$Submission.play()
 					print(orbPlaced)
 			3:
 				if OrbCounter.inventory[3] > 0:
 					OrbCounter.inventory[3] -= 1
 					orbPlaced += 1
+					$Submission.play()
 					print(orbPlaced)
 			_:
 				pass  # In case the playerHolder value doesn't match any of the expected positions
 			
 		if orbPlaced == requiredOrbs:
+			$PortalOpen.play()
 			door.show()
 			_set_door_is_open(true)
 			$AnimationPlayer.play("Activating")

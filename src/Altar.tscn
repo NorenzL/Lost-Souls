@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Altar.gd" type="Script" id=1]
 [ext_resource path="res://Assets/FireflyParticle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/AltarAnimate.png" type="Texture" id=3]
+[ext_resource path="res://Audio/Submission.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/RiftOpening2.mp3" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 16 )
@@ -94,5 +96,13 @@ anims/Unopened = SubResource( 5 )
 
 [node name="FireflyParticle" parent="." instance=ExtResource( 2 )]
 modulate = Color( 1.5, 1.5, 0.5, 1 )
+
+[node name="Submission" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 10.0
+max_distance = 500.0
+
+[node name="PortalOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="body_entered" from="." to="." method="_on_Altar_body_entered"]

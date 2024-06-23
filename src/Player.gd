@@ -34,6 +34,7 @@ onready var anim = $PlayerAnimate
 
 onready var player_touch = $playerTouch
 
+onready var collect = $Collect
 onready var cue =  $CanvasLayer/DangerCue
 onready var BoB = $BrandOfBanishment
 onready var canvasModulate = null
@@ -218,6 +219,7 @@ func _on_Light_timeout():
 
 	
 func collect_power(powerup):
+	$Collect.play()
 	if powerup == "speed":
 		timer.start(10)
 		speed = 500
@@ -249,6 +251,8 @@ func collect_power(powerup):
 
 func _on_playerTouch_body_entered(body):
 	if Global.player_id.has(body.name):
+		if body.isDead == true:
+			$Unseal.play()
 		isDead = false
 		stunner.visible = true
 		stunner_area.disabled = false

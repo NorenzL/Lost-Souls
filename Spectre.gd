@@ -104,6 +104,7 @@ func _on_playerdetection_body_entered(body):
 
 func _on_playerTouch_body_entered(body):
 	if body is KinematicBody2D:
+		$Curse.play()
 		body.die()
 		
 		if body in target_queue:
@@ -117,6 +118,7 @@ func _on_playerTouch_area_entered(area):
 	
 	if area.name == "stunner" and !(player.isDead):
 		isStunned = true 
+		$Curse.play()
 		stun_timer.start(5)
 		
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/RiftOpening2.mp3-e32dbb816d6607e1281b6b2f9c534730.mp3str"
+
+[deps]
+
+source_file="res://Audio/RiftOpening2.mp3"
+dest_files=[ "res://.import/RiftOpening2.mp3-e32dbb816d6607e1281b6b2f9c534730.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

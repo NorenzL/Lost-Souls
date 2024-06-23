@@ -25,6 +25,7 @@ AncientPalace="*res://src/AncientPalace.gd"
 Persistent_nodes="*res://src/scripts/Persistent_nodes.tscn"
 Altar="*res://src/Altar.gd"
 Door="*res://src/Door.gd"
+Bgm="*res://Audio/BGM.tscn"
 
 [display]
 

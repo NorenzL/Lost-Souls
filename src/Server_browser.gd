@@ -22,6 +22,7 @@ func _on_Server_listener_remove_server(serverIp):
 
 
 func _on_Manual_setup_pressed():
+	$click.play()
 	if manual_setup_button.text != "EXIT SETUP":
 		server_ip_text_edit.show()
 		manual_setup_button.text = "EXIT SETUP"
@@ -34,10 +35,12 @@ func _on_Manual_setup_pressed():
 		server_container.show()
 
 func _on_join_server_pressed():
+	$click.play()
 	Network.ip_address = server_ip_text_edit.text
 	hide()
 	Network.join_server()
 
 func _on_Go_back_pressed():
+	$click.play()
 	get_tree().change_scene("res://src/Network_setup.tscn")
 	# Global.instance_node(load("res://src/Network_setup.tscn"), self)

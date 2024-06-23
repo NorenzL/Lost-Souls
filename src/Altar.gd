@@ -3,13 +3,13 @@ extends Area2D
 # Variables to track which player is interacting and how many orbs have been placed in the altar
 var playerHolder: int
 var orbPlaced: int = 0
-
 var requiredOrbs = 0
-
+onready var door = get_parent().get_node("Door")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Register this instance of the altar in the Global script for easy access
 	Global.altar = self  
+	door.hide()
 
 # Signal handler for when a body enters the altar area
 func _on_Altar_body_entered(body):
@@ -55,4 +55,5 @@ func _on_Altar_body_entered(body):
 				pass  # In case the playerHolder value doesn't match any of the expected positions
 			
 		if orbPlaced == requiredOrbs:
+			door.show()
 			$AnimationPlayer.play("Activating")

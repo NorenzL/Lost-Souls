@@ -4,11 +4,11 @@ extends Control
 var player = preload("res://src/Player.tscn")
 #vars used in ui nodes
 onready var multiplayer_config_ui = $multiplayer_configure
-onready var username_text_edit = $multiplayer_configure/Username_text_edit
+onready var username_text_edit = $multiplayer_configure/VBoxContainer/Username_text_edit
 
 onready var device_ip_address = $UI/Device_ip_address
-onready var disc = $UI/Disconnect_Server
-onready var start_game = $UI/Start_game
+onready var disc = $UI/HBoxContainer/Disconnect_Server
+onready var start_game = $UI/HBoxContainer/Start_game
 
 func _ready():
 	get_tree().connect("network_peer_connected",self,"_player_connected")

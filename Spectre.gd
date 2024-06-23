@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		if current_target:
 			_agent.set_target_location(current_target.global_position)
 			var direction := global_position.direction_to(_agent.get_next_location())
-			var desired_velocity := direction * 200
+			var desired_velocity := direction * 1
 			var steering := (desired_velocity - _velocity) * delta * 4.0
 			_velocity += steering
 			_velocity = move_and_slide(_velocity)

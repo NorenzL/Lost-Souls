@@ -18,6 +18,7 @@ func set_marker_position(bounds: Rect2):
 	if bounds.has_point(global_position):
 		hide()
 	else:
+		sprite.z_index = 1
 		show()
 
 func set_marker_rotation():

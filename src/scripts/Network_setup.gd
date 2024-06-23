@@ -84,9 +84,10 @@ func instance_player (id) -> void:
 	player_instance.set_network_master(id)
 	player_instance.username = username_text_edit.text
 
-func _on_Start_game_pressed():
+sync func _on_Start_game_pressed():
 	
-	rpc("switch_to_game")
+	#rpc("switch_to_game")
+	rpc("get_scene")
 
 func _on_Disconnect_Server_pressed():
 	for child in Persistent_nodes.get_children():
@@ -99,38 +100,41 @@ func _on_Disconnect_Server_pressed():
 	get_tree().change_scene("res://src/Network_setup.tscn")
 
 sync func switch_to_game():
-	if Global.number_of_players == 4:
-		get_scene()
-	if Global.number_of_players == 6:
-		get_scene()
-	if Global.number_of_players == 8:
-		get_scene()
+	#if Global.number_of_players == 4:
+		#get_scene()
+	#if Global.number_of_players == 6:
+	get_scene()
+	#if Global.number_of_players == 8:
+		#get_scene()
 		
 sync func get_scene():
 	var arr = [1,2,3,4]
-	var rng = randi() % arr.size()
-	if rng == 1:
+	var rng = RandomNumberGenerator.new()
+	rng.seed = OS.get_unix_time()
+	var choice = rng.randi_range(1,arr.size())
+	print ("num: " ,rng)
+	if choice == 1:
 		if Global.number_of_players == 4:
 			get_tree().change_scene("res://src/AncientPalace(2-1).tscn")
 		if Global.number_of_players == 6:
 			get_tree().change_scene("res://src/AncientPalace(3-1).tscn")
 		if Global.number_of_players == 8:
 			get_tree().change_scene("res://src/AncientPalace(4-1).tscn")
-	if rng == 2:
+	if choice == 2:
 		if Global.number_of_players == 4:
 			get_tree().change_scene("res://src/AncientPalace(2-2).tscn")
 		if Global.number_of_players == 6:
 			get_tree().change_scene("res://src/AncientPalace(3-2).tscn")
 		if Global.number_of_players == 8:
 			get_tree().change_scene("res://src/AncientPalace(4-2).tscn")
-	if rng == 3:
+	if choice == 3:
 		if Global.number_of_players == 4:
 			get_tree().change_scene("res://src/AncientPalace(2-3).tscn")
 		if Global.number_of_players == 6:
 			get_tree().change_scene("res://src/AncientPalace(3-3).tscn")
 		if Global.number_of_players == 8:
 			get_tree().change_scene("res://src/AncientPalace(4-3).tscn")
-	if rng == 4:
+	if choice == 4:
 		if Global.number_of_players == 4:
 			get_tree().change_scene("res://src/AncientPalace(2-4).tscn")
 		if Global.number_of_players == 6:

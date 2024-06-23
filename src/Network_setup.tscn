@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/scripts/Network_setup.gd" type="Script" id=1]
 [ext_resource path="res://src/UI.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Icons/arrow_right_24dp_FILL0_wght400_GRAD0_opsz24.png" type="Texture" id=3]
+[ext_resource path="res://Font/PixelifySans-VariableFont_wght.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ButtonTexture/HoverButton.tres" type="StyleBox" id=5]
+[ext_resource path="res://ButtonTexture/NormalButton.tres" type="StyleBox" id=6]
+[ext_resource path="res://Sprites/Icons/logout_20dp_FILL0_wght400_GRAD0_opsz20.png" type="Texture" id=7]
+[ext_resource path="res://ButtonTexture/Panel.tres" type="StyleBox" id=8]
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=3]
+size = 29
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 29
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 29
+font_data = ExtResource( 4 )
 
 [node name="Network_setup" type="Control"]
 anchor_right = 1.0
@@ -12,39 +36,89 @@ __meta__ = {
 "_edit_vertical_guides_": [ 1027.0 ]
 }
 
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -343.04
+margin_top = -218.7
+margin_right = 343.04
+margin_bottom = 218.7
+custom_styles/panel = ExtResource( 8 )
+
 [node name="multiplayer_configure" type="Control" parent="."]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+margin_top = -76.0
+margin_bottom = -76.0
 
-[node name="Create_Server" type="Button" parent="multiplayer_configure"]
+[node name="VBoxContainer" type="VBoxContainer" parent="multiplayer_configure"]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -136.0
-margin_top = -100.0
-margin_right = 128.0
-margin_bottom = -48.0
+anchor_bottom = 0.581
+margin_left = -265.0
+margin_top = 30.0
+margin_right = 265.0
+margin_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 530, 50 )
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Username_text_edit" type="LineEdit" parent="multiplayer_configure/VBoxContainer"]
+margin_right = 530.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 530, 100 )
+custom_colors/cursor_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+align = 1
+expand_to_text_length = true
+placeholder_text = "Enter your Name..."
+placeholder_alpha = 0.5
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="multiplayer_configure/VBoxContainer"]
+margin_top = 130.0
+margin_right = 530.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 530, 50 )
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Create_Server" type="Button" parent="multiplayer_configure/VBoxContainer/HBoxContainer"]
+margin_left = 68.0
+margin_right = 257.0
+margin_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 100, 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
 text = "Host Server"
 
-[node name="Join Server" type="Button" parent="multiplayer_configure"]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -136.0
-margin_top = -28.0
-margin_right = 128.0
-margin_bottom = 24.0
+[node name="Join Server" type="Button" parent="multiplayer_configure/VBoxContainer/HBoxContainer"]
+margin_left = 287.0
+margin_right = 462.0
+margin_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 100, 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
 text = "Join Server"
-
-[node name="Username_text_edit" type="LineEdit" parent="multiplayer_configure"]
-margin_left = 320.0
-margin_top = -204.0
-margin_right = 704.0
-margin_bottom = -156.0
-align = 1
-placeholder_text = "Enter Username"
-placeholder_alpha = 0.76
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )
@@ -54,22 +128,47 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -88.0
+custom_colors/font_color = Color( 0.71875, 0.71875, 0.71875, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "192.168.1.5"
 align = 1
 valign = 1
 
-[node name="Disconnect_Server" type="Button" parent="UI"]
-margin_left = 864.0
-margin_top = 8.0
-margin_right = 1019.0
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchor_top = 0.01
+anchor_right = 1.0
+anchor_bottom = 0.1
+margin_right = -10.0
+custom_constants/separation = 20
+alignment = 2
+
+[node name="Start_game" type="Button" parent="UI/HBoxContainer"]
+margin_left = 894.0
+margin_right = 944.0
 margin_bottom = 54.0
-text = "DISCONNECT"
+rect_min_size = Vector2( 50, 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 3 )
+icon_align = 1
+expand_icon = true
 
-[node name="Start_game" type="Button" parent="UI"]
-margin_right = 155.0
-margin_bottom = 46.0
-text = "START GAME"
+[node name="Disconnect_Server" type="Button" parent="UI/HBoxContainer"]
+margin_left = 964.0
+margin_right = 1014.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 50, 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 7 )
+icon_align = 1
+expand_icon = true
 
-[connection signal="pressed" from="multiplayer_configure/Create_Server" to="." method="_on_Create_Server_pressed"]
-[connection signal="pressed" from="multiplayer_configure/Join Server" to="." method="_on_Join_Server_pressed"]
-[connection signal="pressed" from="UI/Disconnect_Server" to="." method="_on_Disconnect_Server_pressed"]
-[connection signal="pressed" from="UI/Start_game" to="." method="_on_Start_game_pressed"]
+[connection signal="pressed" from="multiplayer_configure/VBoxContainer/HBoxContainer/Create_Server" to="." method="_on_Create_Server_pressed"]
+[connection signal="pressed" from="multiplayer_configure/VBoxContainer/HBoxContainer/Join Server" to="." method="_on_Join_Server_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/Start_game" to="." method="_on_Start_game_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/Disconnect_Server" to="." method="_on_Disconnect_Server_pressed"]

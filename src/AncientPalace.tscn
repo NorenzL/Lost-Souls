@@ -996,7 +996,7 @@ visible = false
 navpoly = SubResource( 56 )
 
 [node name="Spectre" parent="Navigation2D" instance=ExtResource( 10 )]
-position = Vector2( 1792, -1824 )
+position = Vector2( 312, -1032 )
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation2D/Spectre"]
 

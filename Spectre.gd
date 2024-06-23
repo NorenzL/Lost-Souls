@@ -32,6 +32,8 @@ var preset_locations = [
 	Vector2(2640, 1176)
 ]
 
+var current_preset_index = 0
+
 puppet var puppet_isStunned: bool = false setget puppet_set_stun
 
 # Called when the node enters the scene tree for the first time.
@@ -56,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		if current_target:
 			_agent.set_target_location(current_target.global_position)
 			var direction := global_position.direction_to(_agent.get_next_location())
-			var desired_velocity := direction * 1
+			var desired_velocity := direction * 200
 			var steering := (desired_velocity - _velocity) * delta * 4.0
 			_velocity += steering
 			_velocity = move_and_slide(_velocity)
@@ -126,8 +128,8 @@ func _on_playerTouch_area_exited(area):
 
 
 func _on_stunTimer_timeout():
-	var new_position = preset_locations[randi() % preset_locations.size()]
-	global_position = new_position	
+	current_preset_index = (current_preset_index + 1) % preset_locations.size()
+	global_position = preset_locations[current_preset_index]
 	
 	
 	if target_queue.size() > 0:

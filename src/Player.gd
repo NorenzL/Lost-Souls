@@ -108,7 +108,14 @@ func _process(delta: float) -> void:
 			if Input.is_action_pressed("ui_up") and is_on_floor():
 				velocity.y -= jumpForce
 			
-			if Input.is_action_pressed("ping") and !isPinging:
+			
+	
+		else:
+			velocity.x = 0
+			velocity.y = 0
+			anim.play("Idle")
+		
+		if Input.is_action_pressed("ping") and !isPinging:
 				isPinging = true
 				rpc("instance_ping", get_tree().get_network_unique_id())
 				timer.start(3)
@@ -116,11 +123,6 @@ func _process(delta: float) -> void:
 				
 				timer.connect("timeout", self, "_on_Timer_timeout")
 				cdTimer.connect("timeout", self, "_on_cdTimer_timeout")
-	
-		else:
-			velocity.x = 0
-			velocity.y = 0
-			anim.play("Idle")
 	else:
 		if not tween.is_active():
 			move_and_slide(puppet_velocity * speed)

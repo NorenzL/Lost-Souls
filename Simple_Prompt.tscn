@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Simple_Prompt.gd" type="Script" id=1]
 [ext_resource path="res://ButtonTexture/Panel.tres" type="StyleBox" id=2]
 [ext_resource path="res://Font/PixelifySans-VariableFont_wght.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://ButtonTexture/HoverButton.tres" type="StyleBox" id=4]
 [ext_resource path="res://ButtonTexture/NormalButton.tres" type="StyleBox" id=5]
+[ext_resource path="res://Audio/Button Click.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
@@ -63,5 +64,8 @@ text = "Simple Prompt"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="pressed" from="Panel/Ok" to="." method="_on_Ok_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/Server_browser.gd" type="Script" id=1]
 [ext_resource path="res://src/scripts/Server_listener.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ButtonTexture/HoverButton.tres" type="StyleBox" id=4]
 [ext_resource path="res://ButtonTexture/NormalButton.tres" type="StyleBox" id=5]
 [ext_resource path="res://ButtonTexture/Panel.tres" type="StyleBox" id=6]
+[ext_resource path="res://Audio/Button Click.ogg" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=5]
 size = 21
@@ -180,6 +181,9 @@ valign = 1
 uppercase = true
 
 [node name="Server_listener" parent="." instance=ExtResource( 2 )]
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 
 [connection signal="pressed" from="Background_panel/Manual_setup" to="." method="_on_Manual_setup_pressed"]
 [connection signal="pressed" from="Background_panel/Go_back" to="." method="_on_Go_back_pressed"]

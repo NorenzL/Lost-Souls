@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SpecterCue3.mp3-1803926c39781bb4dc069504070252c1.mp3str"
+
+[deps]
+
+source_file="res://Audio/SpecterCue3.mp3"
+dest_files=[ "res://.import/SpecterCue3.mp3-1803926c39781bb4dc069504070252c1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

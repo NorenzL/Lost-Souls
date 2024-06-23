@@ -2,6 +2,7 @@ extends Control
 
 
 func _on_Ok_pressed():
+	$click.play()
 	Global.player_id.resize(0)
 	Global.number_of_players = 0
 	get_tree().change_scene("res://src/Network_setup.tscn")

@@ -55,6 +55,7 @@ func _player_disconnected(id) -> void:
 		#			Global.player_id[n] = Global.player_id[n+1]
 
 func _on_Create_Server_pressed():
+	$click.play()
 	if username_text_edit.text != "":
 		#Network.current_player_username = username_text_edit.text
 		multiplayer_config_ui.hide()
@@ -65,6 +66,7 @@ func _on_Create_Server_pressed():
 	
 
 func _on_Join_Server_pressed():
+	$click.play()
 	if username_text_edit.text != "":
 		multiplayer_config_ui.hide()
 		username_text_edit.hide()
@@ -87,10 +89,12 @@ func instance_player (id) -> void:
 	player_instance.username = username_text_edit.text
 
 func _on_Start_game_pressed():
+	$click.play()
 	rpc("spawn_orbs")
 	rpc("switch_to_game")
 
 func _on_Disconnect_Server_pressed():
+	$click.play()
 	for child in Persistent_nodes.get_children():
 		if child.is_in_group("Net"):
 			child.queue_free()

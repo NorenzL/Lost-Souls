@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/scripts/Network_setup.gd" type="Script" id=1]
 [ext_resource path="res://src/UI.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Sprites/Icons/logout_20dp_FILL0_wght400_GRAD0_opsz20.png" type="Texture" id=7]
 [ext_resource path="res://ButtonTexture/Panel.tres" type="StyleBox" id=8]
 [ext_resource path="res://Sprites/Orb.png" type="Texture" id=9]
+[ext_resource path="res://Audio/Button Click.ogg" type="AudioStream" id=10]
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
@@ -143,6 +144,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
 custom_fonts/font = SubResource( 3 )
 custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 6 )
 custom_styles/normal = ExtResource( 6 )
 text = "Host Server"
 
@@ -157,6 +159,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
 custom_fonts/font = SubResource( 4 )
 custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 6 )
 custom_styles/normal = ExtResource( 6 )
 text = "Join Server"
 
@@ -244,6 +247,9 @@ margin_right = 369.856
 margin_bottom = 62.195
 rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 9 )
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 
 [connection signal="pressed" from="multiplayer_configure/VBoxContainer/HBoxContainer/Create_Server" to="." method="_on_Create_Server_pressed"]
 [connection signal="pressed" from="multiplayer_configure/VBoxContainer/HBoxContainer/Join Server" to="." method="_on_Join_Server_pressed"]

@@ -13,7 +13,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$OrbSound.play()
+	if $OrbSound.playing == false:
+		$OrbSound.play()
+	else:
+		return
 
 
 func _on_red_orb_body_entered(body):

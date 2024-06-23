@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Sprites/BG_Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://src/AncientPalace.gd" type="Script" id=2]
@@ -659,10 +659,40 @@ vertices = PoolVector2Array( 1328, 1784, 1328, 1688, 1352, 1688, 1448, 1784, 144
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2, 5 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 8, 7, 6, 9 ), PoolIntArray( 10, 8, 9, 11, 12 ), PoolIntArray( 9, 13, 14, 11 ), PoolIntArray( 15, 10, 12, 16, 17, 18 ), PoolIntArray( 19, 20, 21, 22, 23 ), PoolIntArray( 24, 25, 26, 27 ), PoolIntArray( 26, 28, 29, 30, 27 ), PoolIntArray( 29, 31, 32, 33, 34, 30 ), PoolIntArray( 33, 32, 35, 36, 37 ), PoolIntArray( 36, 38, 39, 37 ), PoolIntArray( 24, 27, 40, 41 ), PoolIntArray( 41, 40, 22, 21 ), PoolIntArray( 19, 23, 42, 43, 15, 18 ) ]
 outlines = [ PoolVector2Array( 1328, 1688, 1352, 1688, 1352, 1432, 1672, 1432, 1672, 1336, 1352, 1336, 1352, 1176, 1544, 1176, 1544, 1080, 1352, 1080, 1352, 600, 1544, 600, 1544, 504, 1352, 504, 1352, 216, 1672, 216, 1672, -200, 1608, -200, 1608, -264, 1544, -264, 1544, -328, 1480, -328, 1480, -392, 1416, -392, 1416, -456, 1352, -456, 1352, -520, 1512, -520, 1512, -424, 1576, -424, 1576, -360, 1784, -360, 1784, 312, 1576, 312, 1576, 408, 1736, 408, 1736, 632, 1640, 632, 1640, 984, 1704, 984, 1704, 1592, 1448, 1592, 1448, 1784, 1328, 1784 ) ]
 
+[sub_resource type="NavigationPolygon" id=67]
+vertices = PoolVector2Array( 1784, 184, 1832, 184, 1832, 280, 1784, 280 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 1784, 184, 1832, 184, 1832, 280, 1784, 280 ) ]
+
+[sub_resource type="NavigationPolygon" id=66]
+vertices = PoolVector2Array( 1928, -136, 2280, -136, 2280, -40, 2184, -40, 1928, -40, 2184, -8, 1784, -8, 1832, -40, 1784, -136, 1832, -136 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 0, 3, 5 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 7, 6, 8, 9 ) ]
+outlines = [ PoolVector2Array( 2280, -136, 2280, -40, 2184, -40, 2184, -8, 1784, -8, 1784, -136, 1832, -136, 1832, -40, 1928, -40, 1928, -136 ) ]
+
+[sub_resource type="NavigationPolygon" id=65]
+vertices = PoolVector2Array( 1832, 600, 1832, 536, 1928, 536, 2024, 600, 2024, 504, 1928, 504 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2, 5 ) ]
+outlines = [ PoolVector2Array( 1832, 536, 1928, 536, 1928, 504, 2024, 504, 2024, 600, 1832, 600 ) ]
+
+[sub_resource type="NavigationPolygon" id=64]
+vertices = PoolVector2Array( 1800, 632, 1800, 600, 2120, 600, 2120, 88, 2184, 88, 2344, 696, 2152, 696, 2184, -40, 2344, -40, 2152, 728, 1800, 728 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 2, 3, 4, 5, 6 ), PoolIntArray( 4, 7, 8, 5 ), PoolIntArray( 2, 6, 9, 10, 0 ) ]
+outlines = [ PoolVector2Array( 1800, 632, 1800, 728, 2152, 728, 2152, 696, 2344, 696, 2344, -40, 2184, -40, 2184, 88, 2120, 88, 2120, 600, 1800, 600 ) ]
+
 [sub_resource type="NavigationPolygon" id=37]
 vertices = PoolVector2Array( 2120, 88, 2120, 504, 1928, 504, 1928, 440, 1992, 280, 1832, 440, 1832, 632, 1736, 632, 1736, 408, 1784, 312, 1736, 312, 1784, 280, 1992, 184, 2024, 88, 1784, 184, 1784, -8, 2024, -8 )
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8, 9 ), PoolIntArray( 8, 10, 9 ), PoolIntArray( 5, 9, 11, 4, 3 ), PoolIntArray( 0, 4, 12, 13 ), PoolIntArray( 12, 14, 15, 16, 13 ) ]
 outlines = [ PoolVector2Array( 2120, 88, 2024, 88, 2024, -8, 1784, -8, 1784, 184, 1992, 184, 1992, 280, 1784, 280, 1784, 312, 1736, 312, 1736, 408, 1736, 632, 1832, 632, 1832, 440, 1928, 440, 1928, 504, 2120, 504 ) ]
+
+[sub_resource type="NavigationPolygon" id=63]
+vertices = PoolVector2Array( 1448, 1784, 1448, 1688, 1736, 1688, 2344, 1784, 1736, 1592, 1704, 1592, 1704, 1240, 1832, 1240, 1832, 1560, 2120, 1560, 2120, 1368, 2248, 1368, 2248, 1272, 2088, 1272, 2088, 984, 2216, 1176, 2184, 888, 2088, 888, 2088, 824, 2152, 792, 2344, 792, 1640, 824, 1640, 728, 2152, 728, 2184, 984, 2344, 1080, 2216, 1080, 2344, 1176 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8 ), PoolIntArray( 9, 10, 11, 3 ), PoolIntArray( 12, 13, 14, 15 ), PoolIntArray( 16, 17, 18, 19, 20 ), PoolIntArray( 18, 21, 22, 23, 19 ), PoolIntArray( 24, 16, 20, 25, 26 ), PoolIntArray( 3, 2, 4, 8, 9 ), PoolIntArray( 27, 3, 11, 12 ), PoolIntArray( 15, 27, 12 ), PoolIntArray( 26, 15, 14, 24 ) ]
+outlines = [ PoolVector2Array( 1448, 1688, 1736, 1688, 1736, 1592, 1704, 1592, 1704, 1240, 1832, 1240, 1832, 1560, 2120, 1560, 2120, 1368, 2248, 1368, 2248, 1272, 2088, 1272, 2088, 984, 2184, 984, 2184, 888, 2088, 888, 2088, 824, 1640, 824, 1640, 728, 2152, 728, 2152, 792, 2344, 792, 2344, 1080, 2216, 1080, 2216, 1176, 2344, 1176, 2344, 1784, 1448, 1784 ) ]
+
+[sub_resource type="NavigationPolygon" id=62]
+vertices = PoolVector2Array( 1800, -424, 2344, -424, 2344, -392, 2280, -392, 1800, -360, 2280, -296, 2184, -264, 2088, -264, 2344, -296, 2344, -136, 2184, -136, 2088, -136, 1784, -136, 1784, -360 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 0, 3, 5, 6, 7 ), PoolIntArray( 5, 8, 9, 10, 6 ), PoolIntArray( 4, 7, 11, 12, 13 ) ]
+outlines = [ PoolVector2Array( 1800, -424, 1800, -360, 1784, -360, 1784, -136, 2088, -136, 2088, -264, 2184, -264, 2184, -136, 2344, -136, 2344, -296, 2280, -296, 2280, -392, 2344, -392, 2344, -424 ) ]
 
 [sub_resource type="NavigationPolygon" id=40]
 vertices = PoolVector2Array( 1640, 888, 1640, 824, 1832, 824, 1736, 888, 1832, 920, 1736, 984, 2056, 920, 2056, 824, 2088, 824, 2088, 1144, 1704, 1144, 1704, 984 )
@@ -829,6 +859,7 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
@@ -847,114 +878,91 @@ scale = Vector2( 1.5, 1.5 )
 edge_connection_margin = 10.0
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 position = Vector2( 1, 0 )
 navpoly = SubResource( 27 )
 
 [node name="NavigationPolygonInstance3" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 29 )
 
 [node name="NavigationPolygonInstance4" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 30 )
 
 [node name="NavigationPolygonInstance5" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 31 )
 
 [node name="NavigationPolygonInstance6" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 32 )
 
 [node name="NavigationPolygonInstance7" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
+navpoly = SubResource( 67 )
 
 [node name="NavigationPolygonInstance8" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
+navpoly = SubResource( 66 )
 
 [node name="NavigationPolygonInstance9" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
+navpoly = SubResource( 65 )
 
 [node name="NavigationPolygonInstance10" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
+navpoly = SubResource( 64 )
 
 [node name="NavigationPolygonInstance11" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 37 )
 
 [node name="NavigationPolygonInstance12" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
+navpoly = SubResource( 63 )
 
 [node name="NavigationPolygonInstance13" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
+navpoly = SubResource( 62 )
 
 [node name="NavigationPolygonInstance14" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 40 )
 
 [node name="NavigationPolygonInstance15" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 41 )
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 42 )
 
 [node name="NavigationPolygonInstance16" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 43 )
 
 [node name="NavigationPolygonInstance17" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 44 )
 
 [node name="NavigationPolygonInstance18" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 45 )
 
 [node name="NavigationPolygonInstance19" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 46 )
 
 [node name="NavigationPolygonInstance20" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 47 )
 
 [node name="NavigationPolygonInstance21" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 48 )
 
 [node name="NavigationPolygonInstance22" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 49 )
 
 [node name="NavigationPolygonInstance23" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 50 )
 
 [node name="NavigationPolygonInstance24" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 51 )
 
 [node name="NavigationPolygonInstance25" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 52 )
 
 [node name="NavigationPolygonInstance26" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 53 )
 
 [node name="NavigationPolygonInstance27" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 54 )
 
 [node name="NavigationPolygonInstance28" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 55 )
 
 [node name="NavigationPolygonInstance29" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 56 )
 
 [node name="Spectre" parent="Navigation2D" instance=ExtResource( 10 )]

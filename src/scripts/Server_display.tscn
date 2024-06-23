@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Server_display.gd" type="Script" id=1]
 [ext_resource path="res://ButtonTexture/HoverButton.tres" type="StyleBox" id=2]
 [ext_resource path="res://ButtonTexture/NormalButton.tres" type="StyleBox" id=3]
 [ext_resource path="res://Font/PixelifySans-VariableFont_wght.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Audio/Button Click.ogg" type="AudioStream" id=5]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.145098, 0.168627, 0.254902, 1 )
@@ -44,5 +45,8 @@ custom_fonts/font = SubResource( 2 )
 custom_styles/hover = ExtResource( 2 )
 custom_styles/normal = ExtResource( 3 )
 text = "JOIN"
+
+[node name="click" type="AudioStreamPlayer" parent="Server_display"]
+stream = ExtResource( 5 )
 
 [connection signal="pressed" from="Server_display/join_button" to="Server_display" method="_on_join_button_pressed"]

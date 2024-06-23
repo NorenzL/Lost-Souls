@@ -12,7 +12,7 @@ var _velocity := Vector2.ZERO
 var target_queue := []
 var isStunned: bool = false setget set_stun
 var isRaging: bool = false
-onready var door_reference = get_node("../../Door")
+onready var altar_reference = get_node("../../Altar")
 
 var preset_locations = [
 	Vector2(1216, -1952),
@@ -43,7 +43,7 @@ func _ready():
 	player_touch.connect("area_exited", self, "_on_playerTouch_area_exited")
 	stun_timer.connect("timeout", self, "_on_stunTimer_timeout")
 
-	door_reference.connect("door_state_changed", self, "_on_door_state_changed")
+	altar_reference.connect("door_state_changed", self, "_on_door_state_changed")
 func _physics_process(delta: float) -> void:
 	
 	if isStunned and !(isRaging):

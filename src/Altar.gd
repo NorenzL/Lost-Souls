@@ -5,6 +5,13 @@ var playerHolder: int
 var orbPlaced: int = 0
 var requiredOrbs = 0
 onready var door = get_parent().get_node("Door")
+signal door_state_changed(is_open)
+export var doorIsOpen: bool = false setget _set_door_is_open
+
+func _set_door_is_open(value: bool) -> void:
+	doorIsOpen = value
+	emit_signal("door_state_changed", doorIsOpen)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Register this instance of the altar in the Global script for easy access
@@ -56,4 +63,5 @@ func _on_Altar_body_entered(body):
 			
 		if orbPlaced == requiredOrbs:
 			door.show()
+			_set_door_is_open(true)
 			$AnimationPlayer.play("Activating")

@@ -83,6 +83,7 @@ active = true
 parameters/playback = SubResource( 8 )
 
 [node name="OffScreenMarker" parent="." instance=ExtResource( 3 )]
+visible = false
 modulate = Color( 0.7, 0.7, 0.7, 1 )
 position = Vector2( 24, 0 )
 

@@ -5,10 +5,11 @@ extends Area2D
 signal door_state_changed(is_open)
 
 export var doorIsOpen: bool = false setget _set_door_is_open
-
+	
 func _set_door_is_open(value: bool) -> void:
 	doorIsOpen = value
 	emit_signal("door_state_changed", doorIsOpen)
+	
 	
 func _on_Door_body_entered(body):
 	# Check if the body is a player by verifying its name in the global player_id list
@@ -44,7 +45,7 @@ func _on_Door_body_entered(body):
 		if totalOrbsInAltar >= requiredOrbs:
 			_set_door_is_open(true)
 			
-		
 			print("Players can exit")
 		else:
+			
 			print("Players cannot exit, not enough orbs in the altar")

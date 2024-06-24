@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var ping = load('res://src/ping.tscn')
 const username_text = preload('res://src/username_text.tscn')
-export var speed: int = 1000
+export var speed: int = 200
 export var jumpForce: int = 600
 export var gravity: int = 800
 
@@ -119,7 +119,7 @@ func _process(delta: float) -> void:
 				isPinging = true
 				rpc("instance_ping", get_tree().get_network_unique_id())
 				timer.start(3)
-				cdTimer.start(1)
+				cdTimer.start(10)
 				
 				timer.connect("timeout", self, "_on_Timer_timeout")
 				cdTimer.connect("timeout", self, "_on_cdTimer_timeout")

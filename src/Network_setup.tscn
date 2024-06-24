@@ -321,27 +321,29 @@ margin_top = 33.0
 margin_right = 835.0
 margin_bottom = 517.0
 custom_fonts/normal_font = SubResource( 12 )
-text = "- collect orbs according to your color
+text = "- Each player collects orbs that match their designated color.
 
-- each player can only carry 1 orb at a time
+- Players can carry only one orb at any given time.
 
-- collected orbs must be placed in the altar
+- All collected orbs must be placed in the altar to progress.
 
-- collect all orbs to activate the exit
+- Collect all orbs to activate the exit.
 
--all remaining players alive must go near the exit to win
+- All unsealed players must gather near the exit to win the game.
 
-- stare at the spectre for 5 seconds to stop it from moving. It will relocate somewhere on the map
+- Stare at the spectre for 5 seconds to immobilize it temporarily. It will relocate afterward.
 
--a visual and sound cue will indicate if the spectre is near a player
+- Visual and sound cues will alert players when the spectre is nearby.
 
-- players touched by the spectre will be sealed and unable to move
+- Players touched by the spectre will be sealed and unable to move.
 
-- players must touch sealed players to unseal them
+- Free sealed players by touching them to unseal them.
 
--use powerups scattered around the map to help collect the orbs
+- Utilize powerups scattered across the map to aid in orb collection.
 
--use your ping button to signal your current location to other players"
+- Powerups are Speed, Invulnerability, and Light.
+
+- Use the ping button to signal your current location to other players for coordination."
 
 [node name="click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )

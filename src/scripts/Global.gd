@@ -9,7 +9,7 @@ var winner = []  # List to track winners
 var ui = null  # Reference to the UI node
 var flashlight: bool = true  # Flashlight state (on/off)
 var altar = null  # Reference to the Altar node
-
+var dead_players = 0
 # Function to instance a node at a specific location within a parent node
 func instance_node_at_location(node: Object, parent: Object, location: Vector2) -> Object:
 	# Instance the node and set its global position

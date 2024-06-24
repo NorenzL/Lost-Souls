@@ -93,7 +93,9 @@ sync func _on_Start_game_pressed():
 	$click.play()
 	#rpc("switch_to_game")
 	rpc("get_scene")
+	
 
+	
 func _on_Disconnect_Server_pressed():
 	$click.play()
 	for child in Persistent_nodes.get_children():

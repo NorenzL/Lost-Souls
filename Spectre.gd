@@ -53,6 +53,11 @@ func _physics_process(delta: float) -> void:
 		
 	if _agent.is_navigation_finished():
 		return 
+	
+	if Global.dead_players >= Global.number_of_players:
+		get_tree().change_scene("res://src/gameover.tscn")
+		
+	
 	if target_queue.size() > 0:
 		var current_target = target_queue[0]
 		if current_target:
@@ -106,7 +111,8 @@ func _on_playerTouch_body_entered(body):
 	if body is KinematicBody2D:
 		$Curse.play()
 		body.die()
-		
+		Global.dead_players += 2
+		print("Number of dead player: ", Global.dead_players)
 		if body in target_queue:
 			target_queue.erase(body)
 			target_queue.append(body)  # Move to the end of the queue

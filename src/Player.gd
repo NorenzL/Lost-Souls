@@ -253,10 +253,13 @@ func _on_playerTouch_body_entered(body):
 	if Global.player_id.has(body.name):
 		if body.isDead == true:
 			$Unseal.play()
+			Global.dead_players -= 2
 		isDead = false
 		stunner.visible = true
 		stunner_area.disabled = false
 		BoB.visible = false
+		
+		print("Number of dead players after: ", Global.dead_players)
 		
 	
 	

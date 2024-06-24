@@ -254,6 +254,7 @@ func _on_playerTouch_body_entered(body):
 		if body.isDead == true:
 			$Unseal.play()
 			Global.dead_players -= 2
+			Global.alive_players += 2
 		isDead = false
 		stunner.visible = true
 		stunner_area.disabled = false

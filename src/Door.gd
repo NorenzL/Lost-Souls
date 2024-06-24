@@ -49,7 +49,7 @@ func _on_Door_body_entered(body):
 			_set_door_is_open(true)
 			
 			if entered_player == Global.alive_players:
-				get_tree().change_scene("res://src/gameover.tscn")
+				get_tree().change_scene("res://src/Win.tscn")
 		else:
 			
 			print("Players cannot exit, not enough orbs in the altar")

@@ -11,6 +11,7 @@ onready var device_ip_address = $UI/Device_ip_address
 onready var disc = $UI/HBoxContainer/Disconnect_Server
 onready var start_game = $UI/HBoxContainer/Start_game
 
+
 func _ready():
 	get_tree().connect("network_peer_connected",self,"_player_connected")
 	get_tree().connect("network_peer_disconnected",self, "_player_disconnected")
@@ -88,10 +89,10 @@ func instance_player (id) -> void:
 	player_instance.set_network_master(id)
 	player_instance.username = username_text_edit.text
 
-func _on_Start_game_pressed():
-	$click.play()
-	rpc("spawn_orbs")
-	rpc("switch_to_game")
+sync func _on_Start_game_pressed():
+	
+	#rpc("switch_to_game")
+	rpc("get_scene")
 
 func _on_Disconnect_Server_pressed():
 	$click.play()
@@ -106,10 +107,50 @@ func _on_Disconnect_Server_pressed():
 	get_tree().change_scene("res://src/Network_setup.tscn")
 
 sync func switch_to_game():
-	get_tree().change_scene("res://src/AncientPalace.tscn")
-
+	#if Global.number_of_players == 4:
+		#get_scene()
+	#if Global.number_of_players == 6:
+	get_scene()
+	#if Global.number_of_players == 8:
+		#get_scene()
+		
+sync func get_scene():
+	var arr = [1,2,3,4]
+	var rng = RandomNumberGenerator.new()
+	rng.seed = OS.get_unix_time()
+	var choice = rng.randi_range(1,arr.size())
+	print ("num: " ,rng)
+	if choice == 1:
+		if Global.number_of_players == 4:
+			get_tree().change_scene("res://src/AncientPalace(2-1).tscn")
+		if Global.number_of_players == 6:
+			get_tree().change_scene("res://src/AncientPalace(3-1).tscn")
+		if Global.number_of_players == 8:
+			get_tree().change_scene("res://src/AncientPalace(4-1).tscn")
+	if choice == 2:
+		if Global.number_of_players == 4:
+			get_tree().change_scene("res://src/AncientPalace(2-2).tscn")
+		if Global.number_of_players == 6:
+			get_tree().change_scene("res://src/AncientPalace(3-2).tscn")
+		if Global.number_of_players == 8:
+			get_tree().change_scene("res://src/AncientPalace(4-2).tscn")
+	if choice == 3:
+		if Global.number_of_players == 4:
+			get_tree().change_scene("res://src/AncientPalace(2-3).tscn")
+		if Global.number_of_players == 6:
+			get_tree().change_scene("res://src/AncientPalace(3-3).tscn")
+		if Global.number_of_players == 8:
+			get_tree().change_scene("res://src/AncientPalace(4-3).tscn")
+	if choice == 4:
+		if Global.number_of_players == 4:
+			get_tree().change_scene("res://src/AncientPalace(2-4).tscn")
+		if Global.number_of_players == 6:
+			get_tree().change_scene("res://src/AncientPalace(3-4).tscn")
+		if Global.number_of_players == 8:
+			get_tree().change_scene("res://src/AncientPalace(4-4).tscn")
 sync func spawn_orbs():
-		OrbSpawner.spawn_objects()
+		#OrbSpawner.spawn_objects()
+		pass
 	
 sync func check_orbs():
 	print(OrbSpawner.orbs.values())

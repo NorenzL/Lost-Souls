@@ -158,3 +158,10 @@ sync func spawn_orbs():
 sync func check_orbs():
 	print(OrbSpawner.orbs.values())
 
+func _on_Instruction_pressed():
+	$click.play()
+	$UI/Instruct.show()
+
+func _on_ExitInstruct_pressed():
+	$click.play()
+	$UI/Instruct.hide()

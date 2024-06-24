@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/scripts/Network_setup.gd" type="Script" id=1]
 [ext_resource path="res://src/UI.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://ButtonTexture/Panel.tres" type="StyleBox" id=8]
 [ext_resource path="res://Sprites/Orb.png" type="Texture" id=9]
 [ext_resource path="res://Audio/Button Click.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Sprites/Icons/priority_high_20dp_FILL0_wght400_GRAD0_opsz20 (1).png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Icons/close_20dp_FILL0_wght400_GRAD0_opsz20.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
@@ -33,6 +35,36 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 29
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.223529, 0.286275, 0.972549, 0.584314 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.0196078, 0.0117647, 0.431373, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.223529, 0.286275, 0.972549, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.0196078, 0.0117647, 0.431373, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="DynamicFont" id=12]
+size = 50
 font_data = ExtResource( 4 )
 
 [node name="Network_setup" type="Control"]
@@ -248,6 +280,69 @@ margin_bottom = 62.195
 rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 9 )
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI"]
+anchor_left = 0.01
+anchor_right = 1.0
+margin_top = 8.0
+margin_right = 50.0
+margin_bottom = 58.0
+
+[node name="Instruction" type="Button" parent="UI/HBoxContainer2"]
+margin_right = 74.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 50, 50 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+icon = ExtResource( 11 )
+
+[node name="Instruct" type="Panel" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 53.0
+margin_top = 31.0
+margin_right = -53.0
+margin_bottom = -31.0
+custom_styles/panel = ExtResource( 8 )
+
+[node name="ExitInstruct" type="Button" parent="UI/Instruct"]
+margin_left = 841.0
+margin_top = 1.0
+margin_right = 915.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 50, 50 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 12 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Instruct"]
+margin_left = 35.0
+margin_top = 33.0
+margin_right = 835.0
+margin_bottom = 517.0
+custom_fonts/normal_font = SubResource( 12 )
+text = "- collect orbs according to your color
+
+- each player can only carry 1 orb at a time
+
+- collected orbs must be placed in the altar
+
+- collect all orbs to activate the exit
+
+-all remaining players alive must go near the exit to win
+
+- stare at the spectre for 5 seconds to stop it from moving. It will relocate somewhere on the map
+
+-a visual and sound cue will indicate if the spectre is near a player
+
+- players touched by the spectre will be sealed and unable to move
+
+- players must touch sealed players to unseal them
+
+-use powerups scattered around the map to help collect the orbs
+
+-use your ping button to signal your current location to other players"
+
 [node name="click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 
@@ -255,3 +350,5 @@ stream = ExtResource( 10 )
 [connection signal="pressed" from="multiplayer_configure/VBoxContainer/HBoxContainer/Join Server" to="." method="_on_Join_Server_pressed"]
 [connection signal="pressed" from="UI/HBoxContainer/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="UI/HBoxContainer/Disconnect_Server" to="." method="_on_Disconnect_Server_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer2/Instruction" to="." method="_on_Instruction_pressed"]
+[connection signal="pressed" from="UI/Instruct/ExitInstruct" to="." method="_on_ExitInstruct_pressed"]

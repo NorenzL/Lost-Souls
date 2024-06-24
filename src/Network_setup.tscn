@@ -283,9 +283,10 @@ texture = ExtResource( 9 )
 [node name="HBoxContainer2" type="HBoxContainer" parent="UI"]
 anchor_left = 0.01
 anchor_right = 1.0
+margin_left = -0.24
 margin_top = 8.0
-margin_right = 50.0
-margin_bottom = 58.0
+margin_right = -920.0
+margin_bottom = 82.0
 
 [node name="Instruction" type="Button" parent="UI/HBoxContainer2"]
 margin_right = 74.0

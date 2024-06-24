@@ -90,7 +90,7 @@ func instance_player (id) -> void:
 	player_instance.username = username_text_edit.text
 
 sync func _on_Start_game_pressed():
-	
+	$click.play()
 	#rpc("switch_to_game")
 	rpc("get_scene")
 

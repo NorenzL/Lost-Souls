@@ -85,6 +85,7 @@ func instance_player (id) -> void:
 	player_instance.name = str(id)
 	Global.player_id.append(player_instance.name)
 	Global.number_of_players += 2
+	Global.alive_players += 2
 	print (Global.number_of_players)
 	player_instance.set_network_master(id)
 	player_instance.username = username_text_edit.text

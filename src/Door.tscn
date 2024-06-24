@@ -88,3 +88,4 @@ modulate = Color( 0.7, 0.7, 0.7, 1 )
 position = Vector2( 24, 0 )
 
 [connection signal="body_entered" from="." to="." method="_on_Door_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Door_body_exited"]

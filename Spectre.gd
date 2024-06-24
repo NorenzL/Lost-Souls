@@ -121,6 +121,7 @@ func _on_playerTouch_body_entered(body):
 		$Curse.play()
 		body.die()
 		Global.dead_players += 2
+		Global.alive_players -= 2
 		print("Number of dead player: ", Global.dead_players)
 		if body in target_queue:
 			target_queue.erase(body)

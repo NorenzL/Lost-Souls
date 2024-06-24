@@ -4,6 +4,8 @@ extends Area2D
 # Signal handler for when a body enters the door area
 signal door_state_changed(is_open)
 
+var entered_player = 0
+
 export var doorIsOpen: bool = false setget _set_door_is_open
 	
 func _set_door_is_open(value: bool) -> void:
@@ -16,6 +18,7 @@ func _on_Door_body_entered(body):
 	if Global.player_id.has(body.name):
 		# Get the reference to the altar from the Global script
 		var altar = Global.altar
+		entered_player += 2
 		
 		# Check if the altar reference is valid
 		if altar == null:
@@ -23,7 +26,7 @@ func _on_Door_body_entered(body):
 			return
 
 		# Get the total number of orbs placed in the altar
-		var totalOrbsInAltar = altar.orbPlaced
+		var totalOrbsInAltar = 4
 		var requiredOrbs = 0
 
 		# Determine the required number of orbs based on the number of players
@@ -45,7 +48,12 @@ func _on_Door_body_entered(body):
 		if totalOrbsInAltar >= requiredOrbs:
 			_set_door_is_open(true)
 			
-			print("Players can exit")
+			if entered_player == Global.alive_players:
+				get_tree().change_scene("res://src/gameover.tscn")
 		else:
 			
 			print("Players cannot exit, not enough orbs in the altar")
+
+
+func _on_Door_body_exited(body):
+	entered_player -= 2

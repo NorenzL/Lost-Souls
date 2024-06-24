@@ -9,6 +9,7 @@ var winner = []  # List to track winners
 var ui = null  # Reference to the UI node
 var flashlight: bool = true  # Flashlight state (on/off)
 var altar = null  # Reference to the Altar node
+var progressBar = null
 var dead_players = 0
 var alive_players = 0;
 # Function to instance a node at a specific location within a parent node

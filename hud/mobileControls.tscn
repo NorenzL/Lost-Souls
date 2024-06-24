@@ -3,9 +3,9 @@
 [ext_resource path="res://Sprites/Controls/PingButton.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Controls/PingButtonPressed.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Controls/Arrow_Right.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Orb.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Controls/ArrowPressed.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/AltarAnimate.png" type="Texture" id=6]
+[ext_resource path="res://hud/ui.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 70 )
@@ -22,6 +22,7 @@ height = 89.2
 radius = 106.86
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 7 )
 
 [node name="UIControl" type="HBoxContainer" parent="."]
 anchor_left = 0.5
@@ -95,8 +96,8 @@ alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="Progress"]
 margin_right = 252.0
-margin_bottom = 124.0
-rect_min_size = Vector2( 252, 124 )
+margin_bottom = 50.0
+rect_min_size = Vector2( 252, 50 )
 color = Color( 0, 0, 0, 0.184314 )
 
 [node name="AltarProgress" type="HBoxContainer" parent="Progress/ColorRect"]
@@ -118,22 +119,3 @@ margin_right = 186.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 150, 20 )
 max_value = 8.0
-
-[node name="Inventory" type="HBoxContainer" parent="Progress/ColorRect"]
-anchor_top = 0.689
-anchor_right = 1.0
-anchor_bottom = 0.851
-margin_left = 30.0
-alignment = 1
-
-[node name="Sprite" type="Sprite" parent="Progress/ColorRect/Inventory"]
-texture = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="Progress/ColorRect/Inventory"]
-margin_left = 107.0
-margin_right = 115.0
-margin_bottom = 31.0
-text = "0
-"
-align = 1
-valign = 1

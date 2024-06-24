@@ -26,7 +26,7 @@ func _on_Door_body_entered(body):
 			return
 
 		# Get the total number of orbs placed in the altar
-		var totalOrbsInAltar = 4
+		var totalOrbsInAltar = altar.orbPlaced
 		var requiredOrbs = 0
 
 		# Determine the required number of orbs based on the number of players

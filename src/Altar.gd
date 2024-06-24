@@ -4,6 +4,7 @@ extends Area2D
 var playerHolder: int
 var orbPlaced: int = 0
 var requiredOrbs = 0
+
 onready var door = get_parent().get_node("Door")
 signal door_state_changed(is_open)
 export var doorIsOpen: bool = false setget _set_door_is_open
@@ -24,6 +25,7 @@ func _on_Altar_body_entered(body):
 	if Global.player_id.has(body.name):
 		# Find the player's position in the player_id list
 		playerHolder = Global.player_id.bsearch(body.name)
+		var progressBar = Global.progressBar
 		
 		match Global.number_of_players:
 			4:
@@ -42,24 +44,28 @@ func _on_Altar_body_entered(body):
 					# Decrement the player's orb inventory and increment the altar's orb count
 					OrbCounter.inventory[0] -= 1
 					orbPlaced += 1
+					progressBar.set_progress(orbPlaced)
 					$Submission.play()
 					print(orbPlaced)
 			1:
 				if OrbCounter.inventory[1] > 0:
 					OrbCounter.inventory[1] -= 1
 					orbPlaced += 1
+					progressBar.set_progress(orbPlaced)
 					$Submission.play()
 					print(orbPlaced)
 			2:
 				if OrbCounter.inventory[2] > 0:
 					OrbCounter.inventory[2] -= 1
 					orbPlaced += 1
+					progressBar.set_progress(orbPlaced)
 					$Submission.play()
 					print(orbPlaced)
 			3:
 				if OrbCounter.inventory[3] > 0:
 					OrbCounter.inventory[3] -= 1
 					orbPlaced += 1
+					progressBar.set_progress(orbPlaced)
 					$Submission.play()
 					print(orbPlaced)
 			_:

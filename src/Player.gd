@@ -41,6 +41,7 @@ onready var canvasModulate = null
 onready var stunner = $stunner
 onready var stunner_area = $stunner/CollisionShape2D
 
+
 var isDead: bool = false
 var isImmune: bool = false
 var isParanoid: bool = false
@@ -55,8 +56,6 @@ func _ready():
 	yield(get_tree(),"idle_frame")
 	if is_network_master():
 		Global.player_master = self
-		
-	
 		
 func _process(delta: float) -> void:
 	if username_text_instance != null:

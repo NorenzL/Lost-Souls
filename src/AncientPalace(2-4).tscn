@@ -838,12 +838,12 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Altar" parent="." instance=ExtResource( 9 )]
 modulate = Color( 1.15, 1.2, 1.05, 1 )
-position = Vector2( 2856, -744 )
+position = Vector2( 256, -1965 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="Door" parent="." instance=ExtResource( 4 )]
 modulate = Color( 1, 1.2, 1.35, 1 )
-position = Vector2( 3928, -552 )
+position = Vector2( 1728, -1769 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="blue_orb" parent="." instance=ExtResource( 7 )]

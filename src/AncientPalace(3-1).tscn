@@ -833,19 +833,18 @@ drag_margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 512, -912 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Altar" parent="." instance=ExtResource( 9 )]
 modulate = Color( 1.15, 1.2, 1.05, 1 )
-position = Vector2( 2856, -744 )
+position = Vector2( 651, 662 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="Door" parent="." instance=ExtResource( 4 )]
 modulate = Color( 1, 1.2, 1.35, 1 )
-position = Vector2( 3928, -552 )
+position = Vector2( 1765, 1762 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="yellow_orb" parent="." instance=ExtResource( 7 )]

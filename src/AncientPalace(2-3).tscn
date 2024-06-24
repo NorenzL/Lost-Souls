@@ -843,7 +843,7 @@ scale = Vector2( 1.5, 1.5 )
 
 [node name="Door" parent="." instance=ExtResource( 4 )]
 modulate = Color( 1, 1.2, 1.35, 1 )
-position = Vector2( 3928, -552 )
+position = Vector2( 122, -100 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="blue_orb" parent="." instance=ExtResource( 7 )]

@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		return 
 	
 	if Global.dead_players >= Global.number_of_players:
-		get_tree().change_scene("res://src/gameover.tscn")
+		rpc("_game_over")
 		
 	
 	if target_queue.size() > 0:
@@ -78,7 +78,16 @@ func _on_door_state_changed(is_open: bool) -> void:
 	if is_open:
 		isRaging = true
 		print("Door is open, enemy is now raging.")
-		
+	
+sync func _game_over():
+	for child in Persistent_nodes.get_children():
+		if child.is_in_group("Net"):
+			child.queue_free()
+	Network.reset_network_connection()
+	Global.player_id.resize(0)
+	Global.number_of_players = 0
+	get_tree().change_scene("res://src/gameover.tscn")
+	
 func _update_pathfinding() -> void:
 	if target_queue.size() > 0:
 		var current_target = target_queue[0]

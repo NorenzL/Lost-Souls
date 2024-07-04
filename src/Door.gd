@@ -1,0 +1,59 @@
+extends Area2D
+
+
+# Signal handler for when a body enters the door area
+signal door_state_changed(is_open)
+
+var entered_player = 0
+
+export var doorIsOpen: bool = false setget _set_door_is_open
+	
+func _set_door_is_open(value: bool) -> void:
+	doorIsOpen = value
+	emit_signal("door_state_changed", doorIsOpen)
+	
+	
+func _on_Door_body_entered(body):
+	# Check if the body is a player by verifying its name in the global player_id list
+	if Global.player_id.has(body.name):
+		# Get the reference to the altar from the Global script
+		var altar = Global.altar
+		entered_player += 2
+		
+		# Check if the altar reference is valid
+		if altar == null:
+			print("Altar node not found")
+			return
+
+		# Get the total number of orbs placed in the altar
+		var totalOrbsInAltar = altar.orbPlaced
+		var requiredOrbs = 0
+
+		# Determine the required number of orbs based on the number of players
+		match Global.number_of_players:
+			4:
+				requiredOrbs = 4
+			6:
+				requiredOrbs = 6
+			8:
+				requiredOrbs = 8
+			_:
+				pass  # For any number of players not explicitly handled, no orbs are required
+
+		# Print the total orbs in the altar and the required orbs for debugging
+		print("Total orbs in altar:", totalOrbsInAltar)
+		print("Required orbs:", requiredOrbs)
+
+		# Check if the total orbs in the altar meet or exceed the required orbs
+		if totalOrbsInAltar >= requiredOrbs:
+			_set_door_is_open(true)
+			
+			if entered_player == Global.alive_players:
+				get_tree().change_scene("res://src/Win.tscn")
+		else:
+			
+			print("Players cannot exit, not enough orbs in the altar")
+
+
+func _on_Door_body_exited(body):
+	entered_player -= 2

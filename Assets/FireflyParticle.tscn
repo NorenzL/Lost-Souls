@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Curve" id=1]
+max_value = 5.0
+_data = [ Vector2( 0.25, 2.63636 ), 0.0, 0.0, 0, 0, Vector2( 0.977273, 0.104545 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.0366972, 0.0458716, 0.93578, 0.972477 )
+colors = PoolColorArray( 0.0666667, 0, 0, 0, 0.973633, 0.897731, 0.676979, 0.755814, 0.96582, 0.799695, 0.456501, 1, 0.996078, 0.972549, 0.921569, 0 )
+
+[node name="FireflyParticle" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2( 1, -1 )
+spread = 73.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 2.0
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )

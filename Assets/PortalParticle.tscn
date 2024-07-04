@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Curve" id=1]
+max_value = 5.0
+_data = [ Vector2( 0.030303, 3 ), 0.0, 1.65714, 0, 0, Vector2( 1, 1.36364 ), -5.8125, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.146789, 0.917431 )
+colors = PoolColorArray( 0.0197601, 0.157188, 0.361328, 1, 0.425362, 0.857422, 0.781474, 1 )
+
+[node name="PortalParticle" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 10
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2( -1, 0 )
+spread = 73.0
+gravity = Vector2( 0, 0 )
+orbit_velocity = 0.5
+orbit_velocity_random = 1.0
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )

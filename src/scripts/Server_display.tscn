@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Server_display.gd" type="Script" id=1]
+[ext_resource path="res://ButtonTexture/HoverButton.tres" type="StyleBox" id=2]
+[ext_resource path="res://ButtonTexture/NormalButton.tres" type="StyleBox" id=3]
+[ext_resource path="res://Font/PixelifySans-VariableFont_wght.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Audio/Button Click.ogg" type="AudioStream" id=5]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.145098, 0.168627, 0.254902, 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 4 )
+
+[node name="Panel" type="Panel"]
+anchor_right = 1.0
+margin_right = 716.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 130 )
+custom_styles/panel = SubResource( 3 )
+
+[node name="Server_display" type="Label" parent="." groups=["Server_display"]]
+anchor_right = 1.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 130 )
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+uppercase = true
+script = ExtResource( 1 )
+
+[node name="join_button" type="Button" parent="Server_display"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -302.0
+margin_top = 13.0
+margin_bottom = -13.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/normal = ExtResource( 3 )
+text = "JOIN"
+
+[node name="click" type="AudioStreamPlayer" parent="Server_display"]
+stream = ExtResource( 5 )
+
+[connection signal="pressed" from="Server_display/join_button" to="Server_display" method="_on_join_button_pressed"]

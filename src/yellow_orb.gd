@@ -13,10 +13,27 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if $OrbSound.playing == false:
+		$OrbSound.play()
+	else:
+		return
 
 
 func _on_yellow_orb_body_entered(body):
-	if body.name == "Player":
+	if body.name == Global.player_id[1] and OrbCounter.inventory[1]==0:
+		body.collect.play()
 		OrbCounter.incrementYellowOrbs()
 		self.queue_free()
+
+
+func _on_yellow_orb_area_entered(area):
+	if "_orb" in area.name:
+		area.queue_free()
+		yield(get_tree().create_timer(4), "timeout")
+		OrbSpawner.relocate_orb(area.name)
+
+	if "-power" in area.name:
+		area.queue_free()
+		yield(get_tree().create_timer(4), "timeout")
+		print (area.name)
+		OrbSpawner.relocate_power(area.name)

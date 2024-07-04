@@ -1,0 +1,357 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://src/scripts/Network_setup.gd" type="Script" id=1]
+[ext_resource path="res://src/UI.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Icons/arrow_right_24dp_FILL0_wght400_GRAD0_opsz24.png" type="Texture" id=3]
+[ext_resource path="res://Font/PixelifySans-VariableFont_wght.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ButtonTexture/HoverButton.tres" type="StyleBox" id=5]
+[ext_resource path="res://ButtonTexture/NormalButton.tres" type="StyleBox" id=6]
+[ext_resource path="res://Sprites/Icons/logout_20dp_FILL0_wght400_GRAD0_opsz20.png" type="Texture" id=7]
+[ext_resource path="res://ButtonTexture/Panel.tres" type="StyleBox" id=8]
+[ext_resource path="res://Sprites/Orb.png" type="Texture" id=9]
+[ext_resource path="res://Audio/Button Click.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Sprites/Icons/priority_high_20dp_FILL0_wght400_GRAD0_opsz20 (1).png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Icons/close_20dp_FILL0_wght400_GRAD0_opsz20.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="DynamicFont" id=9]
+size = 75
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=3]
+size = 29
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 29
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 29
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.223529, 0.286275, 0.972549, 0.584314 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.0196078, 0.0117647, 0.431373, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.223529, 0.286275, 0.972549, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.0196078, 0.0117647, 0.431373, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="DynamicFont" id=12]
+size = 50
+font_data = ExtResource( 4 )
+
+[node name="Network_setup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 596.0 ],
+"_edit_vertical_guides_": [ 1027.0 ]
+}
+
+[node name="multiplayer_configure" type="Control" parent="."]
+anchor_top = 0.587
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_top = -76.0
+margin_bottom = -76.0
+
+[node name="Logo" type="Panel" parent="multiplayer_configure"]
+margin_left = 178.0
+margin_top = -232.2
+margin_right = 708.0
+margin_bottom = -232.2
+custom_styles/panel = SubResource( 8 )
+
+[node name="Label2" type="Label" parent="multiplayer_configure/Logo"]
+margin_left = 285.856
+margin_top = 34.8
+margin_right = 479.856
+margin_bottom = 124.8
+rect_pivot_offset = Vector2( -506.144, -157.2 )
+custom_fonts/font = SubResource( 9 )
+text = "S   uls"
+
+[node name="Label" type="Label" parent="multiplayer_configure/Logo"]
+margin_left = 125.856
+margin_top = -13.2
+margin_right = 308.856
+margin_bottom = 76.8
+rect_pivot_offset = Vector2( -506.144, -157.2 )
+custom_fonts/font = SubResource( 9 )
+text = "Lost"
+
+[node name="TextureRect" type="TextureRect" parent="multiplayer_configure/Logo"]
+anchor_bottom = 0.135
+margin_left = 305.856
+margin_top = 14.8
+margin_right = 369.856
+margin_bottom = 62.195
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="Panel" type="Panel" parent="multiplayer_configure"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -343.04
+margin_top = 11.0
+margin_right = 343.04
+margin_bottom = 176.0
+custom_styles/panel = ExtResource( 8 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="multiplayer_configure"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.581
+margin_left = -265.0
+margin_top = 30.0
+margin_right = 265.0
+margin_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 530, 50 )
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Username_text_edit" type="LineEdit" parent="multiplayer_configure/VBoxContainer"]
+margin_right = 530.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 530, 100 )
+custom_colors/cursor_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+align = 1
+expand_to_text_length = true
+placeholder_text = "Enter your Name..."
+placeholder_alpha = 0.5
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="multiplayer_configure/VBoxContainer"]
+margin_top = 130.0
+margin_right = 530.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 530, 50 )
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Create_Server" type="Button" parent="multiplayer_configure/VBoxContainer/HBoxContainer"]
+margin_left = 68.0
+margin_right = 257.0
+margin_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 100, 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+text = "Host Server"
+
+[node name="Join Server" type="Button" parent="multiplayer_configure/VBoxContainer/HBoxContainer"]
+margin_left = 287.0
+margin_right = 462.0
+margin_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 100, 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+text = "Join Server"
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
+
+[node name="Device_ip_address" type="Label" parent="UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -88.0
+custom_colors/font_color = Color( 0.71875, 0.71875, 0.71875, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "192.168.1.5"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchor_top = 0.01
+anchor_right = 1.0
+anchor_bottom = 0.1
+margin_right = -10.0
+custom_constants/separation = 20
+alignment = 2
+
+[node name="Start_game" type="Button" parent="UI/HBoxContainer"]
+margin_left = 894.0
+margin_right = 944.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 50, 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 3 )
+icon_align = 1
+expand_icon = true
+
+[node name="Disconnect_Server" type="Button" parent="UI/HBoxContainer"]
+margin_left = 964.0
+margin_right = 1014.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 50, 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 0.607843 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 7 )
+icon_align = 1
+expand_icon = true
+
+[node name="Logo" type="Panel" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -334.0
+margin_top = 45.0
+margin_right = 333.712
+margin_bottom = 168.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="Label2" type="Label" parent="UI/Logo"]
+margin_left = 285.856
+margin_top = 34.8
+margin_right = 479.856
+margin_bottom = 124.8
+rect_pivot_offset = Vector2( -506.144, -157.2 )
+custom_fonts/font = SubResource( 9 )
+text = "S   uls"
+
+[node name="Label" type="Label" parent="UI/Logo"]
+margin_left = 125.856
+margin_top = -13.2
+margin_right = 308.856
+margin_bottom = 76.8
+rect_pivot_offset = Vector2( -506.144, -157.2 )
+custom_fonts/font = SubResource( 9 )
+text = "Lost"
+
+[node name="TextureRect" type="TextureRect" parent="UI/Logo"]
+anchor_bottom = 0.135
+margin_left = 305.856
+margin_top = 14.8
+margin_right = 369.856
+margin_bottom = 62.195
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI"]
+anchor_left = 0.01
+anchor_right = 1.0
+margin_left = -0.24
+margin_top = 8.0
+margin_right = -920.0
+margin_bottom = 82.0
+
+[node name="Instruction" type="Button" parent="UI/HBoxContainer2"]
+margin_right = 74.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 50, 50 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+icon = ExtResource( 11 )
+
+[node name="Instruct" type="Panel" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 53.0
+margin_top = 31.0
+margin_right = -53.0
+margin_bottom = -31.0
+custom_styles/panel = ExtResource( 8 )
+
+[node name="ExitInstruct" type="Button" parent="UI/Instruct"]
+margin_left = 841.0
+margin_top = 1.0
+margin_right = 915.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 50, 50 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 12 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Instruct"]
+margin_left = 35.0
+margin_top = 33.0
+margin_right = 835.0
+margin_bottom = 517.0
+custom_fonts/normal_font = SubResource( 12 )
+text = "- Each player collects orbs that match their designated color.
+
+- Players can carry only one orb at any given time.
+
+- All collected orbs must be placed in the altar to progress.
+
+- Collect all orbs to activate the exit.
+
+- All unsealed players must gather near the exit to win the game.
+
+- Stare at the spectre for 5 seconds to immobilize it temporarily. It will relocate afterward.
+
+- Visual and sound cues will alert players when the spectre is nearby.
+
+- Players touched by the spectre will be sealed and unable to move.
+
+- Free sealed players by touching them to unseal them.
+
+- Utilize powerups scattered across the map to aid in orb collection.
+
+- Powerups are Speed, Invulnerability, and Light.
+
+- Use the ping button to signal your current location to other players for coordination."
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[connection signal="pressed" from="multiplayer_configure/VBoxContainer/HBoxContainer/Create_Server" to="." method="_on_Create_Server_pressed"]
+[connection signal="pressed" from="multiplayer_configure/VBoxContainer/HBoxContainer/Join Server" to="." method="_on_Join_Server_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/Start_game" to="." method="_on_Start_game_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/Disconnect_Server" to="." method="_on_Disconnect_Server_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer2/Instruction" to="." method="_on_Instruction_pressed"]
+[connection signal="pressed" from="UI/Instruct/ExitInstruct" to="." method="_on_ExitInstruct_pressed"]

@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/Altar.gd" type="Script" id=1]
+[ext_resource path="res://Assets/FireflyParticle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/AltarAnimate.png" type="Texture" id=3]
+[ext_resource path="res://Audio/Submission.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/RiftOpening2.mp3" type="AudioStream" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 16 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Activating"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Opened"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Unopened"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[node name="Altar" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="AltarCollider" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 16 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+texture = ExtResource( 3 )
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.3
+anims/Activating = SubResource( 2 )
+anims/Opened = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/Unopened = SubResource( 5 )
+
+[node name="FireflyParticle" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1.5, 1.5, 0.5, 1 )
+
+[node name="Submission" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 10.0
+max_distance = 500.0
+
+[node name="PortalOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="body_entered" from="." to="." method="_on_Altar_body_entered"]
